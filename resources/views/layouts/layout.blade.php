@@ -10,6 +10,12 @@
 </head>
 <body>
 <h1>Clément Muller</h1>
+@if (Session::has('status'))
+    <ul>
+        <li>{!! session('status') !!}</li>
+    </ul>
+@endif
+
 @yield('content')
 
 </body>

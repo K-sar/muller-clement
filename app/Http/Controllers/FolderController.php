@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Folder;
+use App\Http\Requests\StoreFolder;
 
 class FolderController extends Controller
 {
@@ -18,9 +18,11 @@ class FolderController extends Controller
         return view("folders/create");
     }
 
-    public function store(Request $request)
+    public function store(StoreFolder $request)
     {
+        $validated = $request->validated();
         $folder=Folder::create($request->all());
-        return redirect('/photos');
+
+        return redirect('/photos')->with('status', 'Nouveau dossier ajouté');
     }
 }
