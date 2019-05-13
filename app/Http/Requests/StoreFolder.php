@@ -26,6 +26,7 @@ class StoreFolder extends FormRequest
         return [
             'name' => 'required|unique:folders|max:255',
             'access' => 'required|numeric',
+            'slug' => 'required|unique:folders|max:255',
         ];
     }
 }

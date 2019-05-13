@@ -15,11 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/photos', 'FolderController@index');
+Route::get('/galerie', 'FolderController@index');
 
 Route::get('/pictures', 'PictureController@index');
 
-Route::get('/photos/{folder}', 'PictureController@show_folder')->where('folder', '[0-9]+');
 
-Route::get('/photos/create_folder', 'FolderController@create')->name('folder_create');
-Route::post('/photos', 'FolderController@store')->name('folder_store');
+Route::resource('/galerie/folder', 'FolderController');
+
