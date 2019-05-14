@@ -28,7 +28,7 @@ class FolderController extends Controller
 
     public function show(Folder $folder)
     {
-        return view("pictures/show_folder", ['pictures'=>$folder->pictures]);
+        return view('folders/show', ['pictures'=>$folder->pictures, 'folder'=>$folder]);
     }
 
     public function edit($id)
@@ -36,14 +36,6 @@ class FolderController extends Controller
         $folder = Folder::find($id);
 
         return view('folders/edit', ['folder'=>$folder]);
-    }
-
-    public function destroy($id)
-    {
-        $folder = Folder::find($id);
-        $folder->delete();
-
-        return redirect('/galerie')->with('status', 'Le dossier a bien été supprimé');
     }
 
     public function update(StoreFolder $request, $id)
@@ -57,5 +49,13 @@ class FolderController extends Controller
         $folder->save();
 
         return redirect('/galerie')->with('status', 'Le dossier a bien été mis à jour');
+    }
+
+    public function destroy($id)
+    {
+        $folder = Folder::find($id);
+        $folder->delete();
+
+        return redirect('/galerie')->with('status', 'Le dossier a bien été supprimé');
     }
 }
