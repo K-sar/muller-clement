@@ -1,7 +1,7 @@
 @extends ("layouts.layout")
 
 @section("CSS")
-    <link href="CSS/style_folders.css" rel="stylesheet" media="all">
+    <link href="css/style_folders.css" rel="stylesheet" media="all">
 @endsection
 
 @section("content")
@@ -10,9 +10,18 @@
     @endif
     <form method="post" action="{{route('folder.store')}}">
         @csrf
-        <input type="text" name="name" value="{{old("name")}}" />
-        <input type="text" name="slug" value="{{old("slug")}}" />
-        <input type="text" name="access" value="{{old("access")}}" />
-        <input type="submit" />
+        <div>
+            <label>Nom</label>
+            <input type="text" name="name" value="{{old("name")}}" />
+        </div>
+        <div>
+            <label>Slug</label>
+            <input type="text" name="slug" value="{{old("slug")}}" />
+        </div>
+        <div>
+            <label>Accès</label>
+            <input type="text" name="access" value="{{old("access")}}" />
+        </div>
+                    <input type="submit" />
     </form>
 @endsection
