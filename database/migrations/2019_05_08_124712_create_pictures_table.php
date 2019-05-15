@@ -21,7 +21,7 @@ class CreatePicturesTable extends Migration
 
             $table->string('access');
             $table->string('link');
-            $table->string('nom');
+            $table->string('name');
             $table->string('info');
             $table->string('alternative');
             $table->string('slug')->unique();
