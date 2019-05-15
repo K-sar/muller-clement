@@ -86,6 +86,10 @@ a
     height: 200px;
     background-color: #4cb050;
     border-radius: 10px 10px 0 0;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+
 }
 
 .fond h1
@@ -94,7 +98,6 @@ a
     font-weight: normal;
     text-align: center;
     color: white;
-    padding-top: 70px;
     margin: 0;
 }
 

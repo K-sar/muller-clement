@@ -5,5 +5,5 @@
 @endsection
 
 @section("content")
-    <h2>{{$picture->info}}</h2>
+    <h2>{{$picture->name}}</h2>
 @endsection

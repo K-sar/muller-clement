@@ -15,16 +15,16 @@
                 <a href="{{route('picture.show', $picture->id)}}">
                     <div class="button">
                         <div class="fond">
-                            <h1>{{$picture->nom}}</h1>
+                            <h1>{{$picture->name}}</h1>
                         </div>
                         <h2>
-                            {{$picture->nom}}
+                            {{$picture->name}}
                         </h2>
                     </div>
                 </a>
                 <div class="menu-auth">
-                    <a href="{{route('picture.edit', $folder->id)}}"><button>Modifier</button></a>
-                    <form action="{{ route('picture.destroy', $folder->id)}}" method="post">
+                    <a href="{{route('picture.edit', $picture->id)}}"><button>Modifier</button></a>
+                    <form action="{{ route('picture.destroy', $picture->id)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Supprimer</button>

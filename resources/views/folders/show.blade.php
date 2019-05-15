@@ -14,10 +14,10 @@
                 <a href="{{route('picture.show', $picture->id)}}">
                     <div class="button photo">
                         <div class="fond photo">
-                            <h1>{{$picture->nom}}</h1>
+                            <h1>{{$picture->name}}</h1>
                         </div>
                         <h2>
-                            {{$picture->nom}}
+                            {{$picture->name}}
                         </h2>
                     </div>
                 </a>
