@@ -1,7 +1,7 @@
 @extends ("layouts.layout")
 
 @section("CSS")
-    <link href="css/style_folders.css" rel="stylesheet" media="all">
+    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
 @endsection
 
 @section("content")
@@ -11,6 +11,11 @@
     <form method="post" action="{{route('folder.update', $folder->id)}}">
         @method('PATCH')
         @csrf
+        <div>
+            <legend>
+                <h2>Modifier un dossier</h2>
+            </legend>
+        </div>
         <div>
             <label>Nom</label>
             <input type="text" name="name" value="{{$folder->name}}" />
@@ -23,6 +28,8 @@
             <label>Accès</label>
             <input type="text" name="access" value="{{$folder->access}}" />
         </div>
-        <input type="submit" />
+        <div>
+            <input type="submit" />
+        </div>
     </form>
 @endsection

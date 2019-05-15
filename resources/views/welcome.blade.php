@@ -1,11 +1,10 @@
 @extends ("layouts.layout")
 
 @section("CSS")
-    <link href="css/style_welcome.css" rel="stylesheet" media="all">
+    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
 @endsection
 
 @section("content")
-    <div id="bloc_page">
         <!--<div id="construction">
             <img src="images/site-en-construction.jpg" alt="site en construction" />
         </div>construction-->
@@ -47,6 +46,5 @@
                 </a>
             </div>
         </div><!--menu-->
-    </div><!--bloc_page-->
     </body>
 @endsection

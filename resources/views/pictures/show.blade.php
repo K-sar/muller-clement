@@ -1,7 +1,7 @@
 @extends ("layouts.layout")
 
 @section("CSS")
-    <link href="css/style_pictures.css" rel="stylesheet" media="all">
+    <link href="/css/style_picture.css" rel="stylesheet" media="all">
 @endsection
 
 @section("content")

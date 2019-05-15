@@ -1,7 +1,7 @@
 @extends ("layouts.layout")
 
 @section("CSS")
-    <link href="css/style_pictures.css" rel="stylesheet" media="all">
+    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
 @endsection
 
 @section("content")
@@ -10,6 +10,11 @@
     @endif
     <form method="post" action="{{route('picture.store')}}">
         @csrf
+        <div>
+            <legend>
+                <h2>Ajouter une nouvelle photo</h2>
+            </legend>
+        </div>
         <div>
             <label>Folder Id</label>
             <input type="text" name="folder_id" value="{{old("folder_id")}}" />
@@ -34,6 +39,8 @@
             <label>Slug</label>
             <input type="text" name="slug" value="{{old("slug")}}" />
         </div>
-        <input type="submit" />
+        <div>
+            <input type="submit" />
+        </div>
     </form>
 @endsection

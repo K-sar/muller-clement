@@ -9,14 +9,15 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Clément Muller</h1>
-@if (Session::has('status'))
-    <ul>
-        <li>{!! session('status') !!}</li>
-    </ul>
-@endif
+<div id="bloc_page">
+    <h1>Clément Muller</h1>
+    @if (Session::has('status'))
+        <ul>
+            <li>{!! session('status') !!}</li>
+        </ul>
+    @endif
 
-@yield('content')
-
+    @yield('content')
+</div>
 </body>
 </html>

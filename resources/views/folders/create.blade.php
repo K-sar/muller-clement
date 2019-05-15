@@ -1,7 +1,7 @@
 @extends ("layouts.layout")
 
 @section("CSS")
-    <link href="css/style_folders.css" rel="stylesheet" media="all">
+    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
 @endsection
 
 @section("content")
@@ -10,6 +10,11 @@
     @endif
     <form method="post" action="{{route('folder.store')}}">
         @csrf
+        <div>
+            <legend>
+                <h2>Ajouter un nouveau dossier</h2>
+            </legend>
+        </div>
         <div>
             <label>Nom</label>
             <input type="text" name="name" value="{{old("name")}}" />
@@ -22,6 +27,8 @@
             <label>Accès</label>
             <input type="text" name="access" value="{{old("access")}}" />
         </div>
-                    <input type="submit" />
+        <div>
+            <input type="submit" />
+        </div>
     </form>
 @endsection

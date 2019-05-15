@@ -1,18 +1,18 @@
 @font-face {
     font-family: 'segeoui';
-    src: url('../font/segeoui.ttf') format('truetype');
+    src: url('/font/segeoui.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'open_sansregular';
-    src: url('../font/OpenSans-Regular-webfont.eot');
-    src: url('../font/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../font/OpenSans-Regular-webfont.woff2') format('woff2'),
-    url('../font/OpenSans-Regular-webfont.woff') format('woff'),
-    url('../font/OpenSans-Regular-webfont.ttf') format('truetype'),
-    url('../font/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    src: url('/font/OpenSans-Regular-webfont.eot');
+    src: url('/font/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/font/OpenSans-Regular-webfont.woff2') format('woff2'),
+    url('/font/OpenSans-Regular-webfont.woff') format('woff'),
+    url('/font/OpenSans-Regular-webfont.ttf') format('truetype'),
+    url('/font/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -27,9 +27,10 @@ body
 
 #bloc_page
 {
-    max-width: 960px;
+    max-width: 1024px;
     margin:auto;
-    border:20px solid white;
+    min-height:768px;
+    padding: 10px;
     background-color: #FFF;
     display: flex;
     flex-direction:column;
@@ -48,7 +49,7 @@ body
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 30px;
+    margin-top: 30px;
 }
 
 
@@ -66,11 +67,9 @@ a
 
 .miniature
 {
-    width: 340px;
-    height: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 300px;
+    height: auto;
+    margin: 20px;
 }
 
 .button
@@ -78,13 +77,13 @@ a
     margin: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25), 0 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    width: 330px;
-    height: 250px;
+    width: 300px;
+    height: 230px;
 }
 
 .fond
 {
-    height: 220px;
+    height: 200px;
     background-color: #4cb050;
     border-radius: 10px 10px 0 0;
 }
@@ -95,8 +94,45 @@ a
     font-weight: normal;
     text-align: center;
     color: white;
-    padding-top: 90px;
+    padding-top: 70px;
+    margin: 0;
 }
+
+.menu-auth
+{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.photo
+{
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/*---------------------------------------------------------------------------------------------------------Formulaires*/
+form
+{
+}
+
+form div
+{
+    max-width: 960px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+label
+{
+    display: block;
+}
+input
+{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 
 /*
 *
