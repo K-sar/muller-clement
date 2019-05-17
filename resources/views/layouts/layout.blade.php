@@ -9,8 +9,26 @@
     <title>Document</title>
 </head>
 <body>
+<header>
+    <h1 class="CM">Clément Muller</h1>
+    <nav>
+        <a href="/">
+            <h3>Accueil</h3>
+        </a>
+        <a href="/CV">
+            <h3>CV</h3>
+        </a>
+        <a href="/portfolio">
+            <h3>Portfolio</h3>
+        </a>
+        <a href="/galerie">
+            <h3>Galerie</h3>
+        </a>
+        @yield('nav')
+    </nav>
+</header>
 <div id="bloc_page">
-    <h1>Clément Muller</h1>
+    <h1 class="CM">Clément Muller</h1>
     @if (Session::has('status'))
         <ul>
             <li>{!! session('status') !!}</li>

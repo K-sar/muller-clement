@@ -31,7 +31,7 @@ class PictureController extends Controller
     {
         $picture = Picture::find($id);
 
-        return view('picture/show', ['picture'=>$picture]);
+        return view('pictures/show', ['picture'=>$picture]);
     }
 
     public function edit($id)

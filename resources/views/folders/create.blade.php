@@ -4,6 +4,12 @@
     <link href="/css/style_welcome.css" rel="stylesheet" media="all">
 @endsection
 
+@section("nav")
+    <a href="{{route('folder.show')}}">
+        <h3>Retour</h3>
+    </a>
+@endsection
+
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>

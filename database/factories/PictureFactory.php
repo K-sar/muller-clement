@@ -8,10 +8,18 @@ use Faker\Generator as Faker;
 
 $factory->define(Picture::class, function (Faker $faker) {
     $folders = Folder::pluck('id')->toArray();
+    $folder_id = $faker->randomElement($folders);
+    $linkFolderDir = '/public/images/PictureFolder/'.$folder_id;
+
+    if (!Storage::exists($linkFolderDir))
+    {
+        Storage::makeDirectory($linkFolderDir, 0777);
+    }
+
     return [
-        'folder_id' => $faker->randomElement($folders),
+        'folder_id' => $folder_id,
         'access' => $faker->randomDigit,
-        'link' => $faker->url,
+        'link' => $faker->image($dir = $linkFolderDir, $width = 640, $height = 480),
         'name' => $faker->name,
         'info' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'alternative' => $faker->sentence($nbWords = 3, $variableNbWords = true),

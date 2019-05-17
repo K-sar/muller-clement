@@ -25,11 +25,42 @@ body
     margin:0;
 }
 
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e7d32;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.CM
+{
+    margin: 15px;
+    color: white;
+}
+
+nav h3
+{
+    margin:0;
+    padding: 0 15px 0 15px;
+}
+
+nav a
+{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+}
+
+
 #bloc_page
 {
     max-width: 1024px;
-    margin:auto;
     min-height:768px;
+    margin:auto;
     padding: 10px;
     background-color: #FFF;
     display: flex;
