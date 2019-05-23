@@ -22,7 +22,7 @@ class PictureController extends Controller
     public function store(StorePicture $request)
     {
         $validated = $request->validated();
-        $picture=Picture::create($request->all());
+        $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slug']));
 
         return redirect('/galerie/picture')->with('status', 'Nouvelle photo ajouté');
     }

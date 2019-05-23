@@ -20,6 +20,10 @@
             <input type="text" name="folder_id" value="{{old("folder_id")}}" />
         </div>
         <div>
+            <label>Nom</label>
+            <input type="text" name="name" value="{{old("name")}}" />
+        </div>
+        <div>
             <label>Accès</label>
             <input type="text" name="access" value="{{old("access")}}" />
         </div>

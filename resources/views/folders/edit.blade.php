@@ -18,7 +18,7 @@
         </div>
         <div>
             <label>Nom</label>
-            <input type="text" name="name" value="{{$folder->name}}" />
+            <input type="text" name="name" value="{{old("name")?:$folder->name}}" />
         </div>
         <div>
             <label>Slug</label>
