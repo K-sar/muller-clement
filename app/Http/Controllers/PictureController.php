@@ -14,17 +14,17 @@ class PictureController extends Controller
         return view("pictures/index", ['pictures'=>$Pictures]);
     }
 
-    public function create()
+    public function create($folder_id)
     {
-        return view("pictures/create");
+        return view("pictures/create", ['folder_id'=>$folder_id]);
     }
 
     public function store(StorePicture $request)
     {
+
         $validated = $request->validated();
         $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slug']));
-
-        return redirect('/galerie/picture')->with('status', 'Nouvelle photo ajouté');
+        return redirect('folder.picture.index', $request->folder_id);
     }
 
     public function show($id)

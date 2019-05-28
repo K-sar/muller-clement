@@ -4,11 +4,17 @@
     <link href="/css/style_welcome.css" rel="stylesheet" media="all">
 @endsection
 
+@section("nav")
+    <a href="{{route('folder.show', $folder_id)}}">
+        <h3>Retour</h3>
+    </a>
+@endsection
+
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <form method="post" action="{{route('picture.store')}}">
+    <form method="post" action="{{route('folder.picture.store', $folder_id)}}">
         @csrf
         <div>
             <legend>
@@ -16,8 +22,7 @@
             </legend>
         </div>
         <div>
-            <label>Folder Id</label>
-            <input type="text" name="folder_id" value="{{old("folder_id")}}" />
+            <input type="text" name="folder_id"  value="{{$folder_id}}"/>
         </div>
         <div>
             <label>Nom</label>

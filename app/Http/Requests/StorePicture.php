@@ -26,10 +26,12 @@ class StorePicture extends FormRequest
         return [
             'folder_id' => 'required|numeric',
             'access' => 'required|numeric',
-            'link' => 'required',
+            'link' => 'required|unique:pictures',
             'info' => 'required|max:255',
             'alternative' => 'required|max:64',
             'slug' => 'required|unique:pictures|max:255',
+            'name' => 'required|unique:pictures|max:255',
+
         ];
     }
 }

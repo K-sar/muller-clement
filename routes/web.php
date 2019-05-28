@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/galerie', 'FolderController@index');
 
-Route::resource('/galerie/picture', 'PictureController');
+Route::resource('/galerie/folder.picture', 'PictureController');
 
 Route::resource('/galerie/folder', 'FolderController');
 

@@ -7,11 +7,11 @@
 @section("content")
     <h2>{{$folder->name}}</h2>
     <p>Id du folder : {{$folder->id}}</p>
-    <a href="{{route('picture.create')}}"><button>Ajouter une photo</button></a>
+    <a href="{{route('folder.picture.create', $folder->id)}}"><button>Ajouter une photo</button></a>
     <div id="menu">
         @foreach ($pictures as $picture)
             <div class="miniature">
-                <a href="{{route('picture.show', $picture->id)}}">
+                <a href="{{route('folder.picture.show', [$folder->id, $picture->id])}}">
                     <div class="button photo">
                         <div class="fond photo">
                             <h1>{{$picture->name}}</h1>
@@ -22,8 +22,8 @@
                     </div>
                 </a>
                 <div class="menu-auth">
-                    <a href="{{route('picture.edit', $folder->id)}}"><button>Modifier</button></a>
-                    <form action="{{ route('picture.destroy', $folder->id)}}" method="post">
+                    <a href="{{route('folder.picture.edit', [$folder->id, $picture->id])}}"><button>Modifier</button></a>
+                    <form action="{{ route('folder.picture.destroy', [$folder->id, $picture->id])}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Supprimer</button>

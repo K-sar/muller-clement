@@ -11,5 +11,5 @@ class Picture extends Model
         return $this->belongsTo(Folder::class);
     }
 
-    protected $fillable=['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slug'];
+    protected $fillable=["folder_id", 'access', 'link', 'name', 'info', 'alternative', 'slug'];
 }
