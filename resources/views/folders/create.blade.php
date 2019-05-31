@@ -20,10 +20,6 @@
             <input type="text" name="name" value="{{old("name")}}" />
         </div>
         <div>
-            <label>Slug</label>
-            <input type="text" name="slug" value="{{old("slug")}}" />
-        </div>
-        <div>
             <label>Accès</label>
             <input type="text" name="access" value="{{old("access")}}" />
         </div>

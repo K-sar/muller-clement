@@ -24,7 +24,6 @@ $factory->define(Picture::class, function (Faker $faker) {
         'link' => $faker->image("public/storage".$linkFolderDir, $width = 640, $height = 480),
         'name' => $faker->name,
         'info' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'alternative' => $faker->sentence($nbWords = 3, $variableNbWords = true),
-        'slug' => $faker->slug,
+        'alternative' => $faker->sentence($nbWords = 3, $variableNbWords = true)
     ];
 });

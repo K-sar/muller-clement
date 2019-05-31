@@ -1,64 +1,57 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Folder;
 use App\Picture;
 use App\Http\Requests\StorePicture;
 
 
 class PictureController extends Controller
 {
-    public function index()
+    public function index(Folder $folder)
     {
         $Pictures = Picture::all();
-        return view("pictures/index", ['pictures'=>$Pictures]);
+        return view("pictures/index", ['folder'=>$folder, 'pictures'=>$Pictures]);
     }
 
-    public function create($folder_id)
+    public function create(Folder $folder)
     {
-        return view("pictures/create", ['folder_id'=>$folder_id]);
+        return view("pictures/create", ['folder'=>$folder]);
     }
 
-    public function store(StorePicture $request)
+    public function store(Folder $folder, StorePicture $request)
     {
-
+        $request->merge(['folder_id'=>$folder->id]);
         $validated = $request->validated();
         $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slug']));
-        return redirect('folder.picture.index', $request->folder_id);
+        return redirect(route('folder.show', [$folder]));
     }
 
-    public function show($id)
+    public function show(Folder $folder, Picture $picture)
     {
-        $picture = Picture::find($id);
-
-        return view('pictures/show', ['picture'=>$picture]);
+        return view('pictures/show', ['folder'=>$folder, 'picture'=>$picture]);
     }
 
-    public function edit($id)
+    public function edit(Folder $folder, Picture $picture)
     {
-        $picture = Picture::find($id);
-
-        return view('pictures/edit', ['picture'=>$picture]);
+        return view('pictures/edit', ['folder'=>$folder, 'picture'=>$picture]);
     }
 
-    public function update(StorePicture $request, $id)
+    public function update(Folder $folder, Picture $picture, StorePicture $request)
     {
         $validated = $request->validated();
 
-        $picture = Picture::find($id);
         $picture->name = $request->get('name');
-        $picture->slug = $request->get('slug');
         $picture->access = $request->get('access');
         $picture->save();
 
-        return redirect('/galerie/picture')->with('status', 'La photo a bien été mise à jour');
+        return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été mise à jour');
     }
 
-    public function destroy($id)
+    public function destroy(Folder $folder, Picture $picture)
     {
-        $picture = Picture::find($id);
         $picture->delete();
 
-        return redirect('/galerie/picture')->with('status', 'La photo a bien été supprimée');
+        return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été supprimée');
     }
 }

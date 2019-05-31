@@ -23,7 +23,7 @@ class FolderController extends Controller
         $validated = $request->validated();
         $folder=Folder::create($request->all());
 
-        return redirect('/galerie')->with('status', 'Nouveau dossier ajouté');
+        return redirect(route('folder.index'))->with('status', 'Nouveau dossier ajouté');
     }
 
     public function show(Folder $folder)
@@ -31,31 +31,26 @@ class FolderController extends Controller
         return view('folders/show', ['pictures'=>$folder->pictures, 'folder'=>$folder]);
     }
 
-    public function edit($id)
+    public function edit(Folder $folder)
     {
-        $folder = Folder::find($id);
-
         return view('folders/edit', ['folder'=>$folder]);
     }
 
-    public function update(StoreFolder $request, $id)
+    public function update(Folder $folder, StoreFolder $request)
     {
         $validated = $request->validated();
 
-        $folder = Folder::find($id);
         $folder->name = $request->get('name');
-        $folder->slug = $request->get('slug');
         $folder->access = $request->get('access');
         $folder->save();
 
-        return redirect('/galerie')->with('status', 'Le dossier a bien été mis à jour');
+        return redirect(route('folder.index'))->with('status', 'Le dossier a bien été mis à jour');
     }
 
-    public function destroy($id)
+    public function destroy(Folder $folder)
     {
-        $folder = Folder::find($id);
         $folder->delete();
 
-        return redirect('/galerie')->with('status', 'Le dossier a bien été supprimé');
+        return redirect(route('folder.index'))->with('status', 'Le dossier a bien été supprimé');
     }
 }

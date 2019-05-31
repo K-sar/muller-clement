@@ -11,7 +11,7 @@
 <div id="menu">
     @foreach ($folders as $folder)
         <div class="miniature">
-            <a href="{{route('folder.show', $folder->id)}}">
+            <a href="{{route('folder.show', $folder->slug)}}">
                 <div class="button">
                     <div class="fond">
                         <h1>{{$folder->name}}</h1>
@@ -22,8 +22,8 @@
                 </div>
             </a>
             <div class="menu-auth">
-                <a href="{{route('folder.edit', $folder->id)}}"><button>Modifier</button></a>
-                <form action="{{ route('folder.destroy', $folder->id)}}" method="post">
+                <a href="{{route('folder.edit', $folder->slug)}}"><button>Modifier</button></a>
+                <form action="{{route('folder.destroy', $folder->slug)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Supprimer</button>

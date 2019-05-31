@@ -8,7 +8,7 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <form method="post" action="{{route('folder.update', $folder->id)}}">
+    <form method="post" action="{{route('folder.update', $folder->slug)}}">
         @method('PATCH')
         @csrf
         <div>
@@ -21,12 +21,8 @@
             <input type="text" name="name" value="{{old("name")?:$folder->name}}" />
         </div>
         <div>
-            <label>Slug</label>
-            <input type="text" name="slug" value="{{$folder->slug}}" />
-        </div>
-        <div>
             <label>Accès</label>
-            <input type="text" name="access" value="{{$folder->access}}" />
+            <input type="text" name="access" value="{{old("access")?:$folder->access}}" />
         </div>
         <div>
             <input type="submit" />

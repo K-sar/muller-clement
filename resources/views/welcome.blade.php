@@ -34,7 +34,7 @@
                 </a>
             </div>
             <div class="miniature">
-                <a href="/galerie">
+                <a href="{{route("folder.index")}}">
                     <div class="button">
                         <div class="fond">
                             <h1>Galerie</h1>

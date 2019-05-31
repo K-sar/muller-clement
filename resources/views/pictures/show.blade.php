@@ -5,7 +5,7 @@
 @endsection
 
 @section("nav")
-    <a href="{{route('folder.show', $picture->folder_id)}}">
+    <a href="{{route('folder.show', $folder->slug)}}">
         <h3>Retour</h3>
     </a>
 @endsection
