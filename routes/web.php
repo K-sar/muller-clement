@@ -21,3 +21,5 @@ Route::resource('/galerie/folder.picture', 'PictureController');
 
 Route::resource('/galerie/folder', 'FolderController');
 
+Route::resource('/portfolio', 'PortfolioController');
+
