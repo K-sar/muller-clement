@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Portfolio;
 use App\Http\Requests\StorePortfolio;
-use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
@@ -16,29 +15,32 @@ class PortfolioController extends Controller
 
     public function create()
     {
+        $this->authorize('admin');
+
         return view("portfolios/create");
     }
 
     public function store(StorePortfolio $request)
     {
+        $this->authorize('admin');
+
         $validated = $request->validated();
         $portfolio=Portfolio::create($request->all());
 
-        return redirect(route('portfolio.index'))->with('status', 'Nouveau dossier ajouté');
-    }
-
-    public function show(Portfolio $portfolio)
-    {
-        return view('portfolios/show', ['pictures'=>$portfolio->pictures, 'portfolio'=>$portfolio]);
+        return redirect(route('portfolio.index'))->with('status', 'Nouvelle entrée ajoutée');
     }
 
     public function edit(Portfolio $portfolio)
     {
+        $this->authorize('admin', $portfolio);
+
         return view('portfolios/edit', ['portfolio'=>$portfolio]);
     }
 
     public function update(Portfolio $portfolio, StorePortfolio $request)
     {
+        $this->authorize('admin', $portfolio);
+
         $validated = $request->validated();
 
         $portfolio->name = $request->get('name');
@@ -46,11 +48,13 @@ class PortfolioController extends Controller
         $portfolio->link = $request->get('link');
         $portfolio->save();
 
-        return redirect(route('portfolio.index'))->with('status', 'L\entrée a bien été mise à jour');
+        return redirect(route('portfolio.index'))->with('status', 'L\'entrée a bien été mise à jour');
     }
 
     public function destroy(Portfolio $portfolio)
     {
+        $this->authorize('admin', $portfolio);
+
         $portfolio->delete();
 
         return redirect(route('portfolio.index'))->with('status', 'L\'entrée a bien été supprimée');

@@ -14,7 +14,7 @@ class StorePortfolio extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,9 +25,9 @@ class StorePortfolio extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('Portfolio')->ignore($this->request->get('name'), 'name'), 'max:255'],
+            'name' => ['required', Rule::unique('Portfolios')->ignore($this->request->get('name'), 'name'), 'max:255'],
             'picture' => 'required',
-            'link' => [Rule::unique('Portfolio')->ignore($this->request->get('link'), 'link')],
+            'link' => ['required', Rule::unique('Portfolios')->ignore($this->request->get('link'), 'link')],
         ];
     }
 }

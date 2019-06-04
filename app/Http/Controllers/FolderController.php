@@ -10,16 +10,20 @@ class FolderController extends Controller
     public function index()
     {
         $folders = Folder::all();
-        return view("folders/index", ['folders'=>$folders]);
+        return view("folders/index", compact('folders'));
     }
 
     public function create()
     {
+        $this->authorize('admin');
+
         return view("folders/create");
     }
 
     public function store(StoreFolder $request)
     {
+        $this->authorize('admin');
+
         $validated = $request->validated();
         $folder=Folder::create($request->all());
 
@@ -28,16 +32,22 @@ class FolderController extends Controller
 
     public function show(Folder $folder)
     {
+        $this->authorize('show', $folder);
+
         return view('folders/show', ['pictures'=>$folder->pictures, 'folder'=>$folder]);
     }
 
     public function edit(Folder $folder)
     {
+        $this->authorize('admin', $folder);
+
         return view('folders/edit', ['folder'=>$folder]);
     }
 
     public function update(Folder $folder, StoreFolder $request)
     {
+        $this->authorize('admin', $folder);
+
         $validated = $request->validated();
 
         $folder->name = $request->get('name');
@@ -49,6 +59,7 @@ class FolderController extends Controller
 
     public function destroy(Folder $folder)
     {
+        $this->authorize('admin', $folder);
         $folder->delete();
 
         return redirect(route('folder.index'))->with('status', 'Le dossier a bien été supprimé');

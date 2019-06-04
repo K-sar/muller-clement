@@ -25,6 +25,31 @@
             <h3>Galerie</h3>
         </a>
         @yield('nav')
+            <!-- Authentication Links -->
+        @guest
+            <a href="{{ route('login') }}">
+                <h3>Connexion</h3>
+            </a>
+            @if (Route::has('register'))
+                <a class="nav-link" href="{{ route('register') }}">
+                    <h3>Inscription</h3>
+                </a>
+            @endif
+        @else
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <h3>{{ Auth::user()->name }}</h3> <span class="caret"></span>
+            </a>
+
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                    <h3>{{ __('Déconnexion') }}</h3>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+        @endguest
     </nav>
 </header>
 <div id="bloc_page">

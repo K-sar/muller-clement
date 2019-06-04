@@ -23,3 +23,7 @@ Route::resource('/galerie/folder', 'FolderController');
 
 Route::resource('/portfolio', 'PortfolioController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
