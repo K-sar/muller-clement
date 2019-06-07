@@ -10,6 +10,7 @@ class Folder extends Model
 {
     use HasSlug;
 
+
     /**
      * Get the options for generating the slug.
      */
