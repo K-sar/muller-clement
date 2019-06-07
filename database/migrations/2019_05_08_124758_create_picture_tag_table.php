@@ -14,8 +14,10 @@ class CreatePictureTagTable extends Migration
     public function up()
     {
         Schema::create('picture_tag', function (Blueprint $table) {
-            $table->unsignedInteger('ID_pictures');
-            $table->unsignedInteger('ID_tags');
+            $table->unsignedInteger('picture_id')->index();
+            $table->foreign('picture_id')->references('id')->on('pictures')->onDelete('cascade');
+            $table->unsignedInteger('tag_id')->index();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 
