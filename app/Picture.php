@@ -25,7 +25,13 @@ class Picture extends Model
         return $this->belongsTo(Folder::class);
     }
 
-    protected $fillable=["folder_id", 'access', 'link', 'name', 'info', 'alternative', 'slug'];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    protected $fillable=["folder_id", 'access', 'link', 'name', 'info', 'alternative'];
 
     public function getRouteKeyName()
     {

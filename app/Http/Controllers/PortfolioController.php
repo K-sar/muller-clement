@@ -15,14 +15,14 @@ class PortfolioController extends Controller
 
     public function create()
     {
-        $this->authorize('admin');
+        $this->authorize('admin', Portfolio::class);
 
         return view("portfolios/create");
     }
 
     public function store(StorePortfolio $request)
     {
-        $this->authorize('admin');
+        $this->authorize('admin', Portfolio::class);
 
         $validated = $request->validated();
         $portfolio=Portfolio::create($request->all());

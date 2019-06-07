@@ -16,14 +16,14 @@ class PictureController extends Controller
 
     public function create(Folder $folder)
     {
-        $this->authorize('admin');
+        $this->authorize('admin', Picture::class);
 
         return view("pictures/create", ['folder'=>$folder]);
     }
 
     public function store(Folder $folder, StorePicture $request)
     {
-        $this->authorize('admin');
+        $this->authorize('admin', Picture::class);
 
         $request->merge(['folder_id'=>$folder->id]);
         $validated = $request->validated();

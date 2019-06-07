@@ -15,14 +15,14 @@ class FolderController extends Controller
 
     public function create()
     {
-        $this->authorize('admin');
+        $this->authorize('admin', Folder::class);
 
         return view("folders/create");
     }
 
     public function store(StoreFolder $request)
     {
-        $this->authorize('admin');
+        $this->authorize('admin', Folder::class);
 
         $validated = $request->validated();
         $folder=Folder::create($request->all());

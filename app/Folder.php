@@ -25,7 +25,7 @@ class Folder extends Model
         return $this->hasMany(Picture::class);
     }
 
-    protected $fillable=['name','slug','access'];
+    protected $fillable=['name', 'access'];
 
     public function getRouteKeyName()
     {
