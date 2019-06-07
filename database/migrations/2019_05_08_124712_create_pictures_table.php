@@ -24,7 +24,7 @@ class CreatePicturesTable extends Migration
             $table->string('name');
             $table->string('info');
             $table->string('alternative');
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->index();
             $table->timestamps();
         });
     }
