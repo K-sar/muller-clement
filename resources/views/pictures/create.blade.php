@@ -42,6 +42,10 @@
             <input type="text" name="alternative" value="{{old("alternative")}}" />
         </div>
         <div>
+            <label>Tag</label>
+            <input type="text" name="tags" value="{{old("tags")}}" />
+        </div>
+        <div>
             <input type="submit" />
         </div>
     </form>

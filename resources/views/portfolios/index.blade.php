@@ -6,7 +6,7 @@
 
 @section("content")
 
-<h2>La Galerie Photo</h2>
+<h2>Portfolio</h2>
 @can('admin', App\Portfolio::class)
     <a href="{{route('portfolio.create')}}"><button>Ajouter une entrée</button></a>
 @endcan

@@ -17,11 +17,22 @@ Route::get('/', function () {
 
 Route::get('/galerie', 'FolderController@index');
 
-Route::resource('/galerie/folder.picture', 'PictureController');
+Route::get('/galerie/pictures', 'PictureController@index')->name('picture.index');
+
+Route::get('/galerie/pictures/{picture}', 'PictureController@showFromAll')->name('picture.show');
 
 Route::resource('/galerie/folder', 'FolderController');
 
+Route::resource('/galerie/folder.picture', 'PictureController');
+
+Route::get('/galerie/tag/{tag}', 'PictureController@index')->name('tag.show');
+
+Route::get('/galerie/tag/{tag}/picture/{picture}', 'PictureController@showTag')->name('tag.picture.show');
+
+
+
 Route::resource('/portfolio', 'PortfolioController');
+
 
 
 Auth::routes();

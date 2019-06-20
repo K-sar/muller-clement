@@ -5,16 +5,13 @@
 @endsection
 
 @section("content")
+    <h2>Toutes les photos <?php if (!empty($tag)) {?> avec le tag : {{$tag->name}}<?php }?></h2>
 
-    <h2>Toutes les photos</h2>
-    @can('admin', App\Picture::class)
-        <a href="{{route('folder.picture.create', $folder->slug)}}"><button>Ajouter une photo</button></a>
-    @endcan
     <div id="menu">
         @foreach ($pictures as $picture)
             @can('show', $picture)
                 <div class="miniature photo">
-                    <a href="{{route('folder.picture.show',[$folder->slug, $picture->slug])}}">
+                    <a href="<?php if (!empty($tag)) { ?>{{route('tag.picture.show',[$tag->slug, $picture->slug])}} <?php } else { ?>{{route('picture.show', [$picture->slug])}}<?php } ?>">
                         <div class="button photo">
                             <div class="fond photo">
                                 <h1>{{$picture->name}}</h1>
@@ -24,16 +21,6 @@
                             </h2>
                         </div>
                     </a>
-                    @can('admin', $picture)
-                        <div class="menu-auth">
-                            <a href="{{route('folder.picture.edit', [$folder->slug, $picture->slug])}}"><button>Modifier</button></a>
-                            <form action="{{ route('folder.picture.destroy', [$folder->slug, $picture->slug])}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Supprimer</button>
-                            </form>
-                        </div>
-                    @endcan
                 </div>
             @endcan
         @endforeach

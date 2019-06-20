@@ -4,6 +4,7 @@ namespace App;
 
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Picture extends Model
@@ -36,5 +37,39 @@ class Picture extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function saveTags(string $tags)
+    {
+        $tags = array_filter(
+            array_unique(
+                array_map(
+                    function ($item)
+                    {
+                        return trim($item);
+                    }, explode(',', $tags)
+                )
+            ), function ($item)
+            {
+                 return !empty($item);
+            }
+        );
+
+        if (empty($tags))
+        {
+            return false;
+        }
+
+        $persisted_tags = Tag::whereIn('name', $tags)->get();
+
+        $tags_to_create = array_diff($tags, $persisted_tags->pluck('name')->all());
+        $tags_to_create = array_map(function ($tag)
+        {
+            return ['name' => $tag];
+        }, $tags_to_create);
+
+        $created_tags = $this->tags()->createMany($tags_to_create);
+        $persisted_tags = $persisted_tags->merge($created_tags);
+        $this->tags()->sync($persisted_tags);
     }
 }

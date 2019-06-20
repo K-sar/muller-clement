@@ -13,6 +13,6 @@ class FolderSeeder extends Seeder
     public function run()
     {
         factory(Folder::class, 9)->create();
-        //Folder::store(["name"=>"ça"]);
+        //Folder::create(["name"=>"ça"]);
     }
 }
