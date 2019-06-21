@@ -14,6 +14,7 @@ class PictureController extends Controller
         if (!is_null($tag))
         {
             $tag = Tag::where('slug', $tag)->first();
+
             return view("pictures/index", ['tag'=>$tag, 'pictures'=>$tag->pictures]);
         } else {
             $pictures = Picture::all();
@@ -77,6 +78,7 @@ class PictureController extends Controller
         $validated = $request->validated();
 
         $picture->save($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative']));
+        $picture->saveTags($request->get('tags'));
 
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été mise à jour');
     }

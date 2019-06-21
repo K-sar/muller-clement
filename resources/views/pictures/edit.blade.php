@@ -43,6 +43,10 @@
             <input type="text" name="alternative" value="{{old("alternative")?:$picture->alternative}}" />
         </div>
         <div>
+            <label>Tag</label>
+            <input type="text" name="tags" value="{{old("tags")?:$picture->tagsAsString}}" />
+        </div>
+        <div>
             <input type="submit" />
         </div>
     </form>

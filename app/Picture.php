@@ -41,35 +41,33 @@ class Picture extends Model
 
     public function saveTags(string $tags)
     {
-        $tags = array_filter(
-            array_unique(
-                array_map(
-                    function ($item)
-                    {
-                        return trim($item);
-                    }, explode(',', $tags)
-                )
-            ), function ($item)
-            {
-                 return !empty($item);
-            }
-        );
+        $tags = collect(explode(',', $tags));
 
-        if (empty($tags))
+        $tags = $tags
+            ->map(function($tag) { return trim($tag);})
+            ->unique()
+            ->filter(function ($tag) {
+                return !empty($tag);
+            });
+
+        if ($tags->isEmpty())
         {
             return false;
         }
 
         $persisted_tags = Tag::whereIn('name', $tags)->get();
 
-        $tags_to_create = array_diff($tags, $persisted_tags->pluck('name')->all());
-        $tags_to_create = array_map(function ($tag)
-        {
-            return ['name' => $tag];
-        }, $tags_to_create);
+        $tags_to_create =  $tags->diff($persisted_tags->pluck('name')->all())
+                                ->map(function ($tag) {return ['name' => $tag];})
+                                ->toArray();
 
         $created_tags = $this->tags()->createMany($tags_to_create);
         $persisted_tags = $persisted_tags->merge($created_tags);
         $this->tags()->sync($persisted_tags);
+    }
+
+    public function getTagsAsStringAttribute()
+    {
+        return $this->tags->implode('name', ', ');
     }
 }
