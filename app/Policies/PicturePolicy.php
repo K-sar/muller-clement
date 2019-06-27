@@ -28,10 +28,7 @@ class PicturePolicy
                 return true;
             }
 
-            //$this->>admin($user);
-            if ($user->id === 1) {
-                return true;
-            }
+            return $this->admin($user);
         }
 
         return false;

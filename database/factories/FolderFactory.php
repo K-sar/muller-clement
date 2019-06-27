@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Folder::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'access' => $faker->randomDigit
+        'access' => $faker->randomDigitNotNull,
     ];
 });

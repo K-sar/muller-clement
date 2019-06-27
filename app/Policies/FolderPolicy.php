@@ -27,6 +27,12 @@ class FolderPolicy
             if ($user->access >= $folder->access) {
                 return true;
             }
+            /*
+            dd($user->folders);
+            if ($user->folders->has($folder)) {
+                return true;
+            }
+            */
 
             return $this->admin($user);
         }
