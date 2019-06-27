@@ -8,8 +8,13 @@ use Faker\Generator as Faker;
 
 $factory->define(Picture::class, function (Faker $faker) {
 
-    $folders = Folder::pluck('id')->toArray();
-    $folder_id = $faker->randomElement($folders);
+    $folders = Folder::all()->toArray();
+    $folder = $faker->randomElement($folders);
+    $folder_id = $folder['id'];
+    $access = $folder['access'];
+    $access = $faker->numberBetween($min = $access, $max = $access+1);
+
+
 /*
     $linkFolderDir = '/images/PictureFolder/'.$folder_id;
 
@@ -20,7 +25,7 @@ $factory->define(Picture::class, function (Faker $faker) {
 */
     return [
         'folder_id' => $folder_id,
-        'access' => $faker->randomDigitNotNull,
+        'access' => $access,
         'link' => $faker->randomNumber($nbDigits = NULL, $strict = false),
         'name' => $faker->name,
         'info' => $faker->date($format = 'Y-m-d', $max = 'now'),

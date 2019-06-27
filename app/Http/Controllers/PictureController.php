@@ -20,7 +20,6 @@ class PictureController extends Controller
             if ($pictures->isEmpty())
             {
                 $tag->delete();
-                continue;
             }
 
             foreach ($pictures as $picture)
@@ -59,8 +58,9 @@ class PictureController extends Controller
     public function create(Folder $folder)
     {
         $this->authorize('admin', Picture::class);
+        $allTags = Tag::all();
 
-        return view("pictures/create", ['folder'=>$folder]);
+        return view("pictures/create", ['folder'=>$folder, 'allTags'=>$allTags]);
     }
 
     public function store(Folder $folder, StorePicture $request)
@@ -101,8 +101,9 @@ class PictureController extends Controller
     public function edit(Folder $folder, Picture $picture)
     {
         $this->authorize('admin', $picture);
+        $allTags = Tag::all();
 
-        return view('pictures/edit', ['folder'=>$folder, 'picture'=>$picture]);
+        return view('pictures/edit', ['folder'=>$folder, 'picture'=>$picture, 'allTags'=>$allTags]);
     }
 
     public function update(Folder $folder, Picture $picture, StorePicture $request)

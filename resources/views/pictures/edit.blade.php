@@ -23,28 +23,34 @@
             </legend>
         </div>
         <div>
-            <label>Nom</label>
+            <label>Nom :</label>
             <input type="text" name="name" value="{{old("name")?:$picture->link}}" />
         </div>
         <div>
-            <label>Accès</label>
+            <label>Accès :</label>
             <input type="text" name="access" value="{{old("access")?:$picture->access}}" />
         </div>
         <div>
-            <label>Lien</label>
+            <label>Lien :</label>
             <input type="text" name="link" value="{{old("link")?:$picture->link}}" />
         </div>
         <div>
-            <label>Infos</label>
+            <label>Infos :</label>
             <input type="text" name="info" value="{{old("info")?:$picture->info}}" />
         </div>
         <div>
-            <label>Texte Alternatif</label>
+            <label>Texte Alternatif :</label>
             <input type="text" name="alternative" value="{{old("alternative")?:$picture->alternative}}" />
         </div>
         <div>
-            <label>Tag</label>
+            <label>Tags :</label>
+            <p>
+                @foreach($allTags as $tag)
+                    <span>{{$tag->name}},</span>
+                @endforeach
+            </p>
             <input type="text" name="tags" value="{{old("tags")?:$picture->tagsAsString}}" />
+
         </div>
         <div>
             <input type="submit" />

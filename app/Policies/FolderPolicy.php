@@ -27,12 +27,11 @@ class FolderPolicy
             if ($user->access >= $folder->access) {
                 return true;
             }
-            /*
-            dd($user->folders);
-            if ($user->folders->has($folder)) {
+
+            $folder = $user->folders->where('id', $folder->id)->first();
+            if (!empty($folder)) {
                 return true;
             }
-            */
 
             return $this->admin($user);
         }

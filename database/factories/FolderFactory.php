@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Folder::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'access' => $faker->randomDigitNotNull,
+        'access' => $faker->numberBetween($min = 1, $max = 3),
     ];
 });
