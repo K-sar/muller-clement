@@ -5,21 +5,55 @@ use App\Folder;
 use App\Picture;
 use App\Tag;
 use App\Http\Requests\StorePicture;
+use Illuminate\Support\Facades\Auth;
 
 
 class PictureController extends Controller
 {
-    public function index($tag = null)
+    public function index($laserTag = null)
     {
-        if (!is_null($tag))
+        $tags = Tag::with('pictures')->get();
+        foreach ($tags as $tag)
         {
-            $tag = Tag::where('slug', $tag)->first();
+            $pictures = $tag->pictures;
 
-            return view("pictures/index", ['tag'=>$tag, 'pictures'=>$tag->pictures]);
+            if ($pictures->isEmpty())
+            {
+                $tag->delete();
+                continue;
+            }
+
+            foreach ($pictures as $picture)
+            {
+                $user = Auth::user();
+                if (app('App\Policies\PicturePolicy')->show($user, $picture) == false)
+                {
+                    $pictures = $pictures->reject(function ($value, $key) use ($picture)
+                    {
+                        return $value == $picture;
+                    });
+                }
+            }
+            if ($pictures->isEmpty())
+            {
+                $tags = $tags->reject(function ($value, $key) use ($tag)
+                {
+                    return $value == $tag;
+                });
+            }
+
+        }
+
+        if (!is_null($laserTag))
+        {
+            $tag = Tag::where('slug', $laserTag)->first();
+
+            return view("pictures/index", ['tag'=>$tag, 'tags'=>$tags, 'pictures'=>$tag->pictures]);
         } else {
             $pictures = Picture::all();
-            return view("pictures/index", ['pictures'=>$pictures]);
+            return view("pictures/index", ['tags'=>$tags, 'pictures'=>$pictures]);
         }
+
     }
 
     public function create(Folder $folder)

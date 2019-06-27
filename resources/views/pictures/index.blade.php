@@ -5,8 +5,15 @@
 @endsection
 
 @section("content")
-    <h2>Toutes les photos <?php if (!empty($tag)) {?> avec le tag : {{$tag->name}}<?php }?></h2>
-
+    <h2>Toutes les photos @if (!empty($tag)) avec le tag : {{$tag->name}} @endif </h2>
+    <p>
+        @if (!empty($tag))
+            <a href="{{route('picture.index')}}">Toutes les photos</a>
+        @endif
+        @foreach($tags as $tag)
+            <a href="{{route('tag.show', $tag->slug)}}">{{$tag->name}}</a>
+        @endforeach
+    </p>
     <div id="menu">
         @foreach ($pictures as $picture)
             @can('show', $picture)
