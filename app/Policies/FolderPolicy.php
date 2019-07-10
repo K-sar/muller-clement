@@ -17,6 +17,14 @@ class FolderPolicy
      * @param \App\Folder $folder
      * @return mixed
      */
+
+    public function before(User $user)
+    {
+        if($user->id === 1){
+            return true;
+        }
+    }
+
     public function show(?User $user, Folder $folder)
     {
         if ($folder->access == 1) {
@@ -33,14 +41,14 @@ class FolderPolicy
                 return true;
             }
 
-            return $this->admin($user);
         }
 
         return false;
     }
 
-    public function admin(User $user)
+    public function admin()
     {
-        return $user->id === 1;
+        return false;
     }
+
 }

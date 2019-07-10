@@ -1,10 +1,7 @@
 @extends ("layouts.layout")
 
-@section("CSS")
-    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
-@endsection
-
 @section("content")
+    <body>
         <!--<div id="construction">
             <img src="images/site-en-construction.jpg" alt="site en construction" />
         </div>construction-->

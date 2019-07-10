@@ -1,9 +1,5 @@
 @extends ("layouts.layout")
 
-@section("CSS")
-    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
-@endsection
-
 @section("nav")
     <a href="{{route('folder.show', $folder->slug)}}">
         <h3>Retour</h3>
@@ -46,7 +42,7 @@
             <label>Tags :</label>
             <p>
                 @foreach($allTags as $tag)
-                    <span>{{$tag->name}},</span>
+                    <span class="clicTag" data-value="{{$tag->name}}">{{$tag->name}},</span>
                 @endforeach
             </p>
             <input type="text" name="tags" value="{{old("tags")?:$picture->tagsAsString}}" />

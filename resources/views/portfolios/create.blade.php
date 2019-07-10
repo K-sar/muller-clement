@@ -1,9 +1,5 @@
 @extends ("layouts.layout")
 
-@section("CSS")
-    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
-@endsection
-
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>

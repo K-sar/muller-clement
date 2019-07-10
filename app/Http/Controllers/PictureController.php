@@ -5,6 +5,7 @@ use App\Folder;
 use App\Picture;
 use App\Tag;
 use App\Http\Requests\StorePicture;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -24,8 +25,8 @@ class PictureController extends Controller
 
             foreach ($pictures as $picture)
             {
-                $user = Auth::user();
-                if (app('App\Policies\PicturePolicy')->show($user, $picture) == false)
+                $user = Auth::user()??new User();
+                if (!$user->can('show', $picture))
                 {
                     $pictures = $pictures->reject(function ($value, $key) use ($picture)
                     {

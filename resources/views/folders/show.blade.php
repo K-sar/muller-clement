@@ -1,9 +1,5 @@
 @extends ("layouts.layout")
 
-@section("CSS")
-    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
-@endsection
-
 @section("content")
     <h2>{{$folder->name}}</h2>
     @can('admin', App\Folder::class)

@@ -1,32 +1,39 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import $ from 'jquery';
+window.$ = window.jQuery = $;
 
-require('./bootstrap');
+function triTag(tags) {
+    var tagArray = tags.split(',').map( function(tag) {
+        return tag.trim();
+    });
 
-window.Vue = require('vue');
+    tagArray = tagArray.filter( function(val){return val !== '' } );
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+    tagArray.forEach(function (value, index) {
+        tagArray[index] = value.substr(0,1).toUpperCase()+	value.substr(1,value.length).toLowerCase();
+    });
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+    tagArray.sort();
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+    tagArray = jQuery.unique(tagArray);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+    tags = tagArray.join(', ');
 
-const app = new Vue({
-    el: '#app',
+    return tags;
+};
+
+$('.clicTag').click(function(){
+    var inputTag = $('#inputTag');
+    var tags = inputTag.val();
+    var tag = $(this).data('value')
+    tags = tags + ', ' + tag;
+    inputTag.val(triTag(tags));
 });
+
+$('#inputTag').keypress(function(e){
+    if (e.which === 44){
+        var inputTag = $('#inputTag');
+        var tags = inputTag.val();
+        inputTag.val(triTag(tags));
+    }
+});
+

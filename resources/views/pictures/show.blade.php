@@ -1,9 +1,5 @@
 @extends ("layouts.layout")
 
-@section("CSS")
-    <link href="/css/style_welcome.css" rel="stylesheet" media="all">
-@endsection
-
 @section("nav")
     @if (!empty($folder))
         <a href="{{route('folder.show', $folder->slug)}}">

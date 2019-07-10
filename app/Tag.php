@@ -10,6 +10,8 @@ class Tag extends Model
 {
     use HasSlug;
 
+    //  protected $with = ['picture'];  eager loading
+
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
