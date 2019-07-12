@@ -1,20 +1,27 @@
+
 import $ from 'jquery';
 window.$ = window.jQuery = $;
+require('./bootstrap');
 
 function triTag(tags) {
     var tagArray = tags.split(',').map( function(tag) {
-        return tag.trim();
+        tag = tag.trim();
+        return tag.substr(0,1).toUpperCase()+ tag.substr(1,tag.length).toLowerCase();
     });
 
     tagArray = tagArray.filter( function(val){return val !== '' } );
 
-    tagArray.forEach(function (value, index) {
-        tagArray[index] = value.substr(0,1).toUpperCase()+	value.substr(1,value.length).toLowerCase();
+    var result = [];
+    tagArray.forEach(function(item) {
+        if(result.indexOf(item) < 0) {
+            result.push(item);
+        }
     });
+    tagArray = result;
 
-    tagArray.sort();
-
-    tagArray = jQuery.unique(tagArray);
+    tagArray.sort(function (a, b) {
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+    });
 
     tags = tagArray.join(', ');
 
@@ -30,7 +37,7 @@ $('.clicTag').click(function(){
 });
 
 $('#inputTag').keypress(function(e){
-    if (e.which === 44){
+    if (e.key === ','){
         var inputTag = $('#inputTag');
         var tags = inputTag.val();
         inputTag.val(triTag(tags));
