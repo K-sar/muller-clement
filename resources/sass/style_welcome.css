@@ -27,7 +27,7 @@ body
 
 header
 {
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
     background-color: #2e7d32;
@@ -50,7 +50,7 @@ nav h3
 
 nav a
 {
-    display: inline-block;
+    display: inline-block !important;
     text-decoration: none;
     color: white;
 }
@@ -94,7 +94,7 @@ h2
 
 a
 {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 p
@@ -121,7 +121,6 @@ p
 .fond
 {
     height: 200px;
-    background-color: #4cb050;
     border-radius: 10px 10px 0 0;
     display:flex;
     justify-content: space-around;
@@ -129,13 +128,17 @@ p
 
 }
 
-.fond h1
+.fond img
 {
-    font-size: 3em;
-    font-weight: normal;
-    text-align: center;
-    color: white;
+    width: 300px;
+    height: 200px;
     margin: 0;
+}
+
+.pictures
+{
+    width: 100%;
+    heigh: auto;
 }
 
 .menu-auth
@@ -181,3 +184,4 @@ input
 }
 
  */
+

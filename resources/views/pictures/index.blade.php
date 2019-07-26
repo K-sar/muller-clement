@@ -17,7 +17,7 @@
                     <a href="<?php if (!empty($tag)) { ?>{{route('tag.picture.show',[$tag->slug, $picture->slug])}} <?php } else { ?>{{route('picture.show', [$picture->slug])}}<?php } ?>">
                         <div class="button photo">
                             <div class="fond photo">
-                                <h1>{{$picture->name}}</h1>
+                                <img src="/storage/miniatures/pictures/{{$picture->link}}" alt="{{$picture->alt}}"/>
                             </div>
                             <h2>
                                 {{$picture->name}}

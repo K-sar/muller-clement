@@ -32,14 +32,14 @@ class Picture extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    protected $fillable=["folder_id", 'access', 'link', 'name', 'info', 'alternative'];
+    protected $fillable=["folder_id", 'access', 'file', 'link', 'name', 'info', 'alternative'];
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
-    public function saveTags(string $tags)
+    public function saveTags(?string $tags)
     {
         $tags = collect(explode(',', $tags));
 
@@ -49,12 +49,12 @@ class Picture extends Model
             ->filter(function ($tag) {
                 return !empty($tag);
             });
-
+/*
         if ($tags->isEmpty())
         {
             return false;
         }
-
+*/
         $persisted_tags = Tag::whereIn('name', $tags)->get();
 
         $tags_to_create =  $tags->diff($persisted_tags->pluck('name')->all())

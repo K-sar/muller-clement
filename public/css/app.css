@@ -27,8 +27,8 @@ body
 
 header
 {
-    display: -webkit-box;
-    display: flex;
+    display: -webkit-box !important;
+    display: flex !important;
     -webkit-box-pack: justify;
             justify-content: space-between;
     -webkit-box-align: center;
@@ -53,7 +53,7 @@ nav h3
 
 nav a
 {
-    display: inline-block;
+    display: inline-block !important;
     text-decoration: none;
     color: white;
 }
@@ -104,7 +104,7 @@ h2
 
 a
 {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 p
@@ -131,7 +131,6 @@ p
 .fond
 {
     height: 200px;
-    background-color: #4cb050;
     border-radius: 10px 10px 0 0;
     display:-webkit-box;
     display:flex;
@@ -141,13 +140,17 @@ p
 
 }
 
-.fond h1
+.fond img
 {
-    font-size: 3em;
-    font-weight: normal;
-    text-align: center;
-    color: white;
+    width: 300px;
+    height: 200px;
     margin: 0;
+}
+
+.pictures
+{
+    width: 100%;
+    heigh: auto;
 }
 
 .menu-auth
@@ -193,7 +196,9 @@ input
 	border: 1px solid black;
 }
 
- */@charset "UTF-8";
+ */
+
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)

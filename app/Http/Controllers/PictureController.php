@@ -7,6 +7,8 @@ use App\Tag;
 use App\Http\Requests\StorePicture;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+
 
 
 class PictureController extends Controller
@@ -67,12 +69,22 @@ class PictureController extends Controller
     public function store(Folder $folder, StorePicture $request)
     {
         $this->authorize('admin', Picture::class);
+        $file = $request->file('file');
+        $link = md5($file).'.'.$file->getClientOriginalExtension();
+        $img = Image::make($request->file('file'));
+        $img->orientate();
+        $img->save("../storage/app/public/pictures/".$link);
 
-        $request->merge(['folder_id'=>$folder->id]);
+        $request->merge(['folder_id'=>$folder->id, 'link'=>$link]);
 
         $validated = $request->validated();
         $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative']));
+
+
         $picture->saveTags($request->get('tags'));
+
+        $img->fit(300, 200)->orientate();
+        $img->save("../storage/app/public/miniatures/pictures/".$link);
 
         return redirect(route('folder.show', [$folder]));
     }

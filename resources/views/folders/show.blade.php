@@ -12,7 +12,7 @@
                     <a href="{{route('folder.picture.show',[$folder->slug, $picture->slug])}}">
                         <div class="button photo">
                             <div class="fond photo">
-                                <h1>{{$picture->name}}</h1>
+                                <img src="/storage/miniatures/pictures/{{$picture->link}}" alt="{{$picture->alternative}}"/>
                             </div>
                             <h2>
                                 {{$picture->name}}

@@ -17,6 +17,7 @@
 @endsection
 
 @section("content")
+    <img src="/storage/pictures/{{$picture->link}}" alt="{{$picture->alternative}}" class="pictures"/>
     <h2>{{$picture->name}}</h2>
     <p>
         @foreach($picture->tags as $tag)

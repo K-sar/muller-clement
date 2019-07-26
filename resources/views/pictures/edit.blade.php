@@ -10,6 +10,7 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
+    <img src='/storage/{{$picture->link}}' alt='{{$picture->alternative}}' />
     <form method="post" action="{{route('folder.picture.update', [$folder->slug, $picture->slug])}}">
         @method('PATCH')
         @csrf
@@ -20,15 +21,11 @@
         </div>
         <div>
             <label>Nom :</label>
-            <input type="text" name="name" value="{{old("name")?:$picture->link}}" />
+            <input type="text" name="name" value="{{old("name")?:$picture->name}}" />
         </div>
         <div>
             <label>Accès :</label>
             <input type="text" name="access" value="{{old("access")?:$picture->access}}" />
-        </div>
-        <div>
-            <label>Lien :</label>
-            <input type="text" name="link" value="{{old("link")?:$picture->link}}" />
         </div>
         <div>
             <label>Infos :</label>

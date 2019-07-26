@@ -10,12 +10,16 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <form method="post" action="{{route('folder.picture.store', $folder->slug)}}">
+    <form method="post" action="{{route('folder.picture.store', $folder->slug)}}" enctype="multipart/form-data">
         @csrf
         <div>
             <legend>
                 <h2>Ajouter une nouvelle photo</h2>
             </legend>
+        </div>
+        <div>
+            <label>Fichier :</label>
+            <input type="file" name="file"/>
         </div>
         <div>
             <label>Nom :</label>
@@ -24,10 +28,6 @@
         <div>
             <label>Accès :</label>
             <input type="text" name="access" value="{{old("access")}}" />
-        </div>
-        <div>
-            <label>Lien :</label>
-            <input type="text" name="link" value="{{old("link")}}" />
         </div>
         <div>
             <label>Infos :</label>
