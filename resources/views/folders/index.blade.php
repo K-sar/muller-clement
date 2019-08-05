@@ -15,7 +15,20 @@
                 <a href="{{route('folder.show', $folder->slug)}}">
                     <div class="button">
                         <div class="fond">
-                            <h1>{{$folder->name}}</h1>
+                            @if ($folder->slider_pictures->count() > 4)
+                                <div class="slider">
+                                    <figure>
+                                        @foreach ($folder->slider_pictures as $picture)
+                                            <img src="/storage/miniatures/pictures/{{$picture->link}}" alt="{{$picture->alternative}}"/>
+                                        @endforeach
+                                            <img src="/storage/miniatures/pictures/{{$folder->slider_pictures->first()->link}}" alt="{{$folder->slider_pictures->first()->alternative}}"/>
+
+                                    </figure>
+                                </div>
+                            @elseif ($folder->slider_pictures->count() > 0)
+                                <img src="/storage/miniatures/pictures/{{$folder->slider_pictures->first()->link}}" alt="{{$folder->slider_pictures->first()->alternative}}"/>
+                            @else
+                            @endif
                         </div>
                         <h2>
                             {{$folder->name}}

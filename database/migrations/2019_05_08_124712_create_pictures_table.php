@@ -19,6 +19,7 @@ class CreatePicturesTable extends Migration
             $table->unsignedInteger('folder_id');
             $table->foreign('folder_id')->references('id')->on('folders')->onDelete('cascade');
 
+            $table->unsignedDecimal('slider', 5, 2)->nullable();
             $table->string('access');
             $table->string('link');
             $table->string('name');

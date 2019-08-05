@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Folder;
 use App\Picture;
 use App\Tag;
 use App\Http\Requests\StorePicture;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 
@@ -69,22 +71,25 @@ class PictureController extends Controller
     public function store(Folder $folder, StorePicture $request)
     {
         $this->authorize('admin', Picture::class);
+
         $file = $request->file('file');
         $link = md5($file).'.'.$file->getClientOriginalExtension();
         $img = Image::make($request->file('file'));
         $img->orientate();
         $img->save("../storage/app/public/pictures/".$link);
+        $img->fit(300, 200)->orientate();
+        $img->save("../storage/app/public/miniatures/pictures/".$link);
 
         $request->merge(['folder_id'=>$folder->id, 'link'=>$link]);
 
         $validated = $request->validated();
-        $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative']));
+        if ($request->slider == null) {
+            $request->merge(['slider' => 100]);
+        }
 
+        $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slider']));
 
         $picture->saveTags($request->get('tags'));
-
-        $img->fit(300, 200)->orientate();
-        $img->save("../storage/app/public/miniatures/pictures/".$link);
 
         return redirect(route('folder.show', [$folder]));
     }
@@ -123,9 +128,26 @@ class PictureController extends Controller
     {
         $this->authorize('admin', $picture);
 
+        if ($request->file('file') !== null) {
+            $file = $request->file('file');
+            $link = md5($file) . '.' . $file->getClientOriginalExtension();
+            $img = Image::make($request->file('file'));
+            $img->orientate();
+            $img->save("../storage/app/public/pictures/" . $link);
+            $img->fit(300, 200)->orientate();
+            $img->save("../storage/app/public/miniatures/pictures/" . $link);
+            Storage::delete('/miniatures/pictures/'.$picture->link);
+            Storage::delete('/pictures/'.$picture->link);
+            $picture->link = $link;
+        }
+
+        if ($request->slider == null) {
+            $picture->slider = 100;
+        }
+
         $validated = $request->validated();
 
-        $picture->save($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative']));
+        $picture->save($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slider']));
         $picture->saveTags($request->get('tags'));
 
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été mise à jour');
@@ -135,8 +157,19 @@ class PictureController extends Controller
     {
         $this->authorize('admin', $picture);
 
+        Storage::delete('/miniatures/pictures/'.$picture->link);
+        Storage::delete('/pictures/'.$picture->link);
         $picture->delete();
 
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été supprimée');
+    }
+
+    public function slider(Folder $folder, Picture $picture, StorePicture $request) {
+        dd('plop');
+        $this->authorize('admin', $picture);
+
+        $picture->save($request->all(['slider']));
+
+        return redirect()-> route('folder.slider', [$folder])->with('status', 'Le slider a bien été mise à jour');
     }
 }

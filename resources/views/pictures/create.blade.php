@@ -38,6 +38,10 @@
             <input type="text" name="alternative" value="{{old("alternative")}}" />
         </div>
         <div>
+            <label>Slider :</label>
+            <input type="text" name="slider" value="{{old("slider")}}" />
+        </div>
+        <div>
             <label>Tag :</label>
             <p>
                 @foreach($allTags as $tag)

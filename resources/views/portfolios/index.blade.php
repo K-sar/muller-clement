@@ -9,10 +9,10 @@
 <div id="menu">
     @foreach ($portfolios as $portfolio)
         <div class="miniature">
-            <a href="{{$portfolio->link}}">
+            <a href="{{route('portfolio.show', [$portfolio->slug])}}">
                 <div class="button">
                     <div class="fond">
-                        <h1>{{$portfolio->name}}</h1>
+                        <img src="/storage/miniatures/portfolio/{{$portfolio->picture}}" alt="miniature {{$portfolio->name}}"/>
                     </div>
                     <h2>
                         {{$portfolio->name}}
@@ -21,8 +21,8 @@
             </a>
             @can('admin', $portfolio)
                 <div class="menu-auth">
-                    <a href="{{route('portfolio.edit', $portfolio->id)}}"><button>Modifier</button></a>
-                    <form action="{{route('portfolio.destroy', $portfolio->id)}}" method="post">
+                    <a href="{{route('portfolio.edit', $portfolio->slug)}}"><button>Modifier</button></a>
+                    <form action="{{route('portfolio.destroy', $portfolio->slug)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Supprimer</button>

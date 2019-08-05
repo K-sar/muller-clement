@@ -4,6 +4,7 @@
     <h2>{{$folder->name}}</h2>
     @can('admin', App\Folder::class)
         <a href="{{route('folder.picture.create', $folder->slug)}}"><button>Ajouter une photo</button></a>
+        <a href="{{route('folder.slider', $folder->slug)}}"><button>Editer le slider</button></a>
     @endcan
     <div id="menu">
         @foreach ($pictures as $picture)

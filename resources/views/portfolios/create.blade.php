@@ -4,7 +4,7 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <form method="post" action="{{route('portfolio.store')}}">
+    <form method="post" action="{{route('portfolio.store')}}" enctype="multipart/form-data">
         @csrf
         <div>
             <legend>
@@ -16,12 +16,16 @@
             <input type="text" name="name" value="{{old("name")}}" />
         </div>
         <div>
-            <label>Miniature</label>
-            <input type="text" name="picture" value="{{old("picture")}}" />
+            <label>Descriptif</label>
+            <input type="text" name="description" value="{{old("description")}}" />
         </div>
         <div>
             <label>Lien</label>
             <input type="text" name="link" value="{{old("link")}}" />
+        </div>
+        <div>
+            <label>Miniature :</label>
+            <input type="file" name="file"/>
         </div>
         <div>
             <input type="submit" />

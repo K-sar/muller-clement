@@ -10,14 +10,18 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <img src='/storage/{{$picture->link}}' alt='{{$picture->alternative}}' />
-    <form method="post" action="{{route('folder.picture.update', [$folder->slug, $picture->slug])}}">
+    <img src='/storage/pictures/{{$picture->link}}' alt='{{$picture->alternative}}' class="pictures"/>
+    <form method="post" action="{{route('folder.picture.update', [$folder->slug, $picture->slug])}} "enctype="multipart/form-data">
         @method('PATCH')
         @csrf
         <div>
             <legend>
                 <h2>Modifier une photo</h2>
             </legend>
+        </div>
+        <div>
+            <label>Fichier :</label>
+            <input type="file" name="file"/>
         </div>
         <div>
             <label>Nom :</label>
@@ -34,6 +38,10 @@
         <div>
             <label>Texte Alternatif :</label>
             <input type="text" name="alternative" value="{{old("alternative")?:$picture->alternative}}" />
+        </div>
+        <div>
+            <label>Slider :</label>
+            <input type="text" name="slider" value="{{old("slider")?:$picture->slider}}" />
         </div>
         <div>
             <label>Tags :</label>

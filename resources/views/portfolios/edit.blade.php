@@ -4,7 +4,10 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <form method="post" action="{{route('portfolio.update', $portfolio->id)}}">
+    <div class="miniature">
+        <img src="/storage/miniatures/portfolio/{{$portfolio->picture}}" alt="miniature {{$portfolio->name}}"/>
+    </div>
+    <form method="post" action="{{route('portfolio.update', $portfolio->slug)}} "enctype="multipart/form-data">
         @method('PATCH')
         @csrf
         <div>
@@ -17,12 +20,16 @@
             <input type="text" name="name" value="{{old("name")?:$portfolio->name}}" />
         </div>
         <div>
-            <label>Miniature</label>
-            <input type="text" name="picture" value="{{old("picture")?:$portfolio->picture}}" />
+            <label>Descriptif</label>
+            <input type="text" name="description" value="{{old("description")?:$portfolio->description}}" />
         </div>
         <div>
             <label>Lien</label>
             <input type="text" name="link" value="{{old("link")?:$portfolio->link}}" />
+        </div>
+        <div>
+            <label>Miniature :</label>
+            <input type="file" name="file"/>
         </div>
         <div>
             <input type="submit" />

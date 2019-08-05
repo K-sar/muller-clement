@@ -9,7 +9,7 @@ class FolderController extends Controller
 {
     public function index()
     {
-        $folders = Folder::all();
+        $folders = Folder::with('pictures')->get();
         return view("folders/index", compact('folders'));
     }
 
@@ -63,5 +63,11 @@ class FolderController extends Controller
         $folder->delete();
 
         return redirect(route('folder.index'))->with('status', 'Le dossier a bien été supprimé');
+    }
+
+    public function slider(Folder $folder) {
+        $this->authorize('admin', $folder);
+
+        return view('folders/slider', ['pictures'=>$folder->pictures->sortBy('slider'), 'folder'=>$folder]);
     }
 }
