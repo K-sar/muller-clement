@@ -17,6 +17,8 @@
 @endsection
 
 @section("content")
+    <h3>Précdente</h3>
+    <h3>Suivante</h3>
     <img src="/storage/pictures/{{$picture->link}}" alt="{{$picture->alternative}}" class="pictures"/>
     <h2>{{$picture->name}}</h2>
     <p>
