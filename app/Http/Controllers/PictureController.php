@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Folder;
+use App\Http\Requests\StoreSlider;
 use App\Picture;
 use App\Tag;
 use App\Http\Requests\StorePicture;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -90,7 +92,7 @@ class PictureController extends Controller{
         $previous = $collection->first();
         $next = $collection->last();
 
-        return view('pictures/show', ['folder'=>$folder, 'picture'=>$picture, 'previous'=>$previous, 'next'=>$next]);
+        return view('pictures/show', ['folder'=>$folder, 'picture'=>$picture, 'folderTag'=>$folder, 'previous'=>$previous, 'next'=>$next]);
     }
 
     public function showTag(Tag $tag, Picture $picture) {
@@ -101,7 +103,9 @@ class PictureController extends Controller{
         $previous = $collection->first();
         $next = $collection->last();
 
-        return view('pictures/show', ['tag'=>$tag, 'picture'=>$picture, 'previous'=>$previous, 'next'=>$next]);
+        $folderTag = $picture->folder;
+
+        return view('pictures/show', ['tag'=>$tag, 'picture'=>$picture, 'folderTag'=>$folderTag, 'previous'=>$previous, 'next'=>$next]);
     }
 
     public function showFromAll(Picture $picture) {
@@ -112,7 +116,9 @@ class PictureController extends Controller{
         $previous = $collection->first();
         $next = $collection->last();
 
-        return view('pictures/show', ['picture'=>$picture, 'previous'=>$previous, 'next'=>$next]);
+        $folderTag = $picture->folder;
+
+        return view('pictures/show', ['picture'=>$picture, 'folderTag'=>$folderTag, 'previous'=>$previous, 'next'=>$next]);
     }
 
 
@@ -161,11 +167,10 @@ class PictureController extends Controller{
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été supprimée');
     }
 
-    public function slider(Folder $folder, Picture $picture, StorePicture $request) {
-        dd('plop');
+    public function slider(Folder $folder, Picture $picture, StoreSlider $request) {
         $this->authorize('admin', $picture);
 
-        $picture->save($request->all(['slider']));
+        $picture->update($request->all(['slider']));
 
         return redirect()-> route('folder.slider', [$folder])->with('status', 'Le slider a bien été mise à jour');
     }
