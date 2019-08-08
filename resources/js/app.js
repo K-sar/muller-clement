@@ -35,6 +35,7 @@ $('.clicTag').click(function(event){
     var tag = $(this).data('value')
     tags = tags + ', ' + tag;
     inputTag.val(triTag(tags));
+    $('.clicTag').blur();
 });
 
 $('#inputTag').keypress(function(e){

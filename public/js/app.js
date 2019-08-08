@@ -36799,6 +36799,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.clicTag').click(function (event)
   var tag = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('value');
   tags = tags + ', ' + tag;
   inputTag.val(triTag(tags));
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.clicTag').blur();
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inputTag').keypress(function (e) {
   if (e.key === ',') {

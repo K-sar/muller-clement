@@ -42,7 +42,7 @@
     <h2>{{$picture->name}}</h2>
     <p>
         @foreach($picture->tags as $tag)
-            <a href="{{route('tag.show', $tag->slug)}}">{{$tag->name}}</a>
+            <a href="{{route('tag.show', $tag->slug)}}"><button>{{$tag->name}}</button></a>
         @endforeach
     </p>
 @endsection
