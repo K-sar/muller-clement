@@ -48,12 +48,20 @@ $('#inputTag').keypress(function(e){
 
 $('#fullscreen').click(function() {
     $('#image').addClass('fullscreen');
+    $('.escape').removeClass('hidden');
 });
 
 $(document).keydown(function(e){
-    console.log(e.key);
     if (e.key === 'Escape') {
         $('#image').removeClass("fullscreen");
+        $('.escape').addClass('hidden');
     }
 });
+
+$('.escape').click(function() {
+    $('#image').removeClass('fullscreen');
+    $('.escape').addClass('hidden');
+});
+
+
 

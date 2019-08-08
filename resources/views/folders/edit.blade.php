@@ -21,6 +21,10 @@
             <input type="text" name="access" value="{{old("access")?:$folder->access}}" />
         </div>
         <div>
+            <label>Ordre :</label>
+            <input type="text" name="ordre" value="{{old("ordre")?:$folder->ordre}}" />
+        </div>
+        <div>
             <input type="submit" />
         </div>
     </form>

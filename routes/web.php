@@ -17,21 +17,23 @@ Route::get('/', function () {
 
 Route::get('/galerie', 'FolderController@index');
 
-Route::get('/galerie/pictures', 'PictureController@index')->name('picture.index');
-
-Route::get('/galerie/pictures/{picture}', 'PictureController@showFromAll')->name('picture.show');
-
 Route::resource('/galerie/folder', 'FolderController');
-
 Route::resource('/galerie/folder.picture', 'PictureController');
 
+Route::get('/galerie/pictures', 'PictureController@index')->name('picture.index');
 Route::get('/galerie/tag/{tag}', 'PictureController@index')->name('tag.show');
-
 Route::get('/galerie/tag/{tag}/picture/{picture}', 'PictureController@showTag')->name('tag.picture.show');
+Route::get('/galerie/pictures/{picture}', 'PictureController@showFromAll')->name('picture.show');
 
-Route::get('/galerie/folder/{folder}/slider', 'FolderController@slider')->name('folder.slider');
+Route::get('/galerie/folder/{folder}/slider', 'PictureController@slider')->name('picture.slider');
+Route::post('/galerie/folder/{folder}/picture/{picture}/slider', 'PictureController@sliderUpdate')->name('picture.slider.update');
 
-Route::post('/tioti/folder/{folder}/picture/{picture}/slider', 'PictureController@slider')->name('picture.slider');
+Route::get('/galerie/folder/{folder}/ordre', 'PictureController@ordre')->name('picture.ordre');
+Route::post('/galerie/folder/{folder}/picture/{picture}/ordre', 'PictureController@ordreUpdate')->name('picture.ordre.update');
+
+Route::get('/galerie//ordre', 'FolderController@ordre')->name('folder.ordre');
+Route::post('/galerie/folder/{folder}/ordre', 'FolderController@ordreUpdate')->name('folder.ordre.update');
+
 
 
 

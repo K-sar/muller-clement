@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Folder;
 use App\Http\Requests\StoreFolder;
+use App\Http\Requests\StoreOrdreFolders;
 
 class FolderController extends Controller
 {
     public function index()
     {
-        $folders = Folder::with('pictures')->get();
+        $folders = Folder::with('pictures')->get()->sortBy('ordre');
         return view("folders/index", compact('folders'));
     }
 
@@ -34,7 +35,7 @@ class FolderController extends Controller
     {
         $this->authorize('show', $folder);
 
-        return view('folders/show', ['pictures'=>$folder->pictures, 'folder'=>$folder]);
+        return view('folders/show', ['pictures'=>$folder->pictures->sortBy('ordre'), 'folder'=>$folder]);
     }
 
     public function edit(Folder $folder)
@@ -65,9 +66,19 @@ class FolderController extends Controller
         return redirect(route('folder.index'))->with('status', 'Le dossier a bien été supprimé');
     }
 
-    public function slider(Folder $folder) {
+    public function ordre (Folder $folder) {
         $this->authorize('admin', $folder);
 
-        return view('folders/slider', ['pictures'=>$folder->pictures->sortBy('slider'), 'folder'=>$folder]);
+        $folders = Folder::All()->sortBy('ordre');
+
+        return view('folders/ordre', ['folders'=>$folders]);
+    }
+
+    public function ordreUpdate(Folder $folder, StoreOrdreFolders $request) {
+        $this->authorize('admin', $folder);
+
+        $folder->update($request->all(['ordre']));
+
+        return redirect()-> route('folder.ordre', [$folder])->with('status', 'L\'ordre a bien été mise à jour');
     }
 }

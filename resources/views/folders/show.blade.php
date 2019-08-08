@@ -5,7 +5,8 @@
     @can('admin', App\Folder::class)
         <p>
             <a href="{{route('folder.picture.create', $folder->slug)}}"><button>Ajouter une photo</button></a>
-            <a href="{{route('folder.slider', $folder->slug)}}"><button>Editer le slider</button></a>
+            <a href="{{route('picture.ordre', $folder->slug)}}"><button>Editer l'ordre</button></a>
+            <a href="{{route('picture.slider', $folder->slug)}}"><button>Editer le slider</button></a>
         </p>
     @endcan
     <div id="menu">

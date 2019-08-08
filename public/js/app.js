@@ -36810,13 +36810,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inputTag').keypress(function (e)
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('#fullscreen').click(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').addClass('fullscreen');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').removeClass('hidden');
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).keydown(function (e) {
-  console.log(e.key);
-
   if (e.key === 'Escape') {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').removeClass("fullscreen");
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').addClass('hidden');
   }
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').click(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').removeClass('fullscreen');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').addClass('hidden');
 });
 
 /***/ }),

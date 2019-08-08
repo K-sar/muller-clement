@@ -39,6 +39,7 @@
         </div>
     </div>
     <div id="image">
+        <p class="escape hidden">X</p>
         <img id="image" src="/storage/pictures/{{$picture->link}}" alt="{{$picture->alternative}}" class="pictures"/>
     </div>
     <h2>{{$picture->name}}</h2>

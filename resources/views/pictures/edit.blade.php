@@ -40,6 +40,10 @@
             <input type="text" name="alternative" value="{{old("alternative")?:$picture->alternative}}" />
         </div>
         <div>
+            <label>Ordre :</label>
+            <input type="text" name="ordre" value="{{old("ordre")?:$picture->ordre}}" />
+        </div>
+        <div>
             <label>Slider :</label>
             <input type="text" name="slider" value="{{old("slider")?:$picture->slider}}" />
         </div>

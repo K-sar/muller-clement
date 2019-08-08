@@ -196,6 +196,10 @@ button:focus, input[type="submit"]:focus {
        object-fit: contain;
 }
 
+#fullscreen {
+    cursor:pointer;
+}
+
 .fullscreen {
     Z-index : 2;
     position: fixed;
@@ -204,6 +208,26 @@ button:focus, input[type="submit"]:focus {
     height: 100%;
     background-color: black;
     overflow: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.escape {
+    position: absolute;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background-color: rgba(125,125,125,0.5);
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 2em;
+    cursor:pointer;
 }
 
 .menu-auth

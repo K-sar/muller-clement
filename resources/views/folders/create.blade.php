@@ -20,6 +20,10 @@
             <input type="text" name="access" value="{{old("access")}}" />
         </div>
         <div>
+            <label>Ordre :</label>
+            <input type="text" name="ordre" value="{{old("ordre")}}" />
+        </div>
+        <div>
             <input type="submit" />
         </div>
     </form>

@@ -6,6 +6,7 @@
 <p>
     @can('admin', App\Folder::class)
         <a href="{{route('folder.create')}}"><button>Ajouter un dossier</button></a>
+        <a href="{{route('folder.ordre')}}"><button>Editer l'ordre</button></a>
     @endcan
     <a href="{{route('picture.index')}}"><button>Toutes les photos</button></a>
 </p>

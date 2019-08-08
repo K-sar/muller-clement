@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Folder;
+use App\Http\Requests\StoreOrdrePictures;
 use App\Http\Requests\StoreSlider;
 use App\Picture;
 use App\Tag;
@@ -73,11 +74,11 @@ class PictureController extends Controller{
         $request->merge(['folder_id'=>$folder->id, 'link'=>$link]);
 
         $validated = $request->validated();
-        if ($request->slider == null) {
-            $request->merge(['slider' => 100]);
+        if ($request->ordre == null) {
+            $request->merge(['ordre' => 100]);
         }
 
-        $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slider']));
+        $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'ordre','slider']));
 
         $picture->saveTags($request->get('tags'));
 
@@ -87,7 +88,7 @@ class PictureController extends Controller{
     public function show(Folder $folder, Picture $picture) {
         $this->authorize('show', $picture);
 
-        $collection = $folder->pictures;
+        $collection = $folder->pictures->sortBy('ordre');
         $collection = $this->prevNext($collection, $picture);
         $previous = $collection->first();
         $next = $collection->last();
@@ -145,13 +146,13 @@ class PictureController extends Controller{
             $picture->link = $link;
         }
 
-        if ($request->slider == null) {
-            $picture->slider = 100;
+        if ($request->ordre == null) {
+            $picture->ordre = 100;
         }
 
         $validated = $request->validated();
 
-        $picture->save($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'slider']));
+        $picture->save($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'ordre', 'slider']));
         $picture->saveTags($request->get('tags'));
 
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été mise à jour');
@@ -167,12 +168,40 @@ class PictureController extends Controller{
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été supprimée');
     }
 
-    public function slider(Folder $folder, Picture $picture, StoreSlider $request) {
+    public function slider (Folder $folder) {
+        $this->authorize('admin', $folder);
+
+        $picturesNotNull = $folder->pictures->filter(function($picture){
+            return $picture->slider > 0;
+        })->sortBy('slider');
+        $picturesNull = $folder->pictures->filter(function($picture){
+                return $picture->slider == 0;
+            });
+        $pictures = $picturesNotNull->merge($picturesNull);
+
+        return view('pictures/slider', ['pictures'=>$pictures, 'folder'=>$folder]);
+    }
+
+    public function sliderUpdate(Folder $folder, Picture $picture, StoreSlider $request) {
         $this->authorize('admin', $picture);
 
         $picture->update($request->all(['slider']));
 
-        return redirect()-> route('folder.slider', [$folder])->with('status', 'Le slider a bien été mise à jour');
+        return redirect()-> route('picture.slider', [$folder])->with('status', 'Le slider a bien été mise à jour');
+    }
+
+    public function ordre (Folder $folder) {
+        $this->authorize('admin', $folder);
+
+        return view('pictures/ordre', ['pictures'=>$folder->pictures->sortBy('ordre'), 'folder'=>$folder]);
+    }
+
+    public function ordreUpdate(Folder $folder, Picture $picture, StoreOrdrePictures $request) {
+        $this->authorize('admin', $picture);
+
+        $picture->update($request->all(['ordre']));
+
+        return redirect()-> route('picture.ordre', [$folder])->with('status', 'L\'ordre a bien été mise à jour');
     }
 
     private function prevNext($collection, $picture) {
