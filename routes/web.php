@@ -35,8 +35,6 @@ Route::post('/galerie/folder/{folder}/picture/{picture}/slider', 'PictureControl
 
 
 
-
-
 Route::resource('/portfolio', 'PortfolioController');
 
 

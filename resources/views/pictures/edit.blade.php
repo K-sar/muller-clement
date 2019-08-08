@@ -47,10 +47,10 @@
             <label>Tags :</label>
             <p>
                 @foreach($allTags as $tag)
-                    <span class="clicTag" data-value="{{$tag->name}}">{{$tag->name}},</span>
+                    <button class="clicTag" data-value="{{$tag->name}}">{{$tag->name}}</button>
                 @endforeach
             </p>
-            <input type="text" name="tags" value="{{old("tags")?:$picture->tagsAsString}}" />
+            <input id="inputTag" type="text" name="tags" value="{{old("tags")?:$picture->tagsAsString}}" />
 
         </div>
         <div>

@@ -36792,7 +36792,8 @@ function triTag(tags) {
 }
 
 ;
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('.clicTag').click(function () {
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.clicTag').click(function (event) {
+  event.preventDefault();
   var inputTag = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inputTag');
   var tags = inputTag.val();
   var tag = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('value');

@@ -28,7 +28,8 @@ function triTag(tags) {
     return tags;
 };
 
-$('.clicTag').click(function(){
+$('.clicTag').click(function(event){
+    event.preventDefault();
     var inputTag = $('#inputTag');
     var tags = inputTag.val();
     var tag = $(this).data('value')

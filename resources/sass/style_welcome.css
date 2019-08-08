@@ -51,7 +51,7 @@ nav h3
 
 nav a
 {
-    display: inline-block !important;
+    display: inline-block;
     text-decoration: none;
     color: white;
 }
@@ -95,7 +95,8 @@ h2
 
 a
 {
-    text-decoration: none !important;
+    text-decoration: none;
+    color: #111;
 }
 
 p
@@ -208,6 +209,20 @@ p
 
 }
 
+.prev-next {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prev-next div {
+    width: 120px;
+}
+
+.prev-next div a h3 {
+    margin : 5px;
+}
+
+
 /*---------------------------------------------------------------------------------------------------------Formulaires*/
 form
 {
@@ -244,12 +259,11 @@ input
 
 
 
-/*
 
-*
-{
+/*
+*{
 	border: 1px solid black;
 }
-
 */
+
 

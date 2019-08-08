@@ -42,10 +42,10 @@
             <input type="text" name="slider" value="{{old("slider")}}" />
         </div>
         <div>
-            <label>Tag :</label>
+            <label>Tags :</label>
             <p>
                 @foreach($allTags as $tag)
-                    <span class="clicTag" data-value="{{$tag->name}}">{{$tag->name}},</span>
+                    <button class="clicTag" data-value="{{$tag->name}}">{{$tag->name}}</button>
                 @endforeach
             </p>
             <input id="inputTag" type="text" name="tags" value="{{old("tags")}}" />

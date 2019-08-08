@@ -55,7 +55,6 @@
 </header>
 <div id="bloc_page">
     <h1 class="CM">Clément Muller</h1>
-    <h1 class="CM">Clément Muller</h1>
     @if (Session::has('status'))
         <ul>
             <li>{!! session('status') !!}</li>
