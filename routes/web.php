@@ -31,7 +31,7 @@ Route::get('/galerie/tag/{tag}/picture/{picture}', 'PictureController@showTag')-
 
 Route::get('/galerie/folder/{folder}/slider', 'FolderController@slider')->name('folder.slider');
 
-Route::post('/galerie/folder/{folder}/picture/{picture}/slider', 'PictureController@slider')->name('picture.slider');
+Route::post('/tioti/folder/{folder}/picture/{picture}/slider', 'PictureController@slider')->name('picture.slider');
 
 
 

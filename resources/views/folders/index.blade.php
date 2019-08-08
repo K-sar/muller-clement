@@ -3,11 +3,12 @@
 @section("content")
 
 <h2>La Galerie Photo</h2>
-
-@can('admin', App\Folder::class)
-    <a href="{{route('folder.create')}}"><button>Ajouter un dossier</button></a>
-@endcan
-<a href="{{route('picture.index')}}">Toutes les photos</a>
+<p>
+    @can('admin', App\Folder::class)
+        <a href="{{route('folder.create')}}"><button>Ajouter un dossier</button></a>
+    @endcan
+    <a href="{{route('picture.index')}}"><button>Toutes les photos</button></a>
+</p>
 <div id="menu">
     @foreach ($folders as $folder)
         @can('show', $folder)

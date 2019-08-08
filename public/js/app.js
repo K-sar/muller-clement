@@ -36808,6 +36808,16 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inputTag').keypress(function (e)
     inputTag.val(triTag(tags));
   }
 });
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('#fullscreen').click(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').addClass('fullscreen');
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).keydown(function (e) {
+  console.log(e.key);
+
+  if (e.key === 'Escape') {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').removeClass("fullscreen");
+  }
+});
 
 /***/ }),
 

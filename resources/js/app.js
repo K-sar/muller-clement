@@ -46,3 +46,14 @@ $('#inputTag').keypress(function(e){
     }
 });
 
+$('#fullscreen').click(function() {
+    $('#image').addClass('fullscreen');
+});
+
+$(document).keydown(function(e){
+    console.log(e.key);
+    if (e.key === 'Escape') {
+        $('#image').removeClass("fullscreen");
+    }
+});
+

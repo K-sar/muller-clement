@@ -37,7 +37,7 @@ header
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 3;
+    z-index: 1;
 }
 
 .CM
@@ -180,10 +180,30 @@ button:focus, input[type="submit"]:focus {
     margin: 0;
 }
 */
-.pictures
-{
+#image{
     width: 100%;
-    heigh: auto;
+    max-height: 100%;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+}
+
+
+
+.pictures {
+    -o-object-fit: contain;
+       object-fit: contain;
+}
+
+.fullscreen {
+    Z-index : 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: black;
+    overflow: auto;
 }
 
 .menu-auth
