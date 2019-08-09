@@ -1,9 +1,7 @@
 @extends ("layouts.layout")
 
 @section("nav")
-    <a href="{{route('folder.show', $folder->slug)}}">
-        <h3>Retour</h3>
-    </a>
+    <div><a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
 @endsection
 
 @section("content")

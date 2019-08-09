@@ -37,35 +37,80 @@ header
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 3;
+    height: 75px;
 }
 
-.CM
+#ClementMuller{
+    margin: 12px 15px 15px 25px;
+    color: white;
+}
+
+nav {
+    padding-right: 12px;
+}
+
+.responsiveNav {
+    display: none;
+}
+
+nav div
 {
-    margin: 15px;
+    display: inline-block;
+    margin: 0 15px 0 15px;
+    color: white;
+}
+
+nav div a {
+    text-decoration: none;
     color: white;
 }
 
 nav h3
 {
     margin:0;
-    padding: 0 15px 0 15px;
 }
 
-nav a
-{
-    display: inline-block;
-    text-decoration: none;
-    color: white;
+
+
+.userIcon {
+    margin: 0;
+    padding: 0 15px 0 15px;
+    position: relative;
+}
+
+.userMenu {
+    display: none;
+}
+
+.userIcon:hover .userMenu {
+    display : -webkit-box;
+    display : flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-align: center;
+            align-items: center;
+    position: absolute;
+    top: 25px;
+    right: 0px;
+    border: 1px solid white;
+    padding: 5px;
+    background-color: #2e7d32;
+}
+
+.userMenu a {
+    margin: 5px;
+    display: block;
 }
 
 
 #bloc_page
 {
     max-width: 1024px;
-    min-height:768px;
+    height:1080px;
     margin:auto;
-    padding: 10px;
+    padding: 75px 10px 10px 10px;
     background-color: #FFF;
     display: -webkit-box;
     display: flex;
@@ -74,18 +119,17 @@ nav a
             flex-direction:column;
 }
 
-
+/*
 #construction
 {
-    display: -webkit-box;
     display: flex;
-    -webkit-box-pack: center;
-            justify-content: center;
+    justify-content: center;
     margin-top: 40px;
 }
 
-#menu
-{
+ */
+
+#menu {
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: center;
@@ -95,22 +139,19 @@ nav a
 }
 
 
-h2
-{
+h2 {
     color: #333;
     text-align: center;
     margin: 0;
     padding: 0 0 5px 0;
 }
 
-a
-{
+a {
     text-decoration: none;
     color: #111;
 }
 
-p
-{
+p {
     margin: 0;
 }
 
@@ -201,7 +242,7 @@ button:focus, input[type="submit"]:focus {
 }
 
 .fullscreen {
-    Z-index : 2;
+    Z-index : 5;
     position: fixed;
     top: 0;
     left: 0;
@@ -217,8 +258,8 @@ button:focus, input[type="submit"]:focus {
 .escape {
     position: absolute;
     border-radius: 50%;
-    height: 50px;
-    width: 50px;
+    height: 1.45em;
+    width: 1.45em;
     text-align: center;
     background-color: rgba(125,125,125,0.5);
     top: 0;
@@ -318,14 +359,13 @@ button:focus, input[type="submit"]:focus {
     display: flex;
     -webkit-box-pack: justify;
             justify-content: space-between;
+    padding: 0 3em 0 3em;
 }
 
-.prev-next div {
-    width: 120px;
-}
-
-.prev-next div a h3 {
+.prev-next div a i {
     margin : 5px;
+    font-size: 1.75em;
+    width: 1em;
 }
 
 
@@ -365,6 +405,58 @@ input
     margin : 5px 0 5px 10px;
 }
 
+@media (max-width: 768px)
+{
+    header {
+        height: 50px;
+    }
+
+    .nav {
+        position: relative;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .responsiveNav {
+        display : block;
+        color: white;
+        margin-right: 20px;
+        font-size: 1.5em;
+        position: relative;
+    }
+
+    .nav:hover nav {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        -webkit-box-align: center;
+                align-items: center;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        border: 1px solid white;
+        padding: 5px;
+        background-color: #2e7d32;
+    }
+
+    nav div {
+        display: block;
+    }
+
+    .userIcon:hover .userMenu {
+        top: 0;
+        right: 0px;
+    }
+
+    #bloc_page {
+
+        padding: 50px 10px 10px 10px;
+    }
+}
 
 
 
