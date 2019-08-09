@@ -45,10 +45,10 @@ class PictureController extends Controller{
 
         if (!is_null($laserTag)) {
             $laserTag = Tag::where('slug', $laserTag)->first();
-            return view("pictures/index", ['laserTag'=>$laserTag, 'tags'=>$tags, 'pictures'=>$laserTag->pictures]);
+            return view("pictures/index", ['laserTag'=>$laserTag, 'tags'=>$tags->sortBy('name'), 'pictures'=>$laserTag->pictures]);
         } else {
             $pictures = Picture::all();
-            return view("pictures/index", ['tags'=>$tags, 'pictures'=>$pictures]);
+            return view("pictures/index", ['tags'=>$tags->sortBy('name'), 'pictures'=>$pictures]);
         }
 
     }

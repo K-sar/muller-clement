@@ -26,16 +26,18 @@ class PortfolioController extends Controller
     {
         $this->authorize('admin', Portfolio::class);
 
-        $file = $request->file('file');
-        $link = md5($file).'.'.$file->getClientOriginalExtension();
-        $img = Image::make($request->file('file'));
-        $img->orientate();
-        $img->save("../storage/app/public/portfolio/".$link);
-        $img->fit(300, 200)->orientate();
-        $img->save("../storage/app/public/miniatures/portfolio/".$link);
+        if ($request->file('file') !== null) {
+            $file = $request->file('file');
+            $link = md5($file) . '.' . $file->getClientOriginalExtension();
+            $img = Image::make($request->file('file'));
+            $img->fit(500, 500)->orientate();
+            $img->save("../storage/app/public/portfolio/" . $link);
+            $img->fit(300, 200)->orientate();
+            $img->save("../storage/app/public/miniatures/portfolio/" . $link);
+            $request->merge(['picture'=>$link]);
+        }
 
 
-        $request->merge(['picture'=>$link]);
 
         $validated = $request->validated();
         $portfolio=Portfolio::create($request->all('name', 'description', 'link', 'picture'));
@@ -64,7 +66,7 @@ class PortfolioController extends Controller
             $file = $request->file('file');
             $link = md5($file) . '.' . $file->getClientOriginalExtension();
             $img = Image::make($request->file('file'));
-            $img->orientate();
+            $img->fit(500, 500)->orientate();
             $img->save("../storage/app/public/portfolio/" . $link);
             $img->fit(300, 200)->orientate();
             $img->save("../storage/app/public/miniatures/portfolio/" . $link);

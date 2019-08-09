@@ -45,11 +45,11 @@
         <img id="image" src="/storage/pictures/{{$picture->link}}" alt="{{$picture->alternative}}" class="pictures"/>
     </div>
     <h2>{{$picture->name}}</h2>
-    <p>Dossier : <a href="{{route('folder.show', $folderTag->slug)}}"><button>{{$folderTag->name}}</button></a></p>
-    <p>
+    <p class="tagsList">
         Tags :
-        @foreach($picture->tags as $tag)
+        @foreach($picture->tags->sortBy('name') as $tag)
             <a href="{{route('tag.show', $tag->slug)}}"><button>{{$tag->name}}</button></a>
         @endforeach
     </p>
+    <p>Dossier : <a href="{{route('folder.show', $folderTag->slug)}}"><button>{{$folderTag->name}}</button></a></p>
 @endsection

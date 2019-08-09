@@ -17,8 +17,8 @@ class CreatePortfoliosTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique()->index();
             $table->string('name');
-            $table->string('description');
-            $table->string('picture');
+            $table->text('description');
+            $table->string('picture')->nullable();
             $table->string('link');
             $table->timestamps();
         });

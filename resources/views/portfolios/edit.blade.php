@@ -4,8 +4,8 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <div class="miniature">
-        <img src="/storage/miniatures/portfolio/{{$portfolio->picture}}" alt="miniature {{$portfolio->name}}"/>
+    <div class="miniPortfolio">
+        <img src="/storage/miniatures/portfolio/{{$portfolio->picture}}" alt="miniature {{$portfolio->name}}" class="imgPortfolio"/>
     </div>
     <form method="post" action="{{route('portfolio.update', $portfolio->slug)}} "enctype="multipart/form-data">
         @method('PATCH')
@@ -21,7 +21,7 @@
         </div>
         <div>
             <label>Descriptif</label>
-            <input type="text" name="description" value="{{old("description")?:$portfolio->description}}" />
+            <textarea name="description">{{old("description")?:$portfolio->description}}</textarea>
         </div>
         <div>
             <label>Lien</label>

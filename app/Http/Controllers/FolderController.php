@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Folder;
 use App\Http\Requests\StoreFolder;
 use App\Http\Requests\StoreOrdreFolders;
+use App\Tag;
 
 class FolderController extends Controller
 {
     public function index()
     {
         $folders = Folder::with('pictures')->get()->sortBy('ordre');
-        return view("folders/index", compact('folders'));
+        $tags = Tag::all();
+        return view("folders/index", ['folders' => $folders, 'tags' => $tags]);
     }
 
     public function create()

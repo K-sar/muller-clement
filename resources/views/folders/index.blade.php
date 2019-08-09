@@ -3,13 +3,14 @@
 @section("content")
 
 <h2>La Galerie Photo</h2>
-<p>
-    @can('admin', App\Folder::class)
+
+@can('admin', App\Folder::class)
+    <p>
         <a href="{{route('folder.create')}}"><button>Ajouter un dossier</button></a>
         <a href="{{route('folder.ordre')}}"><button>Editer l'ordre</button></a>
-    @endcan
-    <a href="{{route('picture.index')}}"><button>Toutes les photos</button></a>
-</p>
+    </p>
+@endcan
+
 <div id="menu">
     @foreach ($folders as $folder)
         @can('show', $folder)
@@ -50,5 +51,11 @@
             </div>
         @endcan
     @endforeach
+    <p class="tagsList">
+        <a href="{{route('picture.index')}}"><button>Toutes les photos</button></a>
+        @foreach($tags as $tag)
+            <a href="{{route('tag.show', $tag->slug)}}"><button>{{$tag->name}}</button></a>
+        @endforeach
+    </p>
 </div>
 @endsection

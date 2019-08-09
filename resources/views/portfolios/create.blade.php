@@ -17,7 +17,7 @@
         </div>
         <div>
             <label>Descriptif</label>
-            <input type="text" name="description" value="{{old("description")}}" />
+            <textarea type="text" name="description">{{old("description")}}</textarea>
         </div>
         <div>
             <label>Lien</label>
