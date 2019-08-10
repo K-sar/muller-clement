@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BaseController@index')->name('/');
+Route::resource('/base', 'BaseController');
+
 
 Route::get('/galerie', 'FolderController@index');
 
@@ -44,3 +44,6 @@ Route::resource('/portfolio', 'PortfolioController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/CV', function () {
+    return view('CV');
+})->name('CV');

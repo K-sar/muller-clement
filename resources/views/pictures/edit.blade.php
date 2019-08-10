@@ -8,8 +8,10 @@
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <img src='/storage/pictures/{{$picture->link}}' alt='{{$picture->alternative}}' class="pictures"/>
-    <form method="post" action="{{route('folder.picture.update', [$folder->slug, $picture->slug])}} "enctype="multipart/form-data">
+    <div class="containerImage">
+        <img id="image" src='/storage/pictures/{{$picture->link}}' alt='{{$picture->alternative}}' class="pictures"/>
+    </div>
+    <form method="post" action="{{route('folder.picture.update', [$folder->slug, $picture->slug])}}" enctype="multipart/form-data">
         @method('PATCH')
         @csrf
         <div>

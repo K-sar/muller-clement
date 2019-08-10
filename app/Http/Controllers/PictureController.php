@@ -146,13 +146,21 @@ class PictureController extends Controller{
             $picture->link = $link;
         }
 
-        if ($request->ordre == null) {
-            $picture->ordre = 100;
-        }
-
         $validated = $request->validated();
 
-        $picture->save($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'ordre', 'slider']));
+        $picture->access = $request->get('access');
+        $picture->name = $request->get('name');
+        $picture->info = $request->get('info');
+        $picture->alternative = $request->get('alternative');
+        $picture->slider = $request->get('slider');
+
+        if ($request->ordre == null) {
+            $picture->ordre = 100;
+        } else {
+            $picture->ordre = $request->get('ordre');
+        }
+
+        $picture->save();
         $picture->saveTags($request->get('tags'));
 
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été mise à jour');

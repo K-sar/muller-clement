@@ -12,7 +12,7 @@ class FolderController extends Controller
     public function index()
     {
         $folders = Folder::with('pictures')->get()->sortBy('ordre');
-        $tags = Tag::all();
+        $tags = Tag::all()->sortBy('name');
         return view("folders/index", ['folders' => $folders, 'tags' => $tags]);
     }
 
@@ -28,6 +28,9 @@ class FolderController extends Controller
         $this->authorize('admin', Folder::class);
 
         $validated = $request->validated();
+        if ($request->ordre == null) {
+            $request->merge(['ordre' => 100]);
+        }
         $folder=Folder::create($request->all());
 
         return redirect(route('folder.index'))->with('status', 'Nouveau dossier ajouté');
@@ -55,6 +58,13 @@ class FolderController extends Controller
 
         $folder->name = $request->get('name');
         $folder->access = $request->get('access');
+
+        if ($request->ordre == null) {
+            $folder->ordre = 100;
+        } else {
+            $folder->ordre = $request->get('ordre');
+        }
+
         $folder->save();
 
         return redirect(route('folder.index'))->with('status', 'Le dossier a bien été mis à jour');

@@ -11,8 +11,9 @@
         <div class="miniature">
             <a href="{{route('portfolio.show', [$portfolio->slug])}}">
                 <div class="button">
-                    <div class="fond">
+                    <div class="fond descriptionFond">
                         <img src="/storage/miniatures/portfolio/{{$portfolio->picture}}" alt="miniature {{$portfolio->name}}"/>
+                        <figure class="description"><p>{{$portfolio->description}}</p></figure>
                     </div>
                     <h2>
                         {{$portfolio->name}}

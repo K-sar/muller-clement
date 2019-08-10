@@ -27,7 +27,7 @@ class StoreFolder extends FormRequest
         return [
             'name' => ['required', Rule::unique('folders')->ignore($this->request->get('name'), 'name'), 'max:255'],
             'access' => 'required|numeric',
-            'slug' => [Rule::unique('folders')->ignore($this->request->get('slug'), 'slug'), 'max:255'],
+            'ordre' => 'numeric',
         ];
     }
 }

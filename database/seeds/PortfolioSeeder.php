@@ -35,7 +35,7 @@ class PortfolioSeeder extends Seeder
         Portfolio::create(['name' => 'Clément Muller',
                             'slug' => 'Clement_Muller',
                             'description' => 'Dernier projet de formation du parcours Développeur Web d\'Open Classrooms, "Présentez librement un projet personnel", projet synthèse de la formation, donc en HTML3, CSS5, Javascript et PHP. J\'ai donc fait mon propre site, ce site, donc, et j\'en ai de plus profité pour découvrir Laravel',
-                            'picture' => '0',
-                            'link' => 'https://www.muller-clement.com']);
+                            'picture' => 'c4e85dcf547ed5ac0501d9007a7da5eb.jpg',
+                            'link' => '/']);
     }
 }

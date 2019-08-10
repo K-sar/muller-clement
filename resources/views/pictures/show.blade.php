@@ -40,7 +40,7 @@
             @endif
         </div>
     </div>
-    <div id="image">
+    <div class="containerImage">
         <p class="escape hidden"><i class="fas fa-compress-arrows-alt"></i></p>
         <img id="image" src="/storage/pictures/{{$picture->link}}" alt="{{$picture->alternative}}" class="pictures"/>
     </div>

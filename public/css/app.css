@@ -110,7 +110,7 @@ nav h3
     max-width: 1024px;
     min-height:1080px;
     margin:auto;
-    padding: 75px 10px 10px 10px;
+    padding: 85px 10px 10px 10px;
     background-color: #FFF;
     display: -webkit-box;
     display: flex;
@@ -229,7 +229,9 @@ button:focus, input[type="submit"]:focus {
             align-items: center;
 }
 
-
+.containerImage {
+    height: 700px;
+}
 
 .pictures {
     -o-object-fit: contain;
@@ -268,6 +270,7 @@ button:focus, input[type="submit"]:focus {
     color: rgba(255,255,255,0.5);
     font-size: 2em;
     cursor:pointer;
+    Z-index : 6;
 }
 
 .menu-auth
@@ -288,6 +291,7 @@ button:focus, input[type="submit"]:focus {
     display: -webkit-box;
     display: flex;
     margin: 20px;
+
 }
 
 .box {
@@ -314,8 +318,29 @@ button:focus, input[type="submit"]:focus {
     margin: 20px auto 20px auto;
 }
 
-/*--------------------------------------------------------------------------------------------------------------Slider*/
+.prev-next {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+    padding: 0 3em 0 3em;
+}
 
+.prev-next div {
+    width: 25px;
+    margin : 5px;
+}
+
+.prev-next div a i {
+    font-size: 1.75em;
+}
+
+embed {
+    width: 1024px;
+    height: 1024px;
+}
+
+/*-------------------------------------------------------------------------------------------------------Slider photos*/
 @-webkit-keyframes slidy
 {
     0% { left: 0%; }
@@ -335,7 +360,6 @@ button:focus, input[type="submit"]:focus {
     90% { left: -500%; }
     100% { left: -500%; }
 }
-
 @keyframes slidy
 {
     0% { left: 0%; }
@@ -383,23 +407,44 @@ button:focus, input[type="submit"]:focus {
 
 }
 
-.prev-next {
+/*--------------------------------------------------------------------------------------------------Slider description*/
+.descriptionFond{
+    position: relative;
+    overflow: hidden;
+}
+
+.description {
+    position: absolute;
+    margin: 0;
+    top: 200px;
+    background-color: lightgrey;
+    height: 200px;
+    width: 300px;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 0.75s;
+            transition-duration: 0.75s;
+    -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
     display: -webkit-box;
     display: flex;
-    -webkit-box-pack: justify;
-            justify-content: space-between;
-    padding: 0 3em 0 3em;
+    -webkit-box-align: center;
+            align-items: center;
 }
 
-.prev-next div {
-    width: 25px;
-    margin : 5px;
+.description p {
+    max-height: 170px;
+    margin: 15px;
+    text-align: center;
+    overflow: hidden;
 }
 
-.prev-next div a i {
-    font-size: 1.75em;
+.descriptionFond:hover .description{
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
 }
-
 
 /*---------------------------------------------------------------------------------------------------------Formulaires*/
 form
@@ -440,6 +485,7 @@ textarea {
     margin : 5px 0 5px 10px;
 }
 
+/*--------------------------------------------------------------------------------------------------------MediaQueries*/
 @media (max-width: 768px)
 {
     header {
@@ -495,11 +541,12 @@ textarea {
     .container {
         display: block;
         margin: 20px;
+        padding: 10px;
     }
 
     .box {
         width: 100%;
-        padding: 10px;
+        padding: 10px 0 10px 0;
     }
 
 }
