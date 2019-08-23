@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Accueil - Connexion</title>
+    <meta name="description" content="Formulaire de connexion"/>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

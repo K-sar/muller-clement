@@ -2,14 +2,30 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/storage/miniatures/favicon.ico"/>
+        @yield('CSS')
+        @yield('title')
+
+        <meta property="og:title" content="Clément Muller"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://www.muller-clement.com"/>
+        <meta property="og:image" content="https://www.muller-clement.com/storage/portfolio/c4e85dcf547ed5ac0501d9007a7da5eb.jpg"/>
+        <meta property="og:description" content="Mon site, avec mon CV, mon portfolio et mes photos"/>
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@publisher_handle">
+        <meta name="twitter:title" content="Clément Muller">
+        <meta name="twitter:description" content="Mon site, avec mon CV, mon portfolio et mes photos">
+        <meta name="twitter:creator" content="Clément Muller">
+        <meta name="twitter:image" content="https://www.muller-clement.com/storage/portfolio/c4e85dcf547ed5ac0501d9007a7da5eb.jpg">
+
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet" media="all">
         <script src="https://kit.fontawesome.com/6f85f396e0.js"></script>
-        @yield('CSS')
-        <title>Document</title>
+
+
     </head>
     <body>
         <header>

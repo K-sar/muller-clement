@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie - Ajouter un dossier</title>
+    <meta name="description" content="Formulaire pour ajouter un nouveau dossier à la galerie"/>
+@endsection
+
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>

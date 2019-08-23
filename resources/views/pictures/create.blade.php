@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie - {{$folder->name}} - Ajouter une photo</title>
+    <meta name="description" content="Formulaire d'ajout d'une nouvelle photo"/>
+@endsection
+
 @section("nav")
     <div><a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
 @endsection

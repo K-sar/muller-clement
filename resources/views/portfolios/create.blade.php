@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Portfolio - Ajouter un projet</title>
+    <meta name="description" content="Formulaire d'ajout d'un nouveau projet"/>
+@endsection
+
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>

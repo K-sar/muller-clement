@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie -@if (!empty($folder)) {{$folder->name}} -@elseif (!empty($tag)) {{$tag->name}} -@endif {{$picture->name}}</title>
+    <meta name="description" content="Affichage de la photo {{$picture->name}}"/>
+@endsection
+
 @section("nav")
     <div>
         @if (!empty($folder))

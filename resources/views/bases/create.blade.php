@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Accueil - Ajouter une entrée</title>
+    <meta name="description" content="Formulaire pour ajouter une nouvelle entrée à l'accueil"/>
+@endsection
+
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>

@@ -1,9 +1,13 @@
 @extends ("layouts.layout")
 
-@section ("nav")
-    <a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a>
+@section('title')
+    <title>Clément Muller - Galerie - Modifier le slider du dossier {{$folder->name}}</title>
+    <meta name="description" content="Formulaire de modification du slider du dossier {{$folder->name}}"/>
 @endsection
 
+@section("nav")
+    <div><a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
+@endsection
 
 @section("content")
     <h2>Modifier le slider</h2>

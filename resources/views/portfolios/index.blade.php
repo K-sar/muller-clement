@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Portfolio</title>
+    <meta name="description" content="Liste des projets sur lesquels j'ai travaillé"/>
+@endsection
+
 @section("content")
 
 <h2>Portfolio</h2>

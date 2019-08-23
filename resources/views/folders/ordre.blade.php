@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie - Modifier l'ordre des dossiers</title>
+    <meta name="description" content="Formulaire pour modifier l'ordre des dossiers de la Galerie"/>
+@endsection
+
 @section("content")
     <h2>Modifier l'ordre</h2>
     <div id="menu">

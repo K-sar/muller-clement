@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie - {{$folder->name}}</title>
+    <meta name="description" content="Liste des photos du dossier {{$folder->name}}"/>
+@endsection
+
 @section("content")
     <h2>{{$folder->name}}</h2>
     @can('admin', App\Folder::class)

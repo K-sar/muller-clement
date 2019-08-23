@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie</title>
+    <meta name="description" content="Liste des dossiers de la Galerie"/>
+@endsection
+
 @section("content")
 
 <h2>La Galerie Photo</h2>

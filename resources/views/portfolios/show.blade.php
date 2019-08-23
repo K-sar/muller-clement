@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Portfolio - {{$portfolio->name}}</title>
+    <meta name="description" content="Présentation du projet {{$portfolio->name}}"/>
+@endsection
+
 @section("content")
     <div class="container portfolio">
         <div class="box">

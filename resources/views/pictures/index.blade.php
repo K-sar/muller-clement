@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie - Toutes les photos @if (!empty($laserTag)) avec le tag : {{$laserTag->name}} @endif</title>
+    <meta name="description" content="Liste de toutes les photos @if (!empty($laserTag)) avec le tag : {{$laserTag->name}} @endif"/>
+@endsection
+
 @section("content")
     <h2>Toutes les photos @if (!empty($laserTag)) avec le tag : {{$laserTag->name}} @endif </h2>
     <p>

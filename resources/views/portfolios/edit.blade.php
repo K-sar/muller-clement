@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Portfolio - Modifier le projet {{$portfolio->name}}</title>
+    <meta name="description" content="Formulaire de modification du projet {{$portfolio->name}}"/>
+@endsection
+
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
@@ -12,7 +17,7 @@
         @csrf
         <div>
             <legend>
-                <h2>Modifier une entrée</h2>
+                <h2>Modifier un projet</h2>
             </legend>
         </div>
         <div>

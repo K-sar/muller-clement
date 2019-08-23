@@ -1,8 +1,12 @@
 @extends ("layouts.layout")
 
-@section ("nav")
-    <div><a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
+@section('title')
+    <title>Clément Muller - Galerie - Modifier l'ordre du dossier {{$folder->name}}</title>
+    <meta name="description" content="Formulaire de modification de l'ordre des photos du dossier {{$folder->name}}"/>
+@endsection
 
+@section("nav")
+    <div><a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
 @endsection
 
 @section("content")

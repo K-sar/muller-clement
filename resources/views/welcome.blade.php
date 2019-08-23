@@ -1,9 +1,14 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Accueil</title>
+    <meta name="description" content="Mon site, avec mon CV, mon portfolio et mes photos"/>
+@endsection
+
 @section("content")
     @can('admin', App\Base::class)
         <p>
-            <a href="{{route('base.create')}}"><button>Ajouter un dossier</button></a>
+            <a href="{{route('base.create')}}"><button>Ajouter une entrée</button></a>
         </p>
     @endcan
     <div id="menu">
