@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Base;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome')->with('status', 'Vous êtes connectés');
+        $bases = Base::all()->sortBy('ordre');
+        return view('welcome',["bases" => $bases])->with('status', 'Vous êtes connectés');
     }
 }

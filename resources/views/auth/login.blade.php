@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@extends ("layouts.layout")
+
+@section('title')
+    <title>Clément Muller - Accueil - Connexion</title>
+    <meta name="description" content="Formulaire de connexion"/>
+@endsection
 
 @section('content')
 <div class="container">

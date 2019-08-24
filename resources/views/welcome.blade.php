@@ -1,47 +1,41 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Accueil</title>
+    <meta name="description" content="Mon site, avec mon CV, mon portfolio et mes photos"/>
+@endsection
+
 @section("content")
-    <body>
-        <!--<div id="construction">
-            <img src="images/site-en-construction.jpg" alt="site en construction" />
-        </div>construction-->
-        <div id="menu">
+    @can('admin', App\Base::class)
+        <p>
+            <a href="{{route('base.create')}}"><button>Ajouter une entrée</button></a>
+        </p>
+    @endcan
+    <div id="menu">
+        @foreach ($bases as $base)
             <div class="miniature">
-                <a href="CV">
+                <a href="{{route($base->link)}}">
                     <div class="button">
-                        <div class="fond">
-                            <h1>CV</h1>
+                        <div class="fond descriptionFond">
+                            <img src="/storage/miniatures/base/{{$base->miniature}}" alt="miniature de {{$base->name}}"/>
+                            <figure class="description"><p>{{$base->description}}</p></figure>
                         </div>
                         <h2>
-                            CV
+                            {{$base->name}}
                         </h2>
                     </div>
                 </a>
-            </div>
-            <div class="miniature">
-                <a href="/portfolio">
-                    <div class="button">
-                        <div class="fond">
-                            <h1>Portfolio</h1>
-                        </div>
-                        <h2>
-                            Portfolio
-                        </h2>
+                @can('admin', $base)
+                    <div class="menu-auth">
+                        <a href="{{route('base.edit', $base->id)}}"><button>Modifier</button></a>
+                        <form action="{{route('base.destroy', $base->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Supprimer</button>
+                        </form>
                     </div>
-                </a>
+                @endcan
             </div>
-            <div class="miniature">
-                <a href="{{route("folder.index")}}">
-                    <div class="button">
-                        <div class="fond">
-                            <h1>Galerie</h1>
-                        </div>
-                        <h2>
-                            La Galerie
-                        </h2>
-                    </div>
-                </a>
-            </div>
-        </div><!--menu-->
-    </body>
+        @endforeach
+    </div><!--menu-->
 @endsection

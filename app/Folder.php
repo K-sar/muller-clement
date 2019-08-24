@@ -38,7 +38,7 @@ class Folder extends Model
         return $this->belongsToMany(User::class);
     }
 
-    protected $fillable=['name', 'access'];
+    protected $fillable=['name', 'access', 'ordre'];
 
     public function getRouteKeyName()
     {

@@ -36792,12 +36792,14 @@ function triTag(tags) {
 }
 
 ;
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('.clicTag').click(function () {
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.clicTag').click(function (event) {
+  event.preventDefault();
   var inputTag = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inputTag');
   var tags = inputTag.val();
   var tag = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('value');
   tags = tags + ', ' + tag;
   inputTag.val(triTag(tags));
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.clicTag').blur();
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inputTag').keypress(function (e) {
   if (e.key === ',') {
@@ -36805,6 +36807,20 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inputTag').keypress(function (e)
     var tags = inputTag.val();
     inputTag.val(triTag(tags));
   }
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('#fullscreen').click(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').addClass('fullscreen');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').removeClass('hidden');
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).keydown(function (e) {
+  if (e.key === 'Escape') {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').removeClass("fullscreen");
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').addClass('hidden');
+  }
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').click(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#image').removeClass('fullscreen');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.escape').addClass('hidden');
 });
 
 /***/ }),

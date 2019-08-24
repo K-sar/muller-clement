@@ -1,9 +1,12 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Galerie - {{$folder->name}} - Ajouter une photo</title>
+    <meta name="description" content="Formulaire d'ajout d'une nouvelle photo"/>
+@endsection
+
 @section("nav")
-    <a href="{{route('folder.show', $folder->slug)}}">
-        <h3>Retour</h3>
-    </a>
+    <div><a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
 @endsection
 
 @section("content")
@@ -38,14 +41,18 @@
             <input type="text" name="alternative" value="{{old("alternative")}}" />
         </div>
         <div>
+            <label>Ordre :</label>
+            <input type="text" name="ordre" value="{{old("ordre")}}" />
+        </div>
+        <div>
             <label>Slider :</label>
             <input type="text" name="slider" value="{{old("slider")}}" />
         </div>
         <div>
-            <label>Tag :</label>
+            <label>Tags :</label>
             <p>
                 @foreach($allTags as $tag)
-                    <span class="clicTag" data-value="{{$tag->name}}">{{$tag->name}},</span>
+                    <button class="clicTag" data-value="{{$tag->name}}">{{$tag->name}}</button>
                 @endforeach
             </p>
             <input id="inputTag" type="text" name="tags" value="{{old("tags")}}" />

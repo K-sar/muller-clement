@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>Clément Muller - Accueil - Home</title>
+    <meta name="description" content="Home page des utilisateurs"/>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

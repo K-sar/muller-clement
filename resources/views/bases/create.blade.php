@@ -1,15 +1,15 @@
 @extends ("layouts.layout")
 
 @section('title')
-    <title>Clément Muller - Portfolio - Ajouter un projet</title>
-    <meta name="description" content="Formulaire d'ajout d'un nouveau projet"/>
+    <title>Clément Muller - Accueil - Ajouter une entrée</title>
+    <meta name="description" content="Formulaire pour ajouter une nouvelle entrée à l'accueil"/>
 @endsection
 
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <form method="post" action="{{route('portfolio.store')}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('base.store')}}" enctype="multipart/form-data">
         @csrf
         <div>
             <legend>
@@ -25,8 +25,12 @@
             <textarea type="text" name="description">{{old("description")}}</textarea>
         </div>
         <div>
-            <label>Lien</label>
-            <input type="text" name="link" value="{{old("link")}}" />
+            <label>Route</label>
+            <input type="text" name="link" value="{{old("route")}}" />
+        </div>
+        <div>
+            <label>Ordre :</label>
+            <input type="text" name="ordre" value="{{old("ordre")}}" />
         </div>
         <div>
             <label>Miniature :</label>

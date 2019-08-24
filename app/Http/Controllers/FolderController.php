@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Folder;
 use App\Http\Requests\StoreFolder;
+use App\Http\Requests\StoreOrdreFolders;
+use App\Tag;
 
 class FolderController extends Controller
 {
     public function index()
     {
-        $folders = Folder::with('pictures')->get();
-        return view("folders/index", compact('folders'));
+        $folders = Folder::with('pictures')->get()->sortBy('ordre');
+        $tags = Tag::all()->sortBy('name');
+        return view("folders/index", ['folders' => $folders, 'tags' => $tags]);
     }
 
     public function create()
@@ -25,6 +28,9 @@ class FolderController extends Controller
         $this->authorize('admin', Folder::class);
 
         $validated = $request->validated();
+        if ($request->ordre == null) {
+            $request->merge(['ordre' => 100]);
+        }
         $folder=Folder::create($request->all());
 
         return redirect(route('folder.index'))->with('status', 'Nouveau dossier ajouté');
@@ -34,7 +40,7 @@ class FolderController extends Controller
     {
         $this->authorize('show', $folder);
 
-        return view('folders/show', ['pictures'=>$folder->pictures, 'folder'=>$folder]);
+        return view('folders/show', ['pictures'=>$folder->pictures->sortBy('ordre'), 'folder'=>$folder]);
     }
 
     public function edit(Folder $folder)
@@ -52,6 +58,13 @@ class FolderController extends Controller
 
         $folder->name = $request->get('name');
         $folder->access = $request->get('access');
+
+        if ($request->ordre == null) {
+            $folder->ordre = 100;
+        } else {
+            $folder->ordre = $request->get('ordre');
+        }
+
         $folder->save();
 
         return redirect(route('folder.index'))->with('status', 'Le dossier a bien été mis à jour');
@@ -65,9 +78,19 @@ class FolderController extends Controller
         return redirect(route('folder.index'))->with('status', 'Le dossier a bien été supprimé');
     }
 
-    public function slider(Folder $folder) {
+    public function ordre (Folder $folder) {
         $this->authorize('admin', $folder);
 
-        return view('folders/slider', ['pictures'=>$folder->pictures->sortBy('slider'), 'folder'=>$folder]);
+        $folders = Folder::All()->sortBy('ordre');
+
+        return view('folders/ordre', ['folders'=>$folders]);
+    }
+
+    public function ordreUpdate(Folder $folder, StoreOrdreFolders $request) {
+        $this->authorize('admin', $folder);
+
+        $folder->update($request->all(['ordre']));
+
+        return redirect()-> route('folder.ordre', [$folder])->with('status', 'L\'ordre a bien été mise à jour');
     }
 }

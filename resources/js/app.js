@@ -28,12 +28,14 @@ function triTag(tags) {
     return tags;
 };
 
-$('.clicTag').click(function(){
+$('.clicTag').click(function(event){
+    event.preventDefault();
     var inputTag = $('#inputTag');
     var tags = inputTag.val();
     var tag = $(this).data('value')
     tags = tags + ', ' + tag;
     inputTag.val(triTag(tags));
+    $('.clicTag').blur();
 });
 
 $('#inputTag').keypress(function(e){
@@ -43,4 +45,23 @@ $('#inputTag').keypress(function(e){
         inputTag.val(triTag(tags));
     }
 });
+
+$('#fullscreen').click(function() {
+    $('#image').addClass('fullscreen');
+    $('.escape').removeClass('hidden');
+});
+
+$(document).keydown(function(e){
+    if (e.key === 'Escape') {
+        $('#image').removeClass("fullscreen");
+        $('.escape').addClass('hidden');
+    }
+});
+
+$('.escape').click(function() {
+    $('#image').removeClass('fullscreen');
+    $('.escape').addClass('hidden');
+});
+
+
 

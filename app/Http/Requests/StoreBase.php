@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreFolder extends FormRequest
+class StoreBase extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,10 @@ class StoreFolder extends FormRequest
     {
         return [
             'name' => ['required', Rule::unique('folders')->ignore($this->request->get('name'), 'name'), 'max:255'],
-            'access' => 'required|numeric',
+            'link' => 'required|max:255',
+            'miniature' => 'max:255',
             'ordre' => 'numeric',
+            'description' => 'required',
         ];
     }
 }
