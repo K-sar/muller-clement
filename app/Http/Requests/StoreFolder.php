@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreFolder extends FormRequest
 {
@@ -24,8 +25,9 @@ class StoreFolder extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:folders|max:255',
+            'name' => ['required', Rule::unique('folders')->ignore($this->request->get('name'), 'name'), 'max:255'],
             'access' => 'required|numeric',
+            'slug' => [Rule::unique('folders')->ignore($this->request->get('slug'), 'slug'), 'max:255'],
         ];
     }
 }

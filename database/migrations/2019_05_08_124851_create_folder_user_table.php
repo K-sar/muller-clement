@@ -14,8 +14,10 @@ class CreateFolderUserTable extends Migration
     public function up()
     {
         Schema::create('folder_user', function (Blueprint $table) {
-            $table->unsignedInteger('ID_pictures');
-            $table->unsignedInteger('ID_tags');
+            $table->unsignedInteger('folder_id')->index();
+            $table->foreign('folder_id')->references('id')->on('pictures')->onDelete('cascade');
+            $table->unsignedInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('pictures')->onDelete('cascade');
         });
     }
 

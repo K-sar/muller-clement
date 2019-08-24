@@ -1,13 +1,52 @@
 @extends ("layouts.layout")
 
-@section("CSS")
-    <link href="CSS/style_folders.css" rel="stylesheet" media="all">
-@endsection
-
 @section("content")
-    <h2>La Galerie Photo</h2>
+
+<h2>La Galerie Photo</h2>
+
+@can('admin', App\Folder::class)
+    <a href="{{route('folder.create')}}"><button>Ajouter un dossier</button></a>
+@endcan
+<a href="{{route('picture.index')}}">Toutes les photos</a>
+<div id="menu">
     @foreach ($folders as $folder)
-        <a href="/photos/{{$folder->id}}"><div class="folders">{{$folder->name}}</div></a>
+        @can('show', $folder)
+            <div class="miniature">
+                <a href="{{route('folder.show', $folder->slug)}}">
+                    <div class="button">
+                        <div class="fond">
+                            @if ($folder->slider_pictures->count() > 4)
+                                <div class="slider">
+                                    <figure>
+                                        @foreach ($folder->slider_pictures as $picture)
+                                            <img src="/storage/miniatures/pictures/{{$picture->link}}" alt="{{$picture->alternative}}"/>
+                                        @endforeach
+                                            <img src="/storage/miniatures/pictures/{{$folder->slider_pictures->first()->link}}" alt="{{$folder->slider_pictures->first()->alternative}}"/>
+
+                                    </figure>
+                                </div>
+                            @elseif ($folder->slider_pictures->count() > 0)
+                                <img src="/storage/miniatures/pictures/{{$folder->slider_pictures->first()->link}}" alt="{{$folder->slider_pictures->first()->alternative}}"/>
+                            @else
+                            @endif
+                        </div>
+                        <h2>
+                            {{$folder->name}}
+                        </h2>
+                    </div>
+                </a>
+                @can('admin', $folder)
+                    <div class="menu-auth">
+                        <a href="{{route('folder.edit', $folder->slug)}}"><button>Modifier</button></a>
+                        <form action="{{route('folder.destroy', $folder->slug)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </div>
+                @endcan
+            </div>
+        @endcan
     @endforeach
-    <a href="{{route('folder_create')}}">Nouveau dossier</a>
+</div>
 @endsection

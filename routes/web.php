@@ -15,11 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/photos', 'FolderController@index');
+Route::get('/galerie', 'FolderController@index');
 
-Route::get('/pictures', 'PictureController@index');
+Route::get('/galerie/pictures', 'PictureController@index')->name('picture.index');
 
-Route::get('/photos/{folder}', 'PictureController@show_folder')->where('folder', '[0-9]+');
+Route::get('/galerie/pictures/{picture}', 'PictureController@showFromAll')->name('picture.show');
 
-Route::get('/photos/create_folder', 'FolderController@create')->name('folder_create');
-Route::post('/photos', 'FolderController@store')->name('folder_store');
+Route::resource('/galerie/folder', 'FolderController');
+
+Route::resource('/galerie/folder.picture', 'PictureController');
+
+Route::get('/galerie/tag/{tag}', 'PictureController@index')->name('tag.show');
+
+Route::get('/galerie/tag/{tag}/picture/{picture}', 'PictureController@showTag')->name('tag.picture.show');
+
+Route::get('/galerie/folder/{folder}/slider', 'FolderController@slider')->name('folder.slider');
+
+Route::post('/galerie/folder/{folder}/picture/{picture}/slider', 'PictureController@slider')->name('picture.slider');
+
+
+
+
+
+Route::resource('/portfolio', 'PortfolioController');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

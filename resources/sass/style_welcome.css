@@ -1,0 +1,255 @@
+@font-face {
+    font-family: 'segeoui';
+    src: url('/font/segeoui.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('/font/OpenSans-Regular-webfont.eot');
+    src: url('/font/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/font/OpenSans-Regular-webfont.woff2') format('woff2'),
+    url('/font/OpenSans-Regular-webfont.woff') format('woff'),
+    url('/font/OpenSans-Regular-webfont.ttf') format('truetype'),
+    url('/font/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body
+{
+    font-family: segeoui, open_sansregular, Arial, Verdana, sans-serif;
+    color: #111;
+    background-color: #333;
+    margin:0;
+}
+
+header
+{
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e7d32;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.CM
+{
+    margin: 15px;
+    color: white;
+}
+
+nav h3
+{
+    margin:0;
+    padding: 0 15px 0 15px;
+}
+
+nav a
+{
+    display: inline-block !important;
+    text-decoration: none;
+    color: white;
+}
+
+
+#bloc_page
+{
+    max-width: 1024px;
+    min-height:768px;
+    margin:auto;
+    padding: 10px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction:column;
+}
+
+
+#construction
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#menu
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+
+h2
+{
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0 0 5px 0;
+}
+
+a
+{
+    text-decoration: none !important;
+}
+
+p
+{
+    margin: 0;
+}
+
+.miniature
+{
+    width: 300px;
+    height: auto;
+    margin: 20px;
+}
+
+.button
+{
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25), 0 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 300px;
+    height: auto;
+}
+
+.fond
+{
+    border-radius: 10px 10px 0 0;
+
+    height: 200px;
+    width: 100%;
+    position: relative;
+    top: 0px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+/*
+.fond img
+{
+    width: 300px;
+    height: 200px;
+    margin: 0;
+}
+*/
+.pictures
+{
+    width: 100%;
+    heigh: auto;
+}
+
+.menu-auth
+{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.photo
+{
+    border-radius: 0 ;
+    box-shadow: none ;
+}
+
+/*--------------------------------------------------------------------------------------------------------------Slider*/
+
+@keyframes slidy
+{
+    0% { left: 0%; }
+
+    10% { left: -100%; }
+    20% { left: -100%; }
+
+    30% { left: -200%; }
+    40% { left: -200%; }
+
+    50% { left: -300%; }
+    60% { left: -300%; }
+
+    70% { left: -400%; }
+    80% { left: -400%; }
+
+    90% { left: -500%; }
+    100% { left: -500%; }
+}
+
+.slider
+{
+    overflow: hidden;
+}
+
+.slider figure img
+{
+    width: 16.6666666666666666666666666666666666666666666666666666666%; float: left;
+}
+
+.slider figure
+{
+    position: relative;
+    width: 600%;
+    margin: 0 !important;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+}
+
+.slider figure:hover
+{
+    animation: 15s slidy infinite;
+
+}
+
+/*---------------------------------------------------------------------------------------------------------Formulaires*/
+form
+{
+}
+
+form div
+{
+    max-width: 960px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+label
+{
+    display: block;
+}
+input
+{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sliderForm {
+    display: flex;
+    align-items: center;
+}
+.sliderForm label {
+    min-width : 50px;
+}
+
+.sliderForm input {
+    margin : 5px 0 5px 10px;
+}
+
+
+
+/*
+
+*
+{
+	border: 1px solid black;
+}
+
+*/
+

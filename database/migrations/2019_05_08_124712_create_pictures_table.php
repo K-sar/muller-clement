@@ -19,11 +19,13 @@ class CreatePicturesTable extends Migration
             $table->unsignedInteger('folder_id');
             $table->foreign('folder_id')->references('id')->on('folders')->onDelete('cascade');
 
+            $table->unsignedDecimal('slider', 5, 2)->nullable();
             $table->string('access');
             $table->string('link');
+            $table->string('name');
             $table->string('info');
             $table->string('alternative');
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->index();
             $table->timestamps();
         });
     }

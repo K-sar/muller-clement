@@ -17,7 +17,7 @@ class CreateFoldersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('access')->nullable();
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->index();
             $table->timestamps();
         });
     }

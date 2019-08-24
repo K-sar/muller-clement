@@ -1,32 +1,46 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
+import $ from 'jquery';
+window.$ = window.jQuery = $;
 require('./bootstrap');
 
-window.Vue = require('vue');
+function triTag(tags) {
+    var tagArray = tags.split(',').map( function(tag) {
+        tag = tag.trim();
+        return tag.substr(0,1).toUpperCase()+ tag.substr(1,tag.length).toLowerCase();
+    });
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+    tagArray = tagArray.filter( function(val){return val !== '' } );
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+    var result = [];
+    tagArray.forEach(function(item) {
+        if(result.indexOf(item) < 0) {
+            result.push(item);
+        }
+    });
+    tagArray = result;
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+    tagArray.sort(function (a, b) {
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+    });
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+    tags = tagArray.join(', ');
 
-const app = new Vue({
-    el: '#app',
+    return tags;
+};
+
+$('.clicTag').click(function(){
+    var inputTag = $('#inputTag');
+    var tags = inputTag.val();
+    var tag = $(this).data('value')
+    tags = tags + ', ' + tag;
+    inputTag.val(triTag(tags));
 });
+
+$('#inputTag').keypress(function(e){
+    if (e.key === ','){
+        var inputTag = $('#inputTag');
+        var tags = inputTag.val();
+        inputTag.val(triTag(tags));
+    }
+});
+
