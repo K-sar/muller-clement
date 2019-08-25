@@ -19,7 +19,8 @@
         @foreach ($pictures as $picture)
             @can('show', $picture)
                 <div class="miniature photo">
-                    <a href="<?php if (!empty($laserTag)) { ?>{{route('tag.picture.show',[$laserTag->slug, $picture->slug])}} <?php } else { ?>{{route('picture.show', [$picture->slug])}}<?php } ?>">
+                    <a href="@if (!empty($laserTag)) { ?>{{route('tag.picture.show',[$laserTag->slug, $picture->slug])}}
+                             @else { ?>{{route('picture.show', [$picture->slug])}} @endif">
                         <div class="button photo">
                             <div class="fond photo">
                                 <img src="/storage/miniatures/pictures/{{$picture->link}}" alt="{{$picture->alt}}"/>
@@ -34,3 +35,8 @@
         @endforeach
     </div>
 @endsection
+
+
+
+
+
