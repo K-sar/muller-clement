@@ -14,15 +14,6 @@ $factory->define(Picture::class, function (Faker $faker) {
     $access = $folder['access'];
     $access = $faker->numberBetween($min = $access, $max = $access+1);
 
-
-/*
-    $linkFolderDir = '/images/PictureFolder/'.$folder_id;
-
-    if (!Storage::exists($linkFolderDir))
-    {
-        Storage::makeDirectory($linkFolderDir, 0777);
-    }
-*/
     return [
         'folder_id' => $folder_id,
         'access' => $access,

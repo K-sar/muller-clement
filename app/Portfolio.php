@@ -26,3 +26,10 @@ class Portfolio extends Model
         return 'slug';
     }
 }
+
+
+
+
+
+
+

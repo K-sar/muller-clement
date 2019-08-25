@@ -20,7 +20,7 @@
                 </div>
                 <form method="post" action="{{route('folder.ordre.update', [$folder->slug])}}" class="sliderForm">
                     @csrf
-                    <label>Slider :</label>
+                    <label>Ordre :</label>
                     <input type="text" name="ordre" value="{{old("ordre")?:$folder->ordre}}"/>
                     <input type="submit" value="Modifier"/>
                 </form>

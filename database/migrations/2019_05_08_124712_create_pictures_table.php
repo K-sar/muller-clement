@@ -40,3 +40,12 @@ class CreatePicturesTable extends Migration
         Schema::dropIfExists('pictures');
     }
 }
+
+
+
+
+
+
+
+
+

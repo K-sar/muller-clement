@@ -24,8 +24,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet" media="all">
         <script src="https://kit.fontawesome.com/6f85f396e0.js"></script>
-
-
     </head>
     <body>
         <header>

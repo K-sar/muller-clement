@@ -21,7 +21,7 @@
                 </div>
                 <form method="post" action="{{route('picture.ordre.update', [$folder->slug, $picture->slug])}}" class="sliderForm">
                     @csrf
-                    <label>Slider :</label>
+                    <label>Ordre :</label>
                     <input type="text" name="ordre" value="{{old("ordre")?:$picture->ordre}}"/>
                     <input type="submit" value="Modifier"/>
                 </form>

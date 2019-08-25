@@ -86,7 +86,7 @@ nav h3
     align-items: center;
     position: absolute;
     top: 25px;
-    right: 0px;
+    right: 0;
     border: 1px solid white;
     padding: 5px;
     background-color: #2e7d32;
@@ -437,6 +437,10 @@ textarea {
         height: 50px;
     }
 
+    #bloc_page {
+        padding: 50px 10px 10px 10px;
+    }
+
     .nav {
         position: relative;
     }
@@ -471,12 +475,7 @@ textarea {
 
     .userIcon:hover .userMenu {
         top: 0;
-        right: 0px;
-    }
-
-    #bloc_page {
-
-        padding: 50px 10px 10px 10px;
+        right: 0;
     }
 
     .container {
