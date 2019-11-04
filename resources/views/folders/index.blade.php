@@ -13,6 +13,7 @@
     <p>
         <a href="{{route('folder.create')}}"><button>Ajouter un dossier</button></a>
         <a href="{{route('folder.ordre')}}"><button>Editer l'ordre</button></a>
+        <a href="{{route('FTP')}}"><button>Photos ajoutées via le FTP</button></a>
     </p>
 @endcan
 

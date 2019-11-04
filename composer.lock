@@ -4,8 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c85dc36c010effb8732e69723e7daab5",
+    "content-hash": "032570d588373e1436c54a7e125680d6",
     "packages": [
+        {
+            "name": "alkhachatryan/laravel-web-console",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alkhachatryan/laravel-web-console.git",
+                "reference": "e3473a6d6c02d1a061a977af3b91ca0d1184b09f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alkhachatryan/laravel-web-console/zipball/e3473a6d6c02d1a061a977af3b91ca0d1184b09f",
+                "reference": "e3473a6d6c02d1a061a977af3b91ca0d1184b09f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~7.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alkhachatryan\\LaravelWebConsole\\LaravelWebConsoleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "helpers.php"
+                ],
+                "psr-4": {
+                    "Alkhachatryan\\LaravelWebConsole\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Khachatryan",
+                    "email": "info@khachatryan.org",
+                    "homepage": "https://khachatryan.org"
+                }
+            ],
+            "description": "Web console for your Laravel application",
+            "homepage": "https://github.com/alkhachatryan/laravel-web-console",
+            "keywords": [
+                "LaravelWebConsole",
+                "laravel"
+            ],
+            "time": "2019-03-03T10:15:45+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

@@ -1,34 +1,33 @@
 @extends ("layouts.layout")
 
 @section('title')
-    <title>Clément Muller - Galerie - {{$folder->name}} - Ajouter une photo</title>
-    <meta name="description" content="Formulaire d'ajout d'une nouvelle photo"/>
+    <title>Clément Muller - Galerie - Ajouter une photo depuis le FTP</title>
+    <meta name="description" content="Formulaire d'ajout d'une nouvelle photo depuis le FTP"/>
 @endsection
 
 @section("nav")
-    <div><a href="{{route('folder.show', $folder->slug)}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
+    <div><a href="{{route('FTP')}}"><h3><i class="fas fa-arrow-left"></i></h3></a></div>
 @endsection
 
 @section("content")
     @if ($errors->any())
         <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
     @endif
-    <form method="post" action="{{route('folder.picture.store', $folder->slug)}}" enctype="multipart/form-data">
+    <div class="containerImage">
+        <img id="image" src='/storage/pictures/{{$FTP}}' alt='bug' class="pictures"/>
+    </div>
+    <form method="post" action="{{route('FTPStore', [$FTP])}}" enctype="multipart/form-data">
         @csrf
         <div>
             <legend>
-                <h2>Ajouter une nouvelle photo</h2>
+                <h2>Ajouter une photo depuis le FTP</h2>
             </legend>
-        </div>
-        <div>
-            <label>Fichier :</label>
-            <input type="file" name="file"/>
         </div>
         <div>
             <label>Dossier :</label>
             <select name="folder_id">
                 @foreach ($allFolders as $allFolder)
-                    <option @if (old("folder_id")==$allFolder->id||(!old("folder_id")&&$allFolder->id==$folder->id)) selected @endif value="{{$allFolder->id}}">{{$allFolder->name}}</option>
+                    <option @if (old("folder_id")==$allFolder->id) selected @endif value="{{$allFolder->id}}">{{$allFolder->name}}</option>
                 @endforeach
             </select>
         </div>

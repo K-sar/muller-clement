@@ -17,6 +17,7 @@ use Intervention\Image\Facades\Image;
 
 
 class PictureController extends Controller{
+//----------------------------------------------------------------------------------------------------------------------CRUD
     public function index($laserTag = null) {
         $tags = Tag::with('pictures')->get()->sortBy('name');
         foreach ($tags as $tag) {
@@ -56,8 +57,9 @@ class PictureController extends Controller{
     public function create(Folder $folder) {
         $this->authorize('admin', Picture::class);
         $allTags = Tag::all()->sortBy('name');
+        $allFolders = Folder::all()->sortBy('ordre');
 
-        return view("pictures/create", ['folder'=>$folder, 'allTags'=>$allTags]);
+        return view("pictures/create", ['folder'=>$folder, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
     }
 
     public function store(Folder $folder, StorePicture $request) {
@@ -71,7 +73,7 @@ class PictureController extends Controller{
         $img->fit(300, 200)->orientate();
         $img->save("../storage/app/public/miniatures/pictures/".$link);
 
-        $request->merge(['folder_id'=>$folder->id, 'link'=>$link]);
+        $request->merge(['link'=>$link]);
 
         $validated = $request->validated();
         if ($request->ordre == null) {
@@ -84,7 +86,7 @@ class PictureController extends Controller{
 
         return redirect(route('folder.show', [$folder]));
     }
-
+//----------------------------------------------------------------------------------------------------------------------Show&Cie
     public function show(Folder $folder, Picture $picture) {
         $this->authorize('show', $picture);
 
@@ -126,8 +128,9 @@ class PictureController extends Controller{
     public function edit(Folder $folder, Picture $picture) {
         $this->authorize('admin', $picture);
         $allTags = Tag::all()->sortBy('name');
+        $allFolders = Folder::all()->sortBy('ordre');
 
-        return view('pictures/edit', ['folder'=>$folder, 'picture'=>$picture, 'allTags'=>$allTags]);
+        return view('pictures/edit', ['folder'=>$folder, 'picture'=>$picture, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
     }
 
     public function update(Folder $folder, Picture $picture, StorePicture $request) {
@@ -148,6 +151,7 @@ class PictureController extends Controller{
 
         $validated = $request->validated();
 
+        $picture->folder_id = $request->get('folder_id');
         $picture->access = $request->get('access');
         $picture->name = $request->get('name');
         $picture->info = $request->get('info');
@@ -176,6 +180,7 @@ class PictureController extends Controller{
         return redirect()-> route('folder.show', [$folder])->with('status', 'La photo a bien été supprimée');
     }
 
+//----------------------------------------------------------------------------------------------------------------------Ordre et Slider
     public function slider (Folder $folder) {
         $this->authorize('admin', $folder);
 
@@ -227,5 +232,71 @@ class PictureController extends Controller{
             $next = next($collection);
         }
         return collect([$previous, $next]);
+    }
+
+//----------------------------------------------------------------------------------------------------------------------FTP
+    public function FTP() {
+        $this->authorize('admin', Picture::class);
+
+        $pictures = Picture::all();
+        $FTPs = collect(Storage::files('pictures'))->map(function ($item, $key) {
+            return substr($item, 9);
+        });
+        $collection = collect([]);
+        foreach($pictures as $picture) {
+            $link = $picture->link;
+            $collection = $collection->concat([$link]);
+        }
+        foreach($FTPs as $FTP) {
+            if ($collection->search($FTP) !== false) {
+                $FTPs = $FTPs->reject(function ($value, $key) use ($FTP)
+                {
+                    return $value == $FTP;
+                });
+            }
+        }
+        return view("FTP/index", ['FTPs'=>$FTPs]);
+    }
+
+    public function FTPAdd($FTP) {
+        $this->authorize('admin', Picture::class);
+        $allTags = Tag::all()->sortBy('name');
+        $allFolders = Folder::all()->sortBy('ordre');
+
+        return view("FTP/add", ['FTP'=>$FTP, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
+    }
+
+    public function FTPstore($FTP, StorePicture $request) {
+        $this->authorize('admin', Picture::class);
+
+        list($file, $ext) = explode(".",$FTP);
+        $link = md5($file).'.'.$ext;
+        $img = Image::make("../storage/app/public/pictures/".$FTP);
+        $img->orientate();
+        $img->save("../storage/app/public/pictures/".$link);
+        $img->fit(300, 200)->orientate();
+        $img->save("../storage/app/public/miniatures/pictures/".$link);
+        Storage::delete('/pictures/'.$FTP);
+
+        $request->merge(['link'=>$link]);
+
+        $validated = $request->validated();
+        if ($request->ordre == null) {
+            $request->merge(['ordre' => 100]);
+        }
+
+        $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'ordre','slider']));
+
+        $picture->saveTags($request->get('tags'));
+
+        return redirect(route('FTP'));
+    }
+
+    public function FTPDelete($FTP) {
+        $this->authorize('admin', Picture::class);
+
+        Storage::delete('/pictures/'.$FTP);
+
+        return redirect()-> route('FTP')->with('status', 'La photo a bien été supprimée');
     }
 }

@@ -29,6 +29,14 @@
             <input type="file" name="file"/>
         </div>
         <div>
+            <label>Dossier :</label>
+            <select name="folder_id">
+                @foreach ($allFolders as $allFolder)
+                    <option @if (old("folder_id")==$allFolder->id||(!old("folder_id")&&$allFolder->id==$folder->id)) selected @endif value="{{$allFolder->id}}">{{$allFolder->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
             <label>Nom :</label>
             <input type="text" name="name" value="{{old("name")?:$picture->name}}" />
         </div>

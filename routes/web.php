@@ -25,6 +25,11 @@ Route::get('/galerie/tag/{tag}', 'PictureController@index')->name('tag.show');
 Route::get('/galerie/tag/{tag}/picture/{picture}', 'PictureController@showTag')->name('tag.picture.show');
 Route::get('/galerie/pictures/{picture}', 'PictureController@showFromAll')->name('picture.show');
 
+Route::get('/galerie/FTP', 'PictureController@FTP')->name('FTP');
+Route::get('/galerie/FTPAdd/{FTP}', 'PictureController@FTPAdd')->name('FTPAdd');
+Route::post('/galerie/FTP/{FTP}', 'PictureController@FTPStore')->name('FTPStore');
+Route::get('/galerie/FTPDelete/{FTP}', 'PictureController@FTPDelete')->name('FTPDelete');
+
 Route::get('/galerie/folder/{folder}/slider', 'PictureController@slider')->name('picture.slider');
 Route::post('/galerie/folder/{folder}/picture/{picture}/slider', 'PictureController@sliderUpdate')->name('picture.slider.update');
 
@@ -35,7 +40,9 @@ Route::get('/galerie//ordre', 'FolderController@ordre')->name('folder.ordre');
 Route::post('/galerie/folder/{folder}/ordre', 'FolderController@ordreUpdate')->name('folder.ordre.update');
 
 
-
+Route::get('/console', function(){
+    return \Alkhachatryan\LaravelWebConsole\LaravelWebConsole::show();
+});
 
 Route::resource('/portfolio', 'PortfolioController');
 

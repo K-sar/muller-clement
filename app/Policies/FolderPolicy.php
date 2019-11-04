@@ -10,14 +10,6 @@ class FolderPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view the folder.
-     *
-     * @param \App\User $user
-     * @param \App\Folder $folder
-     * @return mixed
-     */
-
     public function before(User $user)
     {
         if($user->id === 1){
@@ -52,3 +44,8 @@ class FolderPolicy
     }
 
 }
+
+
+
+
+
