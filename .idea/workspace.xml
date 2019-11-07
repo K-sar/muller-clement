@@ -7,50 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cc7ecf8-06a2-4498-8f77-5ea9feb52b5c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/CV.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/CV.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/style_CV.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bases/CV/CV.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bases/CV/backoffice.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bases/CV/pdf/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bases/CV/xp/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Formation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CVController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Pdf.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Xp.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/laravelwebconsole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_06_173036_create_xps_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_06_173145_create_formations_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_06_173242_create_pdfs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FolderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FolderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PictureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PictureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PortfolioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/BasePolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/BasePolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/PortfolioPolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_08_124940_create_experiences_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_08_124951_create_formations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/BaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/BaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/style_welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/style_welcome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/CV.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/FTP/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/FTP/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/FTP/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/FTP/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/folders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/folders/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/folders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/folders/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/folders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/folders/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/folders/ordre.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/folders/ordre.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/folders/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/folders/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pictures/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/CV/formation/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pictures/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/CV/pdf/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pictures/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pictures/ordre.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/ordre.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pictures/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pictures/slider.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/galeries/pictures/slider.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portfolios/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/portfolios/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portfolios/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/portfolios/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portfolios/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/portfolios/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portfolios/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bases/portfolios/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +87,7 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/resources/sass/style_welcome.css">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="418">
+                  <state relative-caret-position="5287">
                     <caret line="311" column="15" lean-forward="true" selection-start-line="311" selection-start-column="15" selection-end-line="311" selection-end-column="15" />
                   </state>
                 </provider>
@@ -670,7 +635,7 @@
       <workItem from="1572527860963" duration="386000" />
       <workItem from="1572874972299" duration="15122000" />
       <workItem from="1573043356532" duration="27128000" />
-      <workItem from="1573140698545" duration="5229000" />
+      <workItem from="1573140698545" duration="5912000" />
     </task>
     <task id="LOCAL-00001" summary="migrations">
       <created>1557320783716</created>
@@ -861,23 +826,29 @@
       <option name="project" value="LOCAL" />
       <updated>1572892419283</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="PDF déployé">
+      <created>1573145996704</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1573145996704</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="374743000" />
+    <option name="totallyTimeSpent" value="375426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21801706" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21801706" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.4978678" visible="true" weight="0.27545553" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.4978678" weight="0.27545553" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5021322" side_tool="true" weight="0.3108253" />
-      <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.782516" weight="0.2915327" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="3" sideWeight="0.782516" visible="true" weight="0.2915327" />
       <window_info anchor="bottom" id="Messages" order="4" weight="0.3290461" />
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
@@ -941,7 +912,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Folder et Picture = model+controller" />
     <MESSAGE value="views picutres et folders" />
     <MESSAGE value="debugage et css" />
     <MESSAGE value="routes, debugage et css" />
@@ -966,7 +936,8 @@
     <MESSAGE value="readme" />
     <MESSAGE value="micro changeemnt" />
     <MESSAGE value="FTP et liste déroulante des dossiers déployés" />
-    <option name="LAST_COMMIT_MESSAGE" value="FTP et liste déroulante des dossiers déployés" />
+    <MESSAGE value="PDF déployé" />
+    <option name="LAST_COMMIT_MESSAGE" value="PDF déployé" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/storage/app/public/pictures/5536185057e04d262f17ee6f38adf77f.jpg">
@@ -1284,7 +1255,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/style_welcome.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
+        <state relative-caret-position="5287">
           <caret line="311" column="15" lean-forward="true" selection-start-line="311" selection-start-column="15" selection-end-line="311" selection-end-column="15" />
         </state>
       </provider>
