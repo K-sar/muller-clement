@@ -16,9 +16,7 @@ class BasePolicy
      */
     public function before(User $user)
     {
-        if($user->id === 1){
-            return true;
-        }
+        return $user->id === 1;
     }
 
     public function admin()

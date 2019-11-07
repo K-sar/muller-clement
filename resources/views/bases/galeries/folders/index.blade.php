@@ -46,11 +46,11 @@
                 </a>
                 @can('admin', $folder)
                     <div class="menu-auth">
-                        <a href="{{route('folder.edit', $folder->slug)}}"><button>Modifier</button></a>
+                        <a href="{{route('folder.edit', $folder->slug)}}"><button><i class="far fa-edit"></i></i></button></a>
                         <form action="{{route('folder.destroy', $folder->slug)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Supprimer</button>
+                            <button type="submit"><i class="far fa-trash-alt"></i></button>
                         </form>
                     </div>
                 @endcan

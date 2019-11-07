@@ -17,16 +17,14 @@
     font-style: normal;
 }
 
-body
-{
+body {
     font-family: segeoui, open_sansregular, Arial, Verdana, sans-serif;
     color: #111;
     background-color: #333;
     margin:0;
 }
 
-header
-{
+header {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +36,7 @@ header
     height: 75px;
 }
 
-#ClementMuller{
+#ClementMuller {
     margin: 12px 15px 15px 25px;
     color: white;
 }
@@ -310,9 +308,8 @@ button:focus, input[type="submit"]:focus {
     font-size: 1.75em;
 }
 
-embed {
-    width: 1024px;
-    height: 100%;
+.flex {
+    display: flex;
 }
 
 /*-------------------------------------------------------------------------------------------------------Slider photos*/
@@ -431,8 +428,8 @@ textarea {
 }
 
 /*--------------------------------------------------------------------------------------------------------MediaQueries*/
-@media (max-width: 768px)
-{
+@media (max-width: 768px) {
+
     header {
         height: 50px;
     }

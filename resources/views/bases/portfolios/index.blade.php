@@ -8,7 +8,7 @@
 @section("content")
 
 <h2>Portfolio</h2>
-@can('admin', App\Portfolio::class)
+@can('admin', App\Base::class)
     <a href="{{route('portfolio.create')}}"><button>Ajouter une entrée</button></a>
 @endcan
 <div id="menu">
@@ -25,13 +25,13 @@
                     </h2>
                 </div>
             </a>
-            @can('admin', $portfolio)
+            @can('admin', App\Base::class)
                 <div class="menu-auth">
-                    <a href="{{route('portfolio.edit', $portfolio->slug)}}"><button>Modifier</button></a>
+                    <a href="{{route('portfolio.edit', $portfolio->slug)}}"><button><i class="far fa-edit"></i></i></button></a>
                     <form action="{{route('portfolio.destroy', $portfolio->slug)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Supprimer</button>
+                        <button type="submit"><i class="far fa-trash-alt"></i></button>
                     </form>
                 </div>
             @endcan

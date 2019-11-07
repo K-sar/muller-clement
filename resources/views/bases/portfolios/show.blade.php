@@ -17,13 +17,13 @@
             </a>
         </div>
     </div>
-    @can('admin', $portfolio)
+    @can('admin', App\Base::class)
         <div class="menu-auth">
-            <a href="{{route('portfolio.edit', $portfolio->slug)}}"><button>Modifier</button></a>
+            <a href="{{route('portfolio.edit', $portfolio->slug)}}"><button><i class="far fa-edit"></i></button></a>
             <form action="{{route('portfolio.destroy', $portfolio->slug)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="submit">Supprimer</button>
+                <button type="submit"><i class="far fa-trash-alt"></i></button>
             </form>
         </div>
     @endcan

@@ -46,10 +46,10 @@ class PictureController extends Controller{
 
         if (!is_null($laserTag)) {
             $laserTag = Tag::where('slug', $laserTag)->first();
-            return view("pictures/index", ['laserTag'=>$laserTag, 'tags'=>$tags->sortBy('name'), 'pictures'=>$laserTag->pictures]);
+            return view("bases/galeries/pictures/index", ['laserTag'=>$laserTag, 'tags'=>$tags->sortBy('name'), 'pictures'=>$laserTag->pictures]);
         } else {
             $pictures = Picture::all();
-            return view("pictures/index", ['tags'=>$tags->sortBy('name'), 'pictures'=>$pictures]);
+            return view("bases/galeries/pictures/index", ['tags'=>$tags->sortBy('name'), 'pictures'=>$pictures]);
         }
 
     }
@@ -59,7 +59,7 @@ class PictureController extends Controller{
         $allTags = Tag::all()->sortBy('name');
         $allFolders = Folder::all()->sortBy('ordre');
 
-        return view("pictures/create", ['folder'=>$folder, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
+        return view("bases/galeries/pictures/create", ['folder'=>$folder, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
     }
 
     public function store(Folder $folder, StorePicture $request) {
@@ -84,7 +84,7 @@ class PictureController extends Controller{
 
         $picture->saveTags($request->get('tags'));
 
-        return redirect(route('folder.show', [$folder]));
+        return redirect(route('folder.show', [$folder]))->with('status', 'Nouvelle photo ajoutée');
     }
 //----------------------------------------------------------------------------------------------------------------------Show&Cie
     public function show(Folder $folder, Picture $picture) {
@@ -95,7 +95,7 @@ class PictureController extends Controller{
         $previous = $collection->first();
         $next = $collection->last();
 
-        return view('pictures/show', ['folder'=>$folder, 'picture'=>$picture, 'folderTag'=>$folder, 'previous'=>$previous, 'next'=>$next]);
+        return view('bases/galeries/pictures/show', ['folder'=>$folder, 'picture'=>$picture, 'folderTag'=>$folder, 'previous'=>$previous, 'next'=>$next]);
     }
 
     public function showTag(Tag $tag, Picture $picture) {
@@ -108,7 +108,7 @@ class PictureController extends Controller{
 
         $folderTag = $picture->folder;
 
-        return view('pictures/show', ['tag'=>$tag, 'picture'=>$picture, 'folderTag'=>$folderTag, 'previous'=>$previous, 'next'=>$next]);
+        return view('bases/galeries/pictures/show', ['tag'=>$tag, 'picture'=>$picture, 'folderTag'=>$folderTag, 'previous'=>$previous, 'next'=>$next]);
     }
 
     public function showFromAll(Picture $picture) {
@@ -121,7 +121,7 @@ class PictureController extends Controller{
 
         $folderTag = $picture->folder;
 
-        return view('pictures/show', ['picture'=>$picture, 'folderTag'=>$folderTag, 'previous'=>$previous, 'next'=>$next]);
+        return view('bases/galeries/pictures/show', ['picture'=>$picture, 'folderTag'=>$folderTag, 'previous'=>$previous, 'next'=>$next]);
     }
 
 
@@ -130,7 +130,7 @@ class PictureController extends Controller{
         $allTags = Tag::all()->sortBy('name');
         $allFolders = Folder::all()->sortBy('ordre');
 
-        return view('pictures/edit', ['folder'=>$folder, 'picture'=>$picture, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
+        return view('bases/galeries/pictures/edit', ['folder'=>$folder, 'picture'=>$picture, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
     }
 
     public function update(Folder $folder, Picture $picture, StorePicture $request) {
@@ -192,7 +192,7 @@ class PictureController extends Controller{
             });
         $pictures = $picturesNotNull->merge($picturesNull);
 
-        return view('pictures/slider', ['pictures'=>$pictures, 'folder'=>$folder]);
+        return view('bases/galeries/pictures/slider', ['pictures'=>$pictures, 'folder'=>$folder]);
     }
 
     public function sliderUpdate(Folder $folder, Picture $picture, StoreSlider $request) {
@@ -206,7 +206,7 @@ class PictureController extends Controller{
     public function ordre (Folder $folder) {
         $this->authorize('admin', $folder);
 
-        return view('pictures/ordre', ['pictures'=>$folder->pictures->sortBy('ordre'), 'folder'=>$folder]);
+        return view('bases/galeries/pictures/ordre', ['pictures'=>$folder->pictures->sortBy('ordre'), 'folder'=>$folder]);
     }
 
     public function ordreUpdate(Folder $folder, Picture $picture, StoreOrdrePictures $request) {
@@ -255,7 +255,7 @@ class PictureController extends Controller{
                 });
             }
         }
-        return view("FTP/index", ['FTPs'=>$FTPs]);
+        return view("bases/galeries/pictures/FTP/index", ['FTPs'=>$FTPs]);
     }
 
     public function FTPAdd($FTP) {
@@ -263,7 +263,7 @@ class PictureController extends Controller{
         $allTags = Tag::all()->sortBy('name');
         $allFolders = Folder::all()->sortBy('ordre');
 
-        return view("FTP/add", ['FTP'=>$FTP, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
+        return view("bases/galeries/pictures/FTP/add", ['FTP'=>$FTP, 'allTags'=>$allTags, 'allFolders'=>$allFolders]);
     }
 
     public function FTPstore($FTP, StorePicture $request) {

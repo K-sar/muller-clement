@@ -1,0 +1,38 @@
+header {
+    top: -80px;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 0.5s;
+            transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+}
+#divHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 80px;
+}
+
+#divHeader:hover header {
+    -webkit-transform: translateY(80px);
+            transform: translateY(80px);
+}
+
+@media (max-width: 768px) {
+
+    header {
+        position: static !important;
+    }
+}/*// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+*/
+

@@ -13,14 +13,14 @@ class FolderController extends Controller
     {
         $folders = Folder::with('pictures')->get()->sortBy('ordre');
         $tags = Tag::all()->sortBy('name');
-        return view("folders/index", ['folders' => $folders, 'tags' => $tags]);
+        return view("bases/galeries/folders/index", ['folders' => $folders, 'tags' => $tags]);
     }
 
     public function create()
     {
         $this->authorize('admin', Folder::class);
 
-        return view("folders/create");
+        return view("bases/galeries/folders/create");
     }
 
     public function store(StoreFolder $request)
@@ -39,15 +39,14 @@ class FolderController extends Controller
     public function show(Folder $folder)
     {
         $this->authorize('show', $folder);
-
-        return view('folders/show', ['pictures'=>$folder->pictures->sortBy('ordre'), 'folder'=>$folder]);
+        return view('bases/galeries/folders/show', ['pictures'=>$folder->pictures->sortBy('ordre'), 'folder'=>$folder]);
     }
 
     public function edit(Folder $folder)
     {
         $this->authorize('admin', $folder);
 
-        return view('folders/edit', ['folder'=>$folder]);
+        return view('bases/galeries/folders/edit', ['folder'=>$folder]);
     }
 
     public function update(Folder $folder, StoreFolder $request)
@@ -83,7 +82,7 @@ class FolderController extends Controller
 
         $folders = Folder::All()->sortBy('ordre');
 
-        return view('folders/ordre', ['folders'=>$folders]);
+        return view('bases/galeries/folders/ordre', ['folders'=>$folders]);
     }
 
     public function ordreUpdate(Folder $folder, StoreOrdreFolders $request) {

@@ -27,11 +27,11 @@
                 </a>
                 @can('admin', $base)
                     <div class="menu-auth">
-                        <a href="{{route('base.edit', $base->id)}}"><button>Modifier</button></a>
+                        <a href="{{route('base.edit', $base->id)}}"><button><i class="far fa-edit"></i></button></a>
                         <form action="{{route('base.destroy', $base->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Supprimer</button>
+                            <button type="submit"><i class="far fa-trash-alt"></i></button>
                         </form>
                     </div>
                 @endcan

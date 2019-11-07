@@ -30,11 +30,11 @@
                     </a>
                     @can('admin', $picture)
                         <div class="menu-auth">
-                            <a href="{{route('folder.picture.edit', [$folder->slug, $picture->slug])}}"><button>Modifier</button></a>
+                            <a href="{{route('folder.picture.edit', [$folder->slug, $picture->slug])}}"><button><i class="far fa-edit"></i></i></button></a>
                             <form action="{{ route('folder.picture.destroy', [$folder->slug, $picture->slug])}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Supprimer</button>
+                                <button type="submit"><i class="far fa-trash-alt"></i></button>
                             </form>
                         </div>
                     @endcan

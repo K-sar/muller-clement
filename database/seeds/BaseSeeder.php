@@ -24,7 +24,7 @@ class BaseSeeder extends Seeder
                         'miniature' => 'e10b2fa06e96f5cfe8dfaea9d73ea82a.jpg',
                         'ordre' => 2,
         ]);
-        Base::create(['name' => 'La Galerie',
+        Base::create(['name' => 'La galerie',
                         'description' => 'Photographe amateur depuis... longtemps. Retrouvez toutes mes photos ici!',
                         'link' => 'folder.index',
                         'miniature' => '',

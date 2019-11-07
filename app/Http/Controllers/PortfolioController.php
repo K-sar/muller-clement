@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Portfolio;
+use App\Base;
 use App\Http\Requests\StorePortfolio;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -12,19 +13,19 @@ class PortfolioController extends Controller
     public function index()
     {
         $portfolios = Portfolio::all();
-        return view("portfolios/index", ['portfolios'=>$portfolios]);
+        return view("bases/portfolios/index", ['portfolios'=>$portfolios]);
     }
 
     public function create()
     {
-        $this->authorize('admin', Portfolio::class);
+        $this->authorize('admin', Base::class);
 
-        return view("portfolios/create");
+        return view("bases/portfolios/create");
     }
 
     public function store(StorePortfolio $request)
     {
-        $this->authorize('admin', Portfolio::class);
+        $this->authorize('admin', Base::class);
 
         if ($request->file('file') !== null) {
             $file = $request->file('file');
@@ -48,19 +49,19 @@ class PortfolioController extends Controller
 
     public function show(Portfolio $portfolio)
     {
-        return view('portfolios/show', ['portfolio'=>$portfolio]);
+        return view('bases/portfolios/show', ['portfolio'=>$portfolio]);
     }
 
     public function edit(Portfolio $portfolio)
     {
-        $this->authorize('admin', $portfolio);
+        $this->authorize('admin', Base::class);
 
-        return view('portfolios/edit', ['portfolio'=>$portfolio]);
+        return view('bases/portfolios/edit', ['portfolio'=>$portfolio]);
     }
 
     public function update(Portfolio $portfolio, StorePortfolio $request)
     {
-        $this->authorize('admin', $portfolio);
+        $this->authorize('admin', Base::class);
 
         if ($request->file('file') !== null){
             $file = $request->file('file');
@@ -87,7 +88,7 @@ class PortfolioController extends Controller
 
     public function destroy(Portfolio $portfolio)
     {
-        $this->authorize('admin', $portfolio);
+        $this->authorize('admin', Base::class);
 
         Storage::delete('/miniatures/portfolio/'.$portfolio->picture);
         Storage::delete('/portfolio/'.$portfolio->picture);
