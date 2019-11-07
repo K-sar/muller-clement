@@ -1,5 +1,10 @@
 @extends ("layouts.layout")
 
+@section('title')
+    <title>Clément Muller - Back-office du CV</title>
+    <meta name="description" content="Back-office du CV"/>
+@endsection
+
 @section("content")
     <div class="flex">
         <div>
@@ -48,6 +53,6 @@
                 </form>
             </div>
         @endforeach
-        <a href="{{route('pdf.create')}}"><button>Ajouter</button></a>
+        <a href="{{route('pdf.create')}}"><button><i class="fas fa-plus"></i></button></a>
     </div>
 @endsection

@@ -1,7 +1,7 @@
 @extends ("layouts.layout")
 
 @section('title')
-    <title>Clément Muller - Galerie - CV - Ajouter une version PDF</title>
+    <title>Clément Muller - CV - Ajouter une version PDF</title>
     <meta name="description" content="Formulaire d'ajout d'une nouvelle version PDF"/>
 @endsection
 

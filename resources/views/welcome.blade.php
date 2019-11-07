@@ -6,25 +6,16 @@
 @endsection
 
 @section("content")
-    @can('admin', App\Base::class)
-        <p>
-            <a href="{{route('base.create')}}"><button>Ajouter une entrée</button></a>
-        </p>
-    @endcan
-    <div id="menu">
+    <div id="menu" class="relative">
+        @can('admin', App\Base::class)
+            <div class="menu-auth">
+                <p>
+                    <a href="{{route('base.create')}}"><button><i class="fas fa-folder-plus"></i></button></a>
+                </p>
+            </div>
+        @endcan
         @foreach ($bases as $base)
-            <div class="miniature">
-                <a href="{{route($base->link)}}">
-                    <div class="button">
-                        <div class="fond descriptionFond">
-                            <img src="/storage/miniatures/base/{{$base->miniature}}" alt="miniature de {{$base->name}}"/>
-                            <figure class="description"><p>{{$base->description}}</p></figure>
-                        </div>
-                        <h2>
-                            {{$base->name}}
-                        </h2>
-                    </div>
-                </a>
+            <div class="miniature relative">
                 @can('admin', $base)
                     <div class="menu-auth">
                         <a href="{{route('base.edit', $base->id)}}"><button><i class="far fa-edit"></i></button></a>
@@ -35,6 +26,18 @@
                         </form>
                     </div>
                 @endcan
+                <a href="{{route($base->link)}}">
+                    <div class="button">
+
+                        <div class="fond descriptionFond">
+                            <img src="/storage/miniatures/base/{{$base->miniature}}" alt="miniature de {{$base->name}}"/>
+                            <figure class="description"><p>{{$base->description}}</p></figure>
+                        </div>
+                        <h2>
+                            {{$base->name}}
+                        </h2>
+                    </div>
+                </a>
             </div>
         @endforeach
     </div><!--menu-->

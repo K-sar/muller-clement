@@ -7,27 +7,19 @@
 
 @section("content")
     <h2>{{$folder->name}}</h2>
-    @can('admin', App\Folder::class)
-        <p>
-            <a href="{{route('folder.picture.create', $folder->slug)}}"><button>Ajouter une photo</button></a>
-            <a href="{{route('picture.ordre', $folder->slug)}}"><button>Editer l'ordre</button></a>
-            <a href="{{route('picture.slider', $folder->slug)}}"><button>Editer le slider</button></a>
-        </p>
-    @endcan
-    <div id="menu">
+    <div id="menu" class="relative">
+        @can('admin', App\Folder::class)
+            <div class="menu-auth">
+                <p>
+                    <a href="{{route('folder.picture.create', $folder->slug)}}"><button><i class="far fa-images"></i></button></a>
+                    <a href="{{route('picture.ordre', $folder->slug)}}"><button><i class="fas fa-sort"></i></button></a>
+                    <a href="{{route('picture.slider', $folder->slug)}}"><button><i class="fas fa-sliders-h"></i></button></a>
+                </p>
+            </div>
+        @endcan
         @foreach ($pictures as $picture)
             @can('show', $picture)
-                <div class="miniature photo">
-                    <a href="{{route('folder.picture.show',[$folder->slug, $picture->slug])}}">
-                        <div class="button photo">
-                            <div class="fond photo">
-                                <img src="/storage/miniatures/pictures/{{$picture->link}}" alt="{{$picture->alternative}}"/>
-                            </div>
-                            <h2>
-                                {{$picture->name}}
-                            </h2>
-                        </div>
-                    </a>
+                <div class="miniature photo relative">
                     @can('admin', $picture)
                         <div class="menu-auth">
                             <a href="{{route('folder.picture.edit', [$folder->slug, $picture->slug])}}"><button><i class="far fa-edit"></i></i></button></a>
@@ -38,6 +30,16 @@
                             </form>
                         </div>
                     @endcan
+                    <a href="{{route('folder.picture.show',[$folder->slug, $picture->slug])}}">
+                        <div class="button photo">
+                            <div class="fond photo">
+                                <img src="/storage/miniatures/pictures/{{$picture->link}}" alt="{{$picture->alternative}}"/>
+                            </div>
+                            <h2>
+                                {{$picture->name}}
+                            </h2>
+                        </div>
+                    </a>
                 </div>
             @endcan
         @endforeach

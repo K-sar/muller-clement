@@ -9,18 +9,31 @@
 
 <h2>La Galerie Photo</h2>
 
-@can('admin', App\Folder::class)
-    <p>
-        <a href="{{route('folder.create')}}"><button>Ajouter un dossier</button></a>
-        <a href="{{route('folder.ordre')}}"><button>Editer l'ordre</button></a>
-        <a href="{{route('FTP')}}"><button>Photos ajoutées via le FTP</button></a>
-    </p>
-@endcan
 
-<div id="menu">
+
+<div id="menu" class="relative">
+    @can('admin', App\Folder::class)
+        <div class="menu-auth">
+            <p>
+                <a href="{{route('folder.create')}}"><button><i class="fas fa-folder-plus"></i></button></a>
+                <a href="{{route('folder.ordre')}}"><button><i class="fas fa-sort"></i></button></a>
+                <a href="{{route('FTP')}}"><button>FTP</button></a>
+            </p>
+        </div>
+    @endcan
     @foreach ($folders as $folder)
         @can('show', $folder)
-            <div class="miniature">
+            <div class="miniature relative">
+                @can('admin', $folder)
+                    <div class="menu-auth">
+                        <a href="{{route('folder.edit', $folder->slug)}}"><button><i class="far fa-edit"></i></i></button></a>
+                        <form action="{{route('folder.destroy', $folder->slug)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </div>
+                @endcan
                 <a href="{{route('folder.show', $folder->slug)}}">
                     <div class="button">
                         <div class="fond">
@@ -44,16 +57,6 @@
                         </h2>
                     </div>
                 </a>
-                @can('admin', $folder)
-                    <div class="menu-auth">
-                        <a href="{{route('folder.edit', $folder->slug)}}"><button><i class="far fa-edit"></i></i></button></a>
-                        <form action="{{route('folder.destroy', $folder->slug)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"><i class="far fa-trash-alt"></i></button>
-                        </form>
-                    </div>
-                @endcan
             </div>
         @endcan
     @endforeach
