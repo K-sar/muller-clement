@@ -11,11 +11,11 @@
             <h2>Expériences :</h2>
             @foreach($xps as $xp)
                 <div class="miniature CV">
-                    <div class="button relative">
+                    <div class="button relative @if(!$xp->publish) bc-grey @endif">
                         <h3>{{$xp->title}}</h3>
                         <p class="mg-5">{{$xp->content}}</p>
-                        <p class="mg-5">De : {{$xp->from}} à {{$xp->to}}</p>
                         <a href="{{$xp->link}}" class="mg-5 link">{{$xp->link}}</a>
+                        <p class="mg-5">{{$xp->year}}, de {{$xp->from}} à {{$xp->to}}</p>
                         <div class="flex mg-5">
                             <a href="{{route('xp.edit', $xp->id)}}"><button><i class="far fa-edit"></i></button></a>
                             <form action="{{route('xp.delete', $xp->id)}}" method="post">
@@ -33,11 +33,11 @@
             <h2>Formations :</h2>
             @foreach($formations as $formation)
                 <div class="miniature CV">
-                    <div class="button relative">
+                    <div class="button relative @if(!$formation->publish) bc-grey @endif">
                         <h3>{{$formation->title}}</h3>
                         <p class="mg-5">{{$formation->content}}</p>
-                        <p class="mg-5">De : {{$formation->from}} à {{$formation->to}}</p>
                         <a href="{{$formation->link}}" class="mg-5 link">{{$formation->link}}</a>
+                        <p class="mg-5">{{$formation->year}}, de {{$formation->from}} à {{$formation->to}}</p>
                         <div class="flex mg-5">
                             <a href="{{route('xp.edit', $formation->id)}}"><button><i class="far fa-edit"></i></button></a>
                             <form action="{{route('xp.delete', $formation->id)}}" method="post">

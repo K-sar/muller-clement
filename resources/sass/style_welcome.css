@@ -340,8 +340,24 @@ button:focus, input[type="submit"]:focus {
     text-decoration: underline;
 }
 
-.mg-5 {
-    margin: 5px;
+.mg-r-20 {
+    margin-right: 20px;
+}
+
+.mg-l-0 {
+    margin-left: 0;
+}
+
+.wd-15 {
+    width:15px;
+}
+
+.wd-125 {
+    width: 125px;
+}
+
+.bc-grey {
+    background-color: lightgrey;
 }
 
 .CV {

@@ -17,10 +17,12 @@ class CreateXpsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('title');
-            $table->string('content');
-            $table->string('from');
-            $table->string('to');
+            $table->string('content')->nullable();
             $table->string('link')->nullable();
+            $table->string('from')->nullable();
+            $table->string('to')->nullable();
+            $table->string('year');
+            $table->unsignedSmallInteger('publish')->nullable();
             $table->timestamps();
         });
     }

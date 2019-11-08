@@ -21,6 +21,38 @@ header {
             transform: translateY(80px);
 }
 
+#bloc_page {
+    padding: 0;
+}
+
+#header-CV {
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: solid red 3px;
+}
+#header-CV-div {
+    width: 90%;
+    padding: 5%;
+    background-color: #2e7d32;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: end;
+            justify-content: flex-end;
+}
+
+#header-CV h1, h2 {
+    color: white;
+}
+
+#header-CV h1 {
+    text-align: center;
+    font-size: 3em;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    border-top: solid 2px rgba(255,255,255, 0.5);
+    border-bottom: solid 2px rgba(255,255,255, 0.5);
+}
+
 @media (max-width: 768px) {
 
     header {

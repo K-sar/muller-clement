@@ -17,5 +17,17 @@
 @endsection
 
 @section("content")
+    <div id="header-CV">
+        <div id="header-CV-div">
+            <div>
+                <h1>
+                    CLEMENT MULLER
+                </h1>
+                <h2>
+                    Développeur Web || Full Stack
+                </h2>
+            </div>
+        </div>
 
+    </div>
 @endsection

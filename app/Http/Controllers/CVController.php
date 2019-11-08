@@ -17,8 +17,8 @@ class CVController extends Controller
 
     public function backOffice() {
         $this->authorize('admin', Base::class);
-        $xps = Xp::get()->where('type', '=', 'expérience')->sortBy('id');
-        $formations = Xp::get()->where('type', '=', 'formation')->sortBy('id');
+        $xps = Xp::get()->where('type', '=', 'expérience')->sortByDesc('year');
+        $formations = Xp::get()->where('type', '=', 'formation')->sortByDesc('year');
         $pdfs = PDF::all()->sortByDesc('date');
         return view('bases/CV/backoffice',['xps'=>$xps,'formations'=>$formations, 'PDFs'=>$pdfs]);
     }
@@ -53,9 +53,15 @@ class CVController extends Controller
         $xp->type = $request->get('type');
         $xp->title = $request->get('title');
         $xp->content = $request->get('content');
+        $xp->link = $request->get('link');
         $xp->from = $request->get('from');
         $xp->to = $request->get('to');
-        $xp->link = $request->get('link');
+        $xp->year = $request->get('year');
+        if ($request->get('publish')) {
+            $xp->publish = 1;
+        } else {
+            $xp->publish = 0;
+        }
 
         $xp->save();
 

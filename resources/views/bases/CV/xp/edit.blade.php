@@ -36,16 +36,26 @@
             <input type="text" name="content" value="{{old("content")?:$xp->content}}" />
         </div>
         <div>
-            <label>De :</label>
-            <input type="text" name="from" value="{{old("from")?:$xp->from}}" />
-        </div>
-        <div>
-            <label>A :</label>
-            <input type="text" name="to" value="{{old("to")?:$xp->to}}" />
-        </div>
-        <div>
             <label>Lien :</label>
             <input type="text" name="link" value="{{old("link")?:$xp->link}}" />
+        </div>
+        <div class="flex">
+            <div class="wd-125 mg-l-0 mg-r-20">
+                <label >De :</label>
+                <input type="text" name="from" value="{{old("from")?:$xp->from}}" />
+            </div>
+            <div class="wd-125 mg-l-0 mg-r-20">
+                <label >A :</label>
+                <input type="text" name="to" value="{{old("to")?:$xp->to}}" />
+            </div>
+            <div class="wd-125 mg-l-0 mg-r-20">
+                <label >Année :</label>
+                <input type="text" name="year" value="{{old("year")?:$xp->year}}" />
+            </div>
+            <div class="wd-125 mg-l-0 mg-r-20">
+                <label >Public </label>
+                <input type="checkbox" name="publish" value="1" @if (old("publish")||(!old()&&$xp->publish)) checked @endif class="wd-15 mg-l-0"/>
+            </div>
         </div>
         <div>
             <input type="submit" />
