@@ -9,16 +9,16 @@
     <h2>Toutes les photos non triées </h2>
     <div id="menu">
         @foreach ($FTPs as $FTP)
-                <div class="miniature photo">
-                        <div class="button photo">
-                            <div class="fond photo">
-                                <img src="/storage/pictures/{{$FTP}}" alt="bug"/>
-                            </div>
+                <div class="miniature photo relative">
+                    <div class="menu-auth">
+                        <a href="{{route('FTPAdd', [$FTP])}}"><button><i class="fas fa-plus"></i></button></a>
+                        <a href="{{route('FTPDelete', [$FTP])}}"><button><i class="far fa-trash-alt"></i></button></a>
+                    </div>
+                    <div class="button photo">
+                        <div class="fond photo">
+                            <img src="/storage/pictures/{{$FTP}}" alt="bug"/>
                         </div>
-                </div>
-                <div class="menu-auth">
-                    <a href="{{route('FTPAdd', [$FTP])}}"><button>Ajouter</button></a>
-                    <a href="{{route('FTPDelete', [$FTP])}}"><button>Supprimer</button></a>
+                    </div>
                 </div>
         @endforeach
     </div>

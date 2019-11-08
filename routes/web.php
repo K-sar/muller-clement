@@ -18,20 +18,13 @@ Route::resource('/base', 'BaseController');
 //----------------------------------------------------------------------------------------------------------------------CV
 Route::get('/CV', 'CVController@CV')->name('CV');
 Route::get('/CV/backoffice', 'CVController@backOffice')->name('CV.backoffice');
-//--------------------------------------------------------------------------------------------------------------------XP
-Route::get('/CV/Xp/create', 'CVController@createXp')->name('Xp.create');
-Route::post('/CV/Xp', 'CVController@storeXp')->name('Xp.store');
-Route::get('/CV/Xp/show', 'CVController@showXp')->name('Xp.show');
-Route::get('/CV/Xp/{xp}/edit', 'CVController@editXp')->name('Xp.edit');
-Route::post('/CV/Xp/{xp}', 'CVController@updateXp')->name('Xp.update');
-Route::get('/CV/Xp/{xp}', 'CVController@deleteXp')->name('Xp.delete');
-//-------------------------------------------------------------------------------------------------------------Formation
-Route::get('/CV/formation/create', 'CVController@createXp')->name('formation.create');
-Route::post('/CV/formation', 'CVController@storeXp')->name('formation.store');
-Route::get('/CV/formation/show', 'CVController@showXp')->name('formation.show');
-Route::get('/CV/formation/{formation}/edit', 'CVController@editXp')->name('formation.edit');
-Route::post('/CV/formation/{formation}', 'CVController@updateXp')->name('formation.update');
-Route::get('/CV/formation/{formation}', 'CVController@deleteXp')->name('formation.delete');
+//--------------------------------------------------------------------------------------------------------------------Xp
+Route::get('/CV/xp/create/{type}', 'CVController@createXp')->name('xp.create');
+Route::post('/CV/xp', 'CVController@storeXp')->name('xp.store');
+Route::get('/CV/xp/show', 'CVController@showXp')->name('xp.show');
+Route::get('/CV/xp/{xp}/edit', 'CVController@editXp')->name('xp.edit');
+Route::post('/CV/xp/{xp}', 'CVController@updateXp')->name('xp.update');
+Route::delete('/CV/xp/{xp}', 'CVController@deleteXp')->name('xp.delete');
 //-------------------------------------------------------------------------------------------------------------------PDF
 Route::get('/CV/PDF/create', 'CVController@createPdf')->name('pdf.create');
 Route::post('/CV/PDF', 'CVController@storePdf')->name('pdf.store');

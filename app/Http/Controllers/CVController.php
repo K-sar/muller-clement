@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Xp;
-use App\Formation;
+use App\Http\Requests\StoreXp;
 use App\Pdf;
 use App\Base;
 use Illuminate\Support\Facades\Storage;
@@ -17,58 +17,66 @@ class CVController extends Controller
 
     public function backOffice() {
         $this->authorize('admin', Base::class);
-        $xps = Xp::all()->sortBy('date');
-        $formations = Formation::all()->sortBy('date');
+        $xps = Xp::get()->where('type', '=', 'expérience')->sortBy('id');
+        $formations = Xp::get()->where('type', '=', 'formation')->sortBy('id');
         $pdfs = PDF::all()->sortByDesc('date');
         return view('bases/CV/backoffice',['xps'=>$xps,'formations'=>$formations, 'PDFs'=>$pdfs]);
     }
 
 //----------------------------------------------------------------------------------------------------------------------Xp
-    public function createXp() {
+    public function createXp($type) {
         $this->authorize('admin', Base::class);
 
-        return view("bases/CV/createXp");
+        return view("bases/CV/xp/create", ['type'=>$type]);
     }
 
-    public function storeXp() {
-        $this->authorize('admin', Base::class);
-    }
-
-    public function editXp($xp) {
-        $this->authorize('admin', Base::class);
-    }
-
-    public function updateXp($xp) {
-        $this->authorize('admin', Base::class);
-    }
-
-    public function deleteXp($xp) {
-        $this->authorize('admin', Base::class);
-    }
-
-//----------------------------------------------------------------------------------------------------------------------Formations
-    public function createFormation() {
+    public function storeXp(StoreXp $request) {
         $this->authorize('admin', Base::class);
 
-        return view("bases/CV/createFormation");
+        $validated = $request->validated();
+        $xp=Xp::create($request->all());
+
+        return redirect(route('CV.backoffice'))->with('status', 'Nouvelle '.$xp->type.' ajoutée');
     }
 
-    public function storeFormation() {
+    public function editXp(Xp $xp) {
         $this->authorize('admin', Base::class);
+
+        return view('bases/CV/xp/edit', ['xp'=>$xp]);
     }
 
-    public function editFormation($formation) {
+    public function updateXp(Xp $xp, StoreXp $request) {
         $this->authorize('admin', Base::class);
+
+        $validated = $request->validated();
+
+        $xp->type = $request->get('type');
+        $xp->title = $request->get('title');
+        $xp->content = $request->get('content');
+        $xp->from = $request->get('from');
+        $xp->to = $request->get('to');
+        $xp->link = $request->get('link');
+
+        $xp->save();
+
+        $type = 'L\'expérience';
+        if ($xp->type == 'formation') {
+            $type = 'La formation';
+        }
+        return redirect()-> route('CV.backoffice')->with('status', $type.' a bien été mise à jour');
     }
 
-    public function updateFormation($formation) {
+    public function deleteXp(Xp $xp) {
         $this->authorize('admin', Base::class);
-    }
 
-    public function deleteFormation($formation) {
-        $this->authorize('admin', Base::class);
-    }
+        $type = 'L\'expérience';
+        if ($xp->type == 'formation') {
+            $type = 'La formation';
+        }
+        $xp->delete();
 
+        return redirect()-> route('CV.backoffice')->with('status', $type.' a bien été supprimée');
+    }
 
 //----------------------------------------------------------------------------------------------------------------------PDF
     public function createPdf() {
@@ -103,7 +111,6 @@ class CVController extends Controller
     }
 
     public function updatePdf(Pdf $pdf, Request $request) {
-
         $this->authorize('admin', Base::class);
 
         $oldLink = $pdf->link;
@@ -123,5 +130,7 @@ class CVController extends Controller
         $this->authorize('admin', Base::class);
         Storage::delete('/CV/'.$pdf->link);
         $pdf->delete();
+
+        return redirect()-> route('CV.backoffice')->with('status', 'Le PDF a bien été supprimé');
     }
 }

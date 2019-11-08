@@ -15,11 +15,12 @@ class CreateXpsTable extends Migration
     {
         Schema::create('xps', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
             $table->string('title');
             $table->string('content');
             $table->string('from');
             $table->string('to');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

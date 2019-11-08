@@ -145,6 +145,7 @@ input[type="submit"]{
 }
 
 button, input[type="submit"] {
+    min-width: 50px;
     cursor:pointer;
     border : none;
     margin : 2px;
@@ -164,16 +165,14 @@ button:focus, input[type="submit"]:focus {
     background-color: #bbb;
 }
 
-.miniature
-{
+.miniature {
     width: 300px;
     height: auto;
     margin: 30px 20px 10px 20px;
 }
 
 
-.button
-{
+.button {
     margin: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25), 0 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -181,8 +180,7 @@ button:focus, input[type="submit"]:focus {
     height: auto;
 }
 
-.fond
-{
+.fond {
     border-radius: 10px 10px 0 0;
 
     height: 200px;
@@ -313,10 +311,50 @@ button:focus, input[type="submit"]:focus {
 
 .flex {
     display: flex;
+    flex-wrap: wrap;
+}
+
+.center {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.space-around {
+    justify-content: space-around;
 }
 
 .relative {
     position: relative;
+}
+
+.link {
+    min-width: 300px;
+    margin: 3px 0 15px 0;
+    text-decoration: underline;
+}
+
+.mg-5 {
+    margin: 5px;
+}
+
+.CV {
+    width: 400px;
+}
+
+.CV .button {
+    width: 94%;
+    padding: 3%;
+}
+
+.CV h3 {
+    margin: 10px;
 }
 
 /*-------------------------------------------------------------------------------------------------------Slider photos*/
@@ -491,6 +529,10 @@ textarea {
     .box {
         width: 100%;
         padding: 10px 0 10px 0;
+    }
+
+    .CV {
+        width: 300px;
     }
 
 }

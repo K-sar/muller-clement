@@ -11,9 +11,9 @@
         @can('admin', App\Folder::class)
             <div class="menu-auth">
                 <p>
-                    <a href="{{route('folder.picture.create', $folder->slug)}}"><button><i class="far fa-images"></i></button></a>
+                    <a href="{{route('folder.picture.create', $folder->slug)}}"><button><i class="fas fa-plus"></i></button></a>
                     <a href="{{route('picture.ordre', $folder->slug)}}"><button><i class="fas fa-sort"></i></button></a>
-                    <a href="{{route('picture.slider', $folder->slug)}}"><button><i class="fas fa-sliders-h"></i></button></a>
+                    <a href="{{route('picture.slider', $folder->slug)}}"><button><i class="far fa-images"></i></button></a>
                 </p>
             </div>
         @endcan
