@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Xp;
 use App\Http\Requests\StoreXp;
+use Illuminate\Http\Request;
 use App\Pdf;
 use App\Base;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Storage;
 class CVController extends Controller
 {
     public function CV() {
-        return view('bases/CV/CV');
+        $xps = Xp::get()->where('publish', '=', '1')->sortByDesc("year");
+        $pdf = Pdf::all()->sortByDesc('date')->first();
+
+        return view('bases/CV/CV', ['xps'=>$xps, 'pdf'=>$pdf]);
     }
 
     public function backOffice() {
@@ -102,12 +106,6 @@ class CVController extends Controller
         $pdf=Pdf::create($request->all());
 
         return redirect(route('CV.backoffice'))->with('status', 'Nouveau PDF ajouté');
-    }
-
-    public function showPdf() {
-        $pdf = Pdf::all()->sortByDesc('date')->first();
-
-        return redirect('storage/CV/'.$pdf->link);
     }
 
     public function editPdf(Pdf $pdf) {

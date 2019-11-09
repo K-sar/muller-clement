@@ -32,6 +32,7 @@
                 <a href="/">
                     <h1 id="ClementMuller">Clément Muller</h1>
                 </a>
+                @yield('nav-ext')
                 <div class="nav">
                     <div class="responsiveNav"><i class="fas fa-bars"></i></div>
                     <nav>

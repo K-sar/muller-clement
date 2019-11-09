@@ -21,14 +21,12 @@ Route::get('/CV/backoffice', 'CVController@backOffice')->name('CV.backoffice');
 //--------------------------------------------------------------------------------------------------------------------Xp
 Route::get('/CV/xp/create/{type}', 'CVController@createXp')->name('xp.create');
 Route::post('/CV/xp', 'CVController@storeXp')->name('xp.store');
-Route::get('/CV/xp/show', 'CVController@showXp')->name('xp.show');
 Route::get('/CV/xp/{xp}/edit', 'CVController@editXp')->name('xp.edit');
 Route::post('/CV/xp/{xp}', 'CVController@updateXp')->name('xp.update');
 Route::delete('/CV/xp/{xp}', 'CVController@deleteXp')->name('xp.delete');
 //-------------------------------------------------------------------------------------------------------------------PDF
 Route::get('/CV/PDF/create', 'CVController@createPdf')->name('pdf.create');
 Route::post('/CV/PDF', 'CVController@storePdf')->name('pdf.store');
-Route::get('/CV/PDF/show', 'CVController@showPdf')->name('pdf.show');
 Route::get('/CV/PDF/{pdf}/edit', 'CVController@editPdf')->name('pdf.edit');
 Route::post('/CV/PDF/{pdf}', 'CVController@updatePdf')->name('pdf.update');
 Route::delete('/CV/PDF/{pdf}', 'CVController@deletePdf')->name('pdf.delete');

@@ -31,6 +31,7 @@ header {
             justify-content: space-between;
     -webkit-box-align: center;
             align-items: center;
+    white-space: nowrap;
     background-color: #2e7d32;
     position: fixed;
     top: 0;
@@ -42,6 +43,7 @@ header {
 #ClementMuller {
     margin: 12px 15px 15px 25px;
     color: white;
+    font-weight: normal;
 }
 
 nav {
@@ -52,8 +54,7 @@ nav {
     display: none;
 }
 
-nav div
-{
+nav div {
     display: inline-block;
     margin: 0 15px 0 15px;
     color: white;
@@ -64,9 +65,9 @@ nav div a {
     color: white;
 }
 
-nav h3
-{
+nav h3 {
     margin:0;
+    font-weight: normal;
 }
 
 
