@@ -19,7 +19,7 @@ Route::resource('/base', 'BaseController');
 Route::get('/CV', 'CVController@CV')->name('CV');
 Route::get('/CV/backoffice', 'CVController@backOffice')->name('CV.backoffice');
 //--------------------------------------------------------------------------------------------------------------------Xp
-Route::get('/CV/xp/create/{type}', 'CVController@createXp')->name('xp.create');
+Route::get('/CV/xp/create', 'CVController@createXp')->name('xp.create');
 Route::post('/CV/xp', 'CVController@storeXp')->name('xp.store');
 Route::get('/CV/xp/{xp}/edit', 'CVController@editXp')->name('xp.edit');
 Route::post('/CV/xp/{xp}', 'CVController@updateXp')->name('xp.update');

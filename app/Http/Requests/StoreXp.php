@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreXp extends FormRequest
 {
@@ -25,12 +24,11 @@ class StoreXp extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
-            'content' => 'max:255',
-            'link' => 'max:255',
-            'from' => 'max:255',
-            'to' => 'max:255',
             'year' => 'required|max:255',
+            'exp_title' => 'max:255',
+            'exp_link' => 'max:255',
+            'for_title' => 'max:255',
+            'for_link' => 'max:255',
         ];
     }
 }

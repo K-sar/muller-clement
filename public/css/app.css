@@ -1,15 +1,35 @@
 @font-face {
-    font-family: 'segeoui';
-    src: url('/font/segeoui.ttf') format('truetype');
+    font-family: 'Segeo_UI';
+    src: url('/font/Segoe_UI.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Segeo_UI';
+    src: url('/font/Segoe_UI_Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Segeo_UI';
+    src: url('/font/Segoe_UI_Bold_Italic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Segeo_UI';
+    src: url('/font/Segoe_UI_Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
 }
 
 @font-face {
     font-family: 'open_sansregular';
     src: url('/font/OpenSans-Regular-webfont.eot');
     src: url('/font/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/font/OpenSans-Regular-webfont.woff2') format('woff2'),
     url('/font/OpenSans-Regular-webfont.woff') format('woff'),
     url('/font/OpenSans-Regular-webfont.ttf') format('truetype'),
     url('/font/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
@@ -18,7 +38,7 @@
 }
 
 body {
-    font-family: segeoui, open_sansregular, Arial, Verdana, sans-serif;
+    font-family: Segeo_Ui, open_sansregular, Arial, Verdana, sans-serif;
     color: #111;
     background-color: #333;
     margin:0;
@@ -199,7 +219,7 @@ button:focus, input[type="submit"]:focus {
     height: 200px;
     width: 100%;
     position: relative;
-    top: 0px;
+    top: 0;
     z-index: 2;
     display: -webkit-box;
     display: flex;
@@ -337,6 +357,19 @@ button:focus, input[type="submit"]:focus {
     font-size: 1.75em;
 }
 
+.CV {
+    min-width: auto;
+}
+
+.CV .button {
+    width: 94%;
+    padding: 3%;
+}
+
+.CV h3 {
+    margin: 10px;
+}
+
 .flex {
     display: -webkit-box;
     display: flex;
@@ -365,6 +398,11 @@ button:focus, input[type="submit"]:focus {
     justify-content: space-around;
 }
 
+.space-between {
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+}
+
 .relative {
     position: relative;
 }
@@ -383,6 +421,14 @@ button:focus, input[type="submit"]:focus {
     margin-left: 0;
 }
 
+.mg-b-5 {
+    margin-bottom: 5px;
+}
+
+.mg-b-25 {
+    margin-bottom: 25px;
+}
+
 .wd-15 {
     width:15px;
 }
@@ -391,27 +437,23 @@ button:focus, input[type="submit"]:focus {
     width: 125px;
 }
 
+.wd-255 {
+    width: 255px;
+}
+
 .bc-grey {
     background-color: lightgrey;
 }
 
-.CV {
-    width: 400px;
+.italic {
+    font-style: italic;
 }
 
-.CV .button {
-    width: 94%;
-    padding: 3%;
-}
-
-.CV h3 {
-    margin: 10px;
-}
 
 /*-------------------------------------------------------------------------------------------------------Slider photos*/
 @-webkit-keyframes slidy
 {
-    0% { left: 0%; }
+    0% { left: 0; }
 
     10% { left: -100%; }
     20% { left: -100%; }
@@ -430,7 +472,7 @@ button:focus, input[type="submit"]:focus {
 }
 @keyframes slidy
 {
-    0% { left: 0%; }
+    0% { left: 0; }
 
     10% { left: -100%; }
     20% { left: -100%; }

@@ -55,29 +55,37 @@ nav div {
     margin-left: 20px;
 }
 
+/*----------------------------------------------------------------------------------------------------------------------Bloc_page*/
 #bloc_page {
-    padding: 50px 0 0 0;
+    padding: 61px 0 0 0;
     position: relative;
 }
 
 #bloc_page::before {
     content: " ";
-    background-color: darkgreen;
+    background-color: #2e7d32;
     position: absolute;
     top: 0;
     z-index: 1;
     width: 100%;
-    height: 300px;
+    height: 325px;
 }
 
-#bloc_page::after {
+#bloc_page::after, #footer-CV::after {
     content: " ";
-    background-color: red;
+    background-color: #bd3c39;
     position: absolute;
-    top: 315px;
     z-index: 5;
     width: 100%;
     height: 3px;
+}
+
+#bloc_page::after {
+    top: 339px;
+}
+
+#bloc_page a {
+    color: white;
 }
 
 #bloc_page a:hover {
@@ -91,50 +99,60 @@ nav div {
     align-items: flex-end;
 }
 
+
+/*----------------------------------------------------------------------------------------------------------------------Column*/
 #column-responsive {
     display: none;
 }
 
 #column-container {
-    margin: 0 0 30px 30px;
+    margin: 0 0 47px 47px;
     position: relative;
     z-index: 10;
 }
 
 #column {
-    background-color: forestgreen;
-    width: 300px;
+    background-color: #4caf50;
+    width: 309px;
     color: white;
     padding-top: 20px;
     box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.25);
+}
+#first-column-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #Photo-CV {
     display: flex;
     justify-content: center;
+    padding: 7px 3px 25px 3px;
 }
 
 #Photo-CV a {
-    width: 250px;
-    height: 250px;
+    width: 239px;
+    height: 239px;
+    background-color: white;
     border: 5px solid white;
     border-radius: 50%;
     overflow: hidden;
 }
 
 img {
-    width: 250px;
+    width: 239px;
     height: auto;
 }
 
 .column-title {
-    min-width: 260px;
+    min-width: 255px;
     text-align: left;
-    padding : 10px 20px 10px 20px;
-    background-color: green;
+    padding : 4px 27px 7px 27px;
+    background-color: #388e3c;
 }
 
 .column-title h2 {
+    font-size: 1.7em;
     text-align: left;
     color: white;
     font-weight: normal;
@@ -142,95 +160,85 @@ img {
 }
 
 .column-content {
-    min-width: 260px;
-    padding : 0 20px 20px 20px;
+    min-width: 255px;
+    padding : 3px 27px 41px 27px;
     text-align: justify;
 }
 
-.column-content a {
-    color: white;
+.column-content p {
+    line-height: 25px;
+    font-size: 1.22em;
+    padding-bottom: 4px;
 }
 
-.column-content h3 {
-    margin: 0;
-    font-weight: normal;
+.small {
+    padding-bottom: 3px !important;
 }
 
-.column-content div p {
-    font-size: 0.9em;
+.small p {
+    padding-bottom: 3px;
 }
 
+.small p + p {
+    line-height: 20px;
+    font-size: 0.92em;
+}
 
-.column-content div {
+.atouts {
     position: relative;
-    padding: 10px 0 10px 0;
+    padding: 9px 0 2px 0;
+}
+
+.atouts::after, .atouts::before {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    border-radius: 2px;
 }
 
 .atouts::after {
-    content: " ";
-    background-color: limegreen;
-    position: absolute;
-    bottom: 0;
+    background-color: #a5d6a7;
     z-index: 10;
-    width: 100%;
-    height: 5px;
+    width: 90%;
+    right: 0;
+}
+
+.atouts::before {
+    background-color: #388e3c;
+    z-index: 20;
+    left: 0;
 }
 
 #english::before {
-    content: " ";
-    background-color: green;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
     width: 90%;
-    height: 5px;
 }
 
 #teamwork::before {
-    content: " ";
-    background-color: green;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
     width: 75%;
-    height: 5px;
 }
 
 #computer::before {
-    content: " ";
-    background-color: green;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
     width: 90%;
-    height: 5px;
 }
 
 #creativity::before {
-    content: " ";
-    background-color: green;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
     width: 75%;
-    height: 5px;
 }
 
 #pedagogy::before {
-    content: " ";
-    background-color: green;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
     width: 60%;
-    height: 5px;
 }
 
+#english {
+    padding-top: 6px;
+}
+
+#pedagogy {
+    margin-bottom: 9px;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------Resume*/
 #resume {
     flex: 1;
     position: relative;
@@ -238,35 +246,43 @@ img {
     padding: 0 30px 0 30px;
 }
 
+/*--------------------------------------------------------------------------------------------------------------Header*/
 #header-CV {
     display: flex;
-    height: 250px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 264px;
     color: white;
     position: relative;
 }
 
+#header-CV div div {
+    height: 3px;
+    background-color: #a5d6a7;
+    border-radius: 1px;
+}
+
 #header-CV h1 {
-    min-width: 400px;
     color: white;
     font-weight: normal;
     text-align: center;
-    font-size: 3em;
-    padding-bottom: 4px;
-    margin: auto;
-    border-top: solid 2px rgba(255,255,255, 0.5);
-    border-bottom: solid 2px rgba(255,255,255, 0.5);
+    font-size: 3.9em;
+    padding: 3px 0 10px 0;
+    margin: 0;
 }
 
 #header-CV::after {
     content:'Développeur Web || Full Stack';
-    font-size: 1.5em;
+    font-size: 1.7em;
     white-space: nowrap;
     position: absolute;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    bottom: 50px;
+    width: 100%;
+    text-align: center;
+    bottom: 35px;
 }
 
+/*---------------------------------------------------------------------------------------------------------Chronologie*/
 #xp {
     display: flex;
     flex-direction: column;
@@ -283,82 +299,123 @@ img {
 }
 
 .xp-line h3 {
-    margin-bottom: 5px;
+    font-size: 1em;
+    margin-top: 4px;
+    margin-bottom: 2px;
 }
 
-.xp-line p {
-    padding-bottom: 5px;
+.xp-line p, .xp-line a {
+    line-height: 19px;
+    padding-bottom: 3px;
+}
+
+.xp-line a {
+    color: #111 !important;
+}
+
+.experience, .formation {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .experience {
     flex: 3;
     text-align: right;
+    padding-bottom: 6px;
+    height: auto;
+}
+
+.formation{
+    flex: 2;
+    padding-bottom: 6px;
 }
 
 .year {
-    width: 60px;
+    width: 94px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     position: relative;
 }
 
-.year::before {
+.year::before, .xp-sign::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 25px;
-    width: 10px;
+    left: 43px;
+    width: 8px;
     height: 100%;
-    background-color: green;
+    background-color: #c8e6c9;
     z-index: -1;
 }
 
 .year h4 {
-    background-color: forestgreen;
+    height: 22px;
     color: white;
-    font-weight: normal;
-    border: 5px solid white;
-    padding: 0 5px 0 5px;
+    font-weight: bold;
+    background-color: #4caf50;
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+    padding: 2px 5px 2px 5px;
     margin: 0;
+}
+
+.arrow {
+    margin: 5px 0 5px 0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+}
+
+.left-arrow {
+    border-right: 13px solid #4caf50;
+    border-left: 1px solid transparent;
+}
+
+.right-arrow {
+    border-left: 13px solid #4caf50;
+    border-right: 1px solid transparent;
+}
+
+.empty-arrow {
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
 }
 
 .last-line {
     min-height: 50px;
 }
-
-.formation{
-    flex: 2;
-}
-
+/*----------------------------------------------------------------------------------------------------------------------Footer*/
 #footer-CV {
     width: 100%;
-    height: 50px;
+    height: 40px;
     color: white;
-    background-color: darkgreen;
+    background-color: #388e3c;
     display: flex;
     position: relative;
 }
 
 #footer-CV::after {
-    content: " ";
-    background-color: red;
-    position: absolute;
-    top: -15px;
-    z-index: 20;
-    width: 100%;
-    height: 3px;
+    top: -17px;
 }
 
 #footer-CV p {
     margin: auto;
+    font-size: 0.9em;
 }
 
 #footer-CV a {
     color: white;
 }
 
-@media (max-width: 840px) {
+/*----------------------------------------------------------------------------------------------------------------------Back-office*/
+.auth-CV {
+    left: 20px;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------Media Queries*/
+/*---------------------------------------------------------------------------------------------------------------950px*/
+@media (max-width: 950px) {
 
     #resume {
         padding: 0 20px 0 20px;
@@ -386,11 +443,26 @@ img {
         flex: 1;
         width: 100%;
     }
+
+    .column-content {
+        padding-bottom: 0;
+    }
+
+    .quarter-column {
+        height: 368px ;
+        padding-top: 0;
+        padding-bottom: 20px;
+    }
+
+    .column-content:nth-of-type(3) {
+        padding-bottom: 20px;
+    }
 }
 
-@media (max-width: 480px) {
-    #resume {
-        padding: 0 10px 0 10px;
+/*---------------------------------------------------------------------------------------------------------------674px*/
+@media (max-width: 674px) {
+    .quarter-column {
+        height: auto;
     }
 
     #bloc_page::before {
@@ -398,19 +470,49 @@ img {
     }
 
     #bloc_page::after {
-        top: 265px;
+        top: 264px;
     }
 
     #header-CV{
         height: 200px;
     }
 
-    #header-CV h1 {min-width: 200px;
-        font-size: 2.2em;
+    #header-CV h1 {
+        min-width: 200px;
+        font-size: 3em;
+    }
+    #header-CV::after {
+        font-size: 1.4em;
+        bottom: 25px;
+    }
+}
+
+/*---------------------------------------------------------------------------------------------------------------530px*/
+@media (max-width: 530px) {
+    #resume {
+        padding: 0 10px 0 10px;
+    }
+
+    #bloc_page::before {
+        height: 200px;
+    }
+
+    #bloc_page::after {
+        top: 214px;
+    }
+
+    #header-CV{
+        min-width: 309px;
+        height: 139px;
+    }
+
+    #header-CV h1 {
+        font-size: 2em;
+        padding: 0 0 7px 0;
     }
     #header-CV::after {
         font-size: 1.1em;
-        bottom: 40px;
+        bottom: 15px;
     }
 
     #xp {
@@ -423,12 +525,18 @@ img {
     }
 
     #xp-responsive h2 {
+        width: 100%;
         text-align: left;
         color: white;
         font-weight: normal;
-        background-color: green;
+        background-color: #388e3c;
         margin-top: 30px;
-        padding: 5px 15px 5px 15px;
+        padding: 5px 15px 5px 35px;
+        border: 5px solid white;
+    }
+
+    .xp-sign {
+        position: relative;
     }
 
     .experience {

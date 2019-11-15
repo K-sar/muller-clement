@@ -6,16 +6,30 @@
 @endsection
 
 @section("content")
-    <div class="flex space-around">
-        <div class="center column">
-            <h2>Expériences :</h2>
+    <div class="flex column">
+        <h2>Expériences :</h2>
             @foreach($xps as $xp)
                 <div class="miniature CV">
-                    <div class="button relative @if(!$xp->publish) bc-grey @endif">
-                        <h3>{{$xp->title}}</h3>
-                        <p class="mg-5">{{$xp->content}}</p>
-                        <a href="{{$xp->link}}" class="mg-5 link">{{$xp->link}}</a>
-                        <p class="mg-5">{{$xp->year}}, de {{$xp->from}} à {{$xp->to}}</p>
+                    <div class="button CV @if(!$xp->publish) bc-grey @endif">
+                        <div class="flex">
+                            <div class="experience">
+                                @if($xp->exp_title)
+                                    <h3>{!! $xp->exp_title !!}</h3>
+                                    <p>{!! $xp->exp_details_1 !!}</p>
+                                    @if($xp->_exp_details_2) <p>{!! $xp->exp_details_2 !!}</p> @endif
+                                    <p class="italic">{!! $xp->exp_content !!}</p>
+                                @endif
+                            </div>
+                            <div><p>{{$xp->year}}</p></div>
+                            <div class="formation">
+                                @if($xp->for_title)
+                                    <h3>{!! $xp->for_title !!}</h3>
+                                    <p>{!! $xp->for_details_1 !!}</p>
+                                    @if($xp->for_details_2) <p>{!! $xp->for_details_2 !!}</p> @endif
+                                    <p class="italic">{!! $xp->for_content !!}</p>
+                                @endif
+                            </div>
+                        </div>
                         <div class="flex mg-5">
                             <a href="{{route('xp.edit', $xp->id)}}"><button><i class="far fa-edit"></i></button></a>
                             <form action="{{route('xp.delete', $xp->id)}}" method="post">
@@ -27,30 +41,7 @@
                     </div>
                 </div>
             @endforeach
-            <a href="{{route('xp.create', 'expérience')}}"><button><i class="fas fa-plus"></i></button></a>
-        </div>
-        <div class="center column">
-            <h2>Formations :</h2>
-            @foreach($formations as $formation)
-                <div class="miniature CV">
-                    <div class="button relative @if(!$formation->publish) bc-grey @endif">
-                        <h3>{{$formation->title}}</h3>
-                        <p class="mg-5">{{$formation->content}}</p>
-                        <a href="{{$formation->link}}" class="mg-5 link">{{$formation->link}}</a>
-                        <p class="mg-5">{{$formation->year}}, de {{$formation->from}} à {{$formation->to}}</p>
-                        <div class="flex mg-5">
-                            <a href="{{route('xp.edit', $formation->id)}}"><button><i class="far fa-edit"></i></button></a>
-                            <form action="{{route('xp.delete', $formation->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"><i class="far fa-trash-alt"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-                <a href="{{route('xp.create', 'formation')}}"><button><i class="fas fa-plus"></i></button></a>
-        </div>
+        <a href="{{route('xp.create')}}"><button><i class="fas fa-plus"></i></button></a>
     </div>
     <div class="center column">
         <h2>Versions PDF :</h2>

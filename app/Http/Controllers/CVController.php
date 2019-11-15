@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Xp;
+use App\xpYear;
 use App\Http\Requests\StoreXp;
 use Illuminate\Http\Request;
 use App\Pdf;
@@ -13,25 +14,24 @@ use Illuminate\Support\Facades\Storage;
 class CVController extends Controller
 {
     public function CV() {
-        $xps = Xp::get()->where('publish', '=', '1')->sortByDesc("year");
+        $xps = Xp::get()->where('publish', '==', '1')->sortByDesc("year");
         $pdf = Pdf::all()->sortByDesc('date')->first();
 
-        return view('bases/CV/CV', ['xps'=>$xps, 'pdf'=>$pdf]);
+        return view('bases/CV/column', ['xps'=>$xps, 'pdf'=>$pdf, 'backoffice'=>0]);
     }
 
     public function backOffice() {
         $this->authorize('admin', Base::class);
-        $xps = Xp::get()->where('type', '=', 'expérience')->sortByDesc('year');
-        $formations = Xp::get()->where('type', '=', 'formation')->sortByDesc('year');
+        $xps = Xp::all()->sortByDesc('year');
         $pdfs = PDF::all()->sortByDesc('date');
-        return view('bases/CV/backoffice',['xps'=>$xps,'formations'=>$formations, 'PDFs'=>$pdfs]);
+        return view('bases/CV/column',['xps'=>$xps, 'pdf'=>$pdfs->first(),'pdfs'=>$pdfs, 'backoffice'=>1]);
     }
 
 //----------------------------------------------------------------------------------------------------------------------Xp
-    public function createXp($type) {
+    public function createXp() {
         $this->authorize('admin', Base::class);
 
-        return view("bases/CV/xp/create", ['type'=>$type]);
+        return view("bases/CV/xp/create");
     }
 
     public function storeXp(StoreXp $request) {
@@ -54,19 +54,22 @@ class CVController extends Controller
 
         $validated = $request->validated();
 
-        $xp->type = $request->get('type');
-        $xp->title = $request->get('title');
-        $xp->content = $request->get('content');
-        $xp->link = $request->get('link');
-        $xp->from = $request->get('from');
-        $xp->to = $request->get('to');
         $xp->year = $request->get('year');
         if ($request->get('publish')) {
             $xp->publish = 1;
         } else {
             $xp->publish = 0;
         }
-
+        $xp->exp_title = $request->get('exp_title');
+        $xp->exp_details_1 = $request->get('exp_details_1');
+        $xp->exp_details_2 = $request->get('exp_details_2');
+        $xp->exp_content = $request->get('exp_content');
+        $xp->exp_link = $request->get('exp_link');
+        $xp->for_title = $request->get('for_title');
+        $xp->for_details_1 = $request->get('for_details_1');
+        $xp->for_details_2 = $request->get('for_details_2');
+        $xp->for_content = $request->get('for_content');
+        $xp->for_link = $request->get('for_link');
         $xp->save();
 
         $type = 'L\'expérience';

@@ -15,14 +15,18 @@ class CreateXpsTable extends Migration
     {
         Schema::create('xps', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
-            $table->string('title');
-            $table->string('content')->nullable();
-            $table->string('link')->nullable();
-            $table->string('from')->nullable();
-            $table->string('to')->nullable();
-            $table->string('year');
             $table->unsignedSmallInteger('publish')->nullable();
+            $table->string('year');
+            $table->string('exp_title')->nullable();
+            $table->text('exp_details_1')->nullable();
+            $table->text('exp_details_2')->nullable();
+            $table->text('exp_content')->nullable();
+            $table->string('exp_link')->nullable();
+            $table->string('for_title')->nullable();
+            $table->text('for_details_1')->nullable();
+            $table->text('for_details_2')->nullable();
+            $table->text('for_content')->nullable();
+            $table->string('for_link')->nullable();
             $table->timestamps();
         });
     }

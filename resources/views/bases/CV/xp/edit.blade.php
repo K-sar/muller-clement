@@ -1,8 +1,8 @@
 @extends ("layouts.layout")
 
 @section('title')
-    <title>Clément Muller - CV - Modifier une {{old("type")?:$xp->type}}</title>
-    <meta name="description" content="Formulaire de modification d'une {{old("type")?:$xp->type}}"/>
+    <title>Clément Muller - CV - Modifier une expérience</title>
+    <meta name="description" content="Formulaire de modification d'une expérience"/>
 @endsection
 
 @section("nav")
@@ -17,45 +17,68 @@
         @csrf
         <div>
             <legend>
-                <h2>Modifier une {{old("type")?:$xp->type}}</h2>
+                <h2>Modifier une expérience</h2>
             </legend>
-        </div>
-        <div>
-            <label>Type :</label>
-            <select name="type">
-                <option @if (old("type") == "expérience"||(!old("type")&&$xp->type =='expérience')) selected @endif value="expérience">Expérience</option>
-                <option @if (old("type") == "formation"||(!old("type")&&$xp->type =='formation')) selected @endif value="formation">Formation</option>
-            </select>
-        </div>
-        <div>
-            <label>Titre :</label>
-            <input type="text" name="title" value="{{old("title")?:$xp->title}}" />
-        </div>
-        <div>
-            <label>Description :</label>
-            <input type="text" name="content" value="{{old("content")?:$xp->content}}" />
-        </div>
-        <div>
-            <label>Lien :</label>
-            <input type="text" name="link" value="{{old("link")?:$xp->link}}" />
         </div>
         <div class="flex">
             <div class="wd-125 mg-l-0 mg-r-20">
-                <label >De :</label>
-                <input type="text" name="from" value="{{old("from")?:$xp->from}}" />
-            </div>
-            <div class="wd-125 mg-l-0 mg-r-20">
-                <label >A :</label>
-                <input type="text" name="to" value="{{old("to")?:$xp->to}}" />
-            </div>
-            <div class="wd-125 mg-l-0 mg-r-20">
-                <label >Année :</label>
+                <label for="year">Année :</label>
                 <input type="text" name="year" value="{{old("year")?:$xp->year}}" />
             </div>
             <div class="wd-125 mg-l-0 mg-r-20">
-                <label >Public </label>
+                <label for="publish">Public </label>
                 <input type="checkbox" name="publish" value="1" @if (old("publish")||(!old()&&$xp->publish)) checked @endif class="wd-15 mg-l-0"/>
             </div>
+        </div>
+        <div>
+            <legend>
+                <h3>Expérience professionnelle</h3>
+            </legend>
+        </div>
+        <div>
+            <label for="title">Titre :</label>
+            <input type="text" name="exp_title" value="{{old("exp_title")?:$xp->exp_title}}" />
+        </div>
+        <div>
+            <label for="details_1">Détails 1 :</label>
+            <textarea name="exp_details_1">{{old("exp_details_1")?:$xp->exp_details_1}}</textarea>
+        </div>
+        <div>
+            <label for="details_2">Détails 2 :</label>
+            <textarea name="exp_details_2">{{old("exp_details_2")?:$xp->exp_details_2}}</textarea>
+        </div>
+        <div>
+            <label for="content">Description :</label>
+            <textarea name="exp_content">{{old("exp_content")?:$xp->exp_content}}</textarea>
+        </div>
+        <div>
+            <label for="link">Lien :</label>
+            <input type="text" name="exp_link" value="{{old("exp_link")?:$xp->exp_link}}" />
+        </div>
+        <div>
+            <legend>
+                <h3>Formation</h3>
+            </legend>
+        </div>
+        <div>
+            <label for="title">Titre :</label>
+            <input type="text" name="for_title" value="{{old("for_title")?:$xp->for_title}}" />
+        </div>
+        <div>
+            <label for="details_1">Détails 1 :</label>
+            <textarea name="for_details_1">{{old("for_details_1")?:$xp->for_details_1}}</textarea>
+        </div>
+        <div>
+            <label for="details_2">Détails 2 :</label>
+            <textarea name="for_details_2">{{old("for_details_2")?:$xp->for_details_2}}</textarea>
+        </div>
+        <div>
+            <label for="content">Description :</label>
+            <textarea name="for_content">{{old("for_content")?:$xp->for_content}}</textarea>
+        </div>
+        <div>
+            <label for="link">Lien :</label>
+            <input type="text" name="for_link" value="{{old("for_link")?:$xp->for_link}}" />
         </div>
         <div>
             <input type="submit" />

@@ -8,14 +8,16 @@
     <div id="column-container">
         <div id="column">
             <div class="half-column">
-                <div class="column-content">
+                <div id="first-column-content" class="column-content quarter-column">
                         <div id="Photo-CV">
                             <a href="/storage/CV/Photo-CV.jpg">
                                 <img src="/storage/CV/Photo-CV.jpg" alt="Photo de mon CV">
                             </a>
                         </div>
-                        <p>29 ans +33 6 76 71 06 30</p>
+                    <span class="flex space-between wd-255"><p>29 ans</p><p>+33 6 76 71 06 30</p></span>
+                    <p>
                         <a href="mailto:contact@muller-clement.com">contact@muller-clement.com</a>
+                    </p>
                         <p>Nationalité suisse & française</p>
                 </div>
                 <div class="column-title">
@@ -30,40 +32,42 @@
                         J’y ai acquis de nombreuses
                         compétences très diverses,
                         et maintenant je recherche
-                        la stabilité d’un CDI.
+                        la stabilité d’un CDl.
                     </p>
                 </div>
             </div>
             <div class="half-column">
+                <div class="quarter-column">
+                    <div class="column-title">
+                        <h2>Atouts</h2>
+                    </div>
+                    <div class="column-content">
+                        <div id="english" class="atouts small">
+                            <p>Anglais courant - C2</p>
+                            <p>Multiples voyages à l'étranger en 3 ans</p>
+                        </div>
+                        <div id="teamwork" class="atouts small">
+                            <p>Travail en équipe</p>
+                            <p>Une valeur des EEDF</p>
+                        </div>
+                        <div id="computer" class="atouts small">
+                            <p>lnformatique</p>
+                            <p>Full stack, Adobe & Hardware</p>
+                        </div>
+                        <div id="creativity" class="atouts">
+                            <p>Créativité</p>
+                        </div>
+                        <div id="pedagogy" class="atouts">
+                            <p>Pédagogie</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="column-title">
-                    <h2>Atouts</h2>
+                    <h2>lntérêts</h2>
                 </div>
                 <div class="column-content">
-                    <div id="english" class="atouts">
-                        <h3>Anglais courant - C2</h3>
-                        <p>Mulitples voyages à l'étranger en 3 ans</p>
-                    </div>
-                    <div id="teamwork" class="atouts">
-                        <h3>Travail en équipe</h3>
-                        <p>Une valeur des EEDF</p>
-                    </div>
-                    <div id="computer" class="atouts">
-                        <h3>Informatique</h3>
-                        <p>Full stack, Adobe & Hardware</p>
-                    </div>
-                    <div id="creativity" class="atouts">
-                        <h3>Créativité</h3>
-                    </div>
-                    <div id="pedagogy" class="atouts">
-                        <h3>Pédagogie</h3>
-                    </div>
-                </div>
-                <div class="column-title">
-                    <h2>Intérêts</h2>
-                </div>
-                <div class="column-content">
-                    <p>Randonnée : Mont Blanc,
-                        Grand Canyon, Islande...</p>
+                    <p class="mg-b-5">Randonnée : Mont Blanc,
+                        Grand Canyon, lslande...</p>
                     <p>Photographie : depuis 9 ans
                         pratique intensive</p>
                 </div>
