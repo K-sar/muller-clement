@@ -23,7 +23,7 @@
                     @csrf
                     <label>Ordre :</label>
                     <input type="text" name="ordre" value="{{old("ordre")?:$picture->ordre}}"/>
-                    <input type="submit" value="Modifier"/>
+                    <input type="submit" value="Modifier" />
                 </form>
             </div>
         @endforeach

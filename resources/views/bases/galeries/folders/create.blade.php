@@ -29,7 +29,7 @@
             <input type="text" name="ordre" value="{{old("ordre")}}" />
         </div>
         <div>
-            <input type="submit" />
+            <input type="submit" value="Ajouter" />
         </div>
     </form>
 @endsection

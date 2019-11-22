@@ -30,7 +30,7 @@
             <input type="text" name="ordre" value="{{old("ordre")?:$folder->ordre}}" />
         </div>
         <div>
-            <input type="submit" />
+            <input type="submit" value="Modifier" />
         </div>
     </form>
 @endsection

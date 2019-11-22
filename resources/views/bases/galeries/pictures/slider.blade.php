@@ -23,7 +23,7 @@
                     @csrf
                     <label>Slider :</label>
                     <input type="text" name="slider" value="{{old("slider")?:$picture->slider}}"/>
-                    <input type="submit" value="Modifier"/>
+                    <input type="submit" value="Modifier" />
                 </form>
             </div>
         @endforeach

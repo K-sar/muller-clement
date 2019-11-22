@@ -65,7 +65,7 @@
             <input id="inputTag" type="text" name="tags" value="{{old("tags")}}" />
         </div>
         <div>
-            <input type="submit" />
+            <input type="submit" value="Ajouter" />
         </div>
     </form>
 @endsection

@@ -37,7 +37,7 @@
             <input type="file" name="file"/>
         </div>
         <div>
-            <input type="submit" />
+            <input type="submit" value="Ajouter" />
         </div>
     </form>
 @endsection
