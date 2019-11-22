@@ -37,6 +37,10 @@
     font-style: normal;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: Segeo_Ui, open_sansregular, Arial, Verdana, sans-serif;
     color: #111;
@@ -116,13 +120,17 @@ nav h3 {
     display: block;
 }
 
-#bloc_page
-{
+#white-screen {
     max-width: 1024px;
-    min-height:1080px;
-    margin:auto;
-    padding: 85px 10px 10px 10px;
+    min-height: 100%;
     background-color: #FFF;
+    margin: auto;
+    padding: 0 10px 0 10px;
+}
+
+#bloc_page {
+    width: 100%;
+    padding: 85px 0 10px 0;
     display: flex;
     flex-direction:column;
 }

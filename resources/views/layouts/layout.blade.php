@@ -80,7 +80,7 @@
                                 </a>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                 document.getElementById('logout-form').submit();">
                                     <h3>{{ __('Déconnexion') }}</h3>
                                 </a>
 
@@ -93,14 +93,16 @@
                 </nav>
             </div>
         </header>
-        <div id="bloc_page">
-            @if (Session::has('status'))
-                <ul >
-                    <li>{!! session('status') !!}</li>
-                </ul>
-            @endif
+        <div id="white-screen">
+            <div id="bloc_page">
+                @if (Session::has('status'))
+                    <ul >
+                        <li>{!! session('status') !!}</li>
+                    </ul>
+                @endif
 
-            @yield('content')
+                @yield('content')
+            </div>
         </div>
         <script src="{{ mix('/js/app.js') }}"></script>
     </body>
