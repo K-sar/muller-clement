@@ -84,10 +84,6 @@ nav div {
     top: 339px;
 }
 
-#bloc_page a {
-    color: white;
-}
-
 #bloc_page a:hover {
     text-decoration: underline;
 }
@@ -118,6 +114,11 @@ nav div {
     padding-top: 20px;
     box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.25);
 }
+
+#column a, #footer-CV a {
+    color: white;
+}
+
 #first-column-content {
     display: flex;
     align-items: center;
@@ -300,7 +301,7 @@ img {
 
 .xp-line h3 {
     font-size: 1em;
-    margin-top: 4px;
+    margin-top: 8px;
     margin-bottom: 2px;
 }
 

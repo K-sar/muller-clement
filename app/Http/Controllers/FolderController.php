@@ -77,8 +77,8 @@ class FolderController extends Controller
         return redirect(route('folder.index'))->with('status', 'Le dossier a bien été supprimé');
     }
 
-    public function ordre (Folder $folder) {
-        $this->authorize('admin', $folder);
+    public function ordre() {
+        $this->authorize('admin', Folder::class);
 
         $folders = Folder::All()->sortBy('ordre');
 

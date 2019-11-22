@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\Xp;
-use App\xpYear;
 use App\Http\Requests\StoreXp;
 use Illuminate\Http\Request;
 use App\Pdf;
@@ -23,7 +22,7 @@ class CVController extends Controller
     public function backOffice() {
         $this->authorize('admin', Base::class);
         $xps = Xp::all()->sortByDesc('year');
-        $pdfs = PDF::all()->sortByDesc('date');
+        $pdfs = Pdf::all()->sortByDesc('date');
         return view('bases/CV/column',['xps'=>$xps, 'pdf'=>$pdfs->first(),'pdfs'=>$pdfs, 'backoffice'=>1]);
     }
 
@@ -95,7 +94,7 @@ class CVController extends Controller
     public function createPdf() {
         $this->authorize('admin', Base::class);
 
-        return view("bases/CV/PDF/create");
+        return view("bases/CV/pdf/create");
     }
 
     public function storePdf(Request $request) {

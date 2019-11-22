@@ -12,7 +12,11 @@
             <div class="miniature">
                 <div class="button">
                     <div class="fond">
-                        <img src="/storage/miniatures/pictures/{{$folder->slider_pictures->first()->link}}" alt="{{$folder->slider_pictures->first()->alternative}}"/>
+                        @if($folder->slider_pictures->first()->link)
+                            @if($folder->slider_pictures->first())
+                                <img src="/storage/miniatures/pictures/{{$folder->slider_pictures->first()->link}}" alt="{{$folder->slider_pictures->first()->alternative}}"/>
+                            @endif
+                        @endif
                     </div>
                     <h2>
                         {{$folder->name}}

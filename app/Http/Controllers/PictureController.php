@@ -9,7 +9,6 @@ use App\Picture;
 use App\Tag;
 use App\Http\Requests\StorePicture;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -75,10 +74,20 @@ class PictureController extends Controller{
 
         $request->merge(['link'=>$link]);
 
+        if ($request->access == null) {
+            $request->merge(['access' => 1]);
+        }
+
+        if ($request->alternative == null) {
+            $request->merge(['alternative' => $request->name]);
+        }
+
         $validated = $request->validated();
         if ($request->ordre == null) {
             $request->merge(['ordre' => 100]);
         }
+
+        dd($request);
 
         $picture=Picture::create($request->all(['folder_id', 'access', 'link', 'name', 'info', 'alternative', 'ordre','slider']));
 
@@ -237,6 +246,20 @@ class PictureController extends Controller{
 //----------------------------------------------------------------------------------------------------------------------FTP
     public function FTP() {
         $this->authorize('admin', Picture::class);
+        $FTPs = collect(Storage::files('FTP'))->map(function ($item, $key) {
+            return substr($item, 4);
+        });
+
+        foreach($FTPs as $FTP) {
+            list($file, $ext) = explode(".",$FTP);
+            $link = md5($file).'.'.$ext;
+            $img = Image::make("../storage/app/public/FTP/".$FTP);
+            $img->orientate();
+            $img->save("../storage/app/public/pictures/".$link);
+            $img->fit(300, 200)->orientate();
+            $img->save("../storage/app/public/miniatures/pictures/".$link);
+            Storage::delete('/FTP/'.$FTP);
+        }
 
         $pictures = Picture::all();
         $FTPs = collect(Storage::files('pictures'))->map(function ($item, $key) {
@@ -269,16 +292,15 @@ class PictureController extends Controller{
     public function FTPstore($FTP, StorePicture $request) {
         $this->authorize('admin', Picture::class);
 
-        list($file, $ext) = explode(".",$FTP);
-        $link = md5($file).'.'.$ext;
-        $img = Image::make("../storage/app/public/pictures/".$FTP);
-        $img->orientate();
-        $img->save("../storage/app/public/pictures/".$link);
-        $img->fit(300, 200)->orientate();
-        $img->save("../storage/app/public/miniatures/pictures/".$link);
-        Storage::delete('/pictures/'.$FTP);
+        $request->merge(['link'=>$FTP]);
 
-        $request->merge(['link'=>$link]);
+        if ($request->access == null) {
+            $request->merge(['access' => 1]);
+        }
+
+        if ($request->alternative == null) {
+            $request->merge(['alternative' => $request->name]);
+        }
 
         $validated = $request->validated();
         if ($request->ordre == null) {
@@ -296,6 +318,7 @@ class PictureController extends Controller{
         $this->authorize('admin', Picture::class);
 
         Storage::delete('/pictures/'.$FTP);
+        Storage::delete('/miniatures/'.$FTP);
 
         return redirect()-> route('FTP')->with('status', 'La photo a bien été supprimée');
     }

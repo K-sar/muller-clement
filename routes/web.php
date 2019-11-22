@@ -11,7 +11,7 @@
 |
 */
 //----------------------------------------------------------------------------------------------------------------------Base
-Route::get('/', 'BaseController@index');
+Route::get('/', 'BaseController@index')->name('/');
 Route::resource('/base', 'BaseController');
 
 
@@ -58,12 +58,12 @@ Route::post('/galerie/folder/{folder}/picture/{picture}/slider', 'PictureControl
 Route::get('/galerie/folder/{folder}/ordre', 'PictureController@ordre')->name('picture.ordre');
 Route::post('/galerie/folder/{folder}/picture/{picture}/ordre', 'PictureController@ordreUpdate')->name('picture.ordre.update');
 
-Route::get('/galerie//ordre', 'FolderController@ordre')->name('folder.ordre');
+Route::get('/galerie/ordre', 'FolderController@ordre')->name('folder.ordre');
 Route::post('/galerie/folder/{folder}/ordre', 'FolderController@ordreUpdate')->name('folder.ordre.update');
 
 
 //----------------------------------------------------------------------------------------------------------------------Autres
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 

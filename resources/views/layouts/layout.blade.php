@@ -95,7 +95,7 @@
         </header>
         <div id="bloc_page">
             @if (Session::has('status'))
-                <ul>
+                <ul >
                     <li>{!! session('status') !!}</li>
                 </ul>
             @endif

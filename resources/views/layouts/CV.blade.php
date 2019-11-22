@@ -40,39 +40,41 @@
                     <div class="experience"></div><div class="year"></div><div class="formation"></div>
                 </div>
                 @foreach($xps as $xp)
-                    <div class="xp-line">
-                        <div class="experience">
-                            @if($xp->exp_title)
-                                <h3>{!! $xp->exp_title !!}</h3>
-                                <p>{!! $xp->exp_details_1 !!}</p>
-                                @if($xp->exp_details_2) <p>{!! $xp->exp_details_2 !!}</p> @endif
-                                <p class="italic">{!! $xp->exp_content !!}</p>
-                            @endif
+                    @if($xp->publish || $backoffice)
+                        <div class="xp-line @if($xp->publish == 0) bc-grey @endif">
+                            <div class="experience">
+                                @if($xp->exp_title)
+                                    <h3>{!! $xp->exp_title !!}</h3>
+                                    <p>{!! $xp->exp_details_1 !!}</p>
+                                    @if($xp->exp_details_2) <p>{!! $xp->exp_details_2 !!}</p> @endif
+                                    <p class="italic">{!! $xp->exp_content !!}</p>
+                                @endif
+                            </div>
+                            <div class="year relative">
+                                @if($backoffice)
+                                    <div class="menu-auth auth-CV">
+                                        <a href="{{route('xp.edit', $xp->id)}}"><button><i class="far fa-edit"></i></button></a>
+                                        <form action="{{route('xp.delete', $xp->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"><i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </div>
+                                @endif
+                                <div class="arrow @if($xp->exp_title)left-arrow @else empty-arrow @endif"></div>
+                                <h4>{{$xp->year}}</h4>
+                                <div class="arrow @if($xp->for_title)right-arrow @else empty-arrow @endif"></div>
+                            </div>
+                            <div class="formation">
+                                @if($xp->for_title)
+                                    <h3>{!! $xp->for_title !!}</h3>
+                                    <p>{!! $xp->for_details_1 !!}</p>
+                                    @if($xp->for_details_2) <p>{!! $xp->for_details_2 !!}</p> @endif
+                                    <p class="italic">{!! $xp->for_content !!}</p>
+                                @endif
+                            </div>
                         </div>
-                        <div class="year relative">
-                            @if($backoffice)
-                                <div class="menu-auth auth-CV">
-                                    <a href="{{route('xp.edit', $xp->id)}}"><button><i class="far fa-edit"></i></button></a>
-                                    <form action="{{route('xp.delete', $xp->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"><i class="far fa-trash-alt"></i></button>
-                                    </form>
-                                </div>
-                            @endif
-                            <div class="arrow @if($xp->exp_title)left-arrow @else empty-arrow @endif"></div>
-                            <h4>{{$xp->year}}</h4>
-                            <div class="arrow @if($xp->for_title)right-arrow @else empty-arrow @endif"></div>
-                        </div>
-                        <div class="formation">
-                            @if($xp->for_title)
-                                <h3>{!! $xp->for_title !!}</h3>
-                                <p>{!! $xp->for_details_1 !!}</p>
-                                @if($xp->for_details_2) <p>{!! $xp->for_details_2 !!}</p> @endif
-                                <p class="italic">{!! $xp->for_content !!}</p>
-                            @endif
-                        </div>
-                    </div>
+                    @endif
                 @endforeach
                 <div class="xp-line last-line">
                     <div class="experience"></div>

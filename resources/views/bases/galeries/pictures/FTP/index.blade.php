@@ -1,8 +1,8 @@
 @extends ("layouts.layout")
 
 @section('title')
-    <title>Clément Muller - Galerie - Toutes les photos @if (!empty($laserTag)) avec le tag : {{$laserTag->name}} @endif</title>
-    <meta name="description" content="Liste de toutes les photos @if (!empty($laserTag)) avec le tag : {{$laserTag->name}} @endif"/>
+    <title>Clément Muller - Galerie - Toutes les photos non triées</title>
+    <meta name="description" content="Liste de toutes les photos non triées"/>
 @endsection
 
 @section("content")
@@ -16,7 +16,7 @@
                     </div>
                     <div class="button photo">
                         <div class="fond photo">
-                            <img src="/storage/pictures/{{$FTP}}" alt="bug"/>
+                            <img src="/storage/miniatures/pictures/{{$FTP}}" alt="bug"/>
                         </div>
                     </div>
                 </div>

@@ -25,10 +25,10 @@ class StorePortfolio extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('Portfolios')->ignore($this->request->get('name'), 'name'), 'max:255'],
+            'name' => ['required', Rule::unique('portfolios')->ignore($this->request->get('name'), 'name'), 'max:255'],
             'slug' => [Rule::unique('portfolios')->ignore($this->request->get('slug'), 'slug'), 'max:255'],
             'description' => 'required',
-            'link' => ['required', Rule::unique('Portfolios')->ignore($this->request->get('link'), 'link')],
+            'link' => ['required', Rule::unique('portfolios')->ignore($this->request->get('link'), 'link')],
         ];
     }
 }
